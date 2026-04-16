@@ -67,25 +67,21 @@ const HeroSection = ({
             technical debt, and logic errors across any codebase — in seconds.
           </p>
 
-          {/* Trust badges */}
-          <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+          {/* Value props */}
+          <div className="grid grid-cols-3 gap-3 pt-2">
             {[
-              ['JS / TS', 'supported'],
-              ['Python',  'supported'],
-              ['Java',    'supported'],
-              ['6 AI models', 'in rotation'],
-            ].map(([lang, sub]) => (
+              { stat: '250+',   label: 'Issues detected',    sub: 'per scan on avg' },
+              { stat: '< 60s',  label: 'Analysis time',      sub: 'for most repos'  },
+              { stat: '3 formats', label: 'Export ready',    sub: 'PDF · JSON · XLS' },
+            ].map(({ stat, label, sub }) => (
               <div
-                key={lang}
-                className="flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold"
-                style={{ background: 'rgba(139,92,246,0.06)', border: '1px solid var(--border)', color: '#fff' }}
+                key={label}
+                className="flex flex-col gap-1 px-3 py-3 rounded-xl border"
+                style={{ background: 'rgba(139,92,246,0.04)', border: '1px solid var(--border)' }}
               >
-                <span
-                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
-                  style={{ background: 'var(--gradient)' }}
-                />
-                {lang}
-                <span style={{ color: 'var(--text-muted)' }}>· {sub}</span>
+                <span className="text-lg font-black text-white" style={{ letterSpacing: '-0.03em' }}>{stat}</span>
+                <span className="text-[11px] font-bold text-white leading-tight">{label}</span>
+                <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{sub}</span>
               </div>
             ))}
           </div>
