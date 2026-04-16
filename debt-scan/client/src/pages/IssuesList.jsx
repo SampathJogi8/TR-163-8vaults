@@ -179,6 +179,7 @@ const IssuesList = ({ issues, onBack, onFileClick }) => {
            </div>
         </footer>
       </div>
+    </div>
     </AestheticBackground>
   );
 };

@@ -3690,3 +3690,636 @@ AggregateError [ECONNREFUSED]:
       at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
       at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
       at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:47:44 PM [vite] hmr update /src/pages/IssuesList.jsx, /src/index.css
+11:47:44 PM [vite] Pre-transform error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/FileDetail.jsx: Unterminated JSX contents. (113:26)
+
+  111 |         </footer>
+  112 |       </div>
+> 113 |     </AestheticBackground>
+      |                           ^
+  114 |   );
+  115 | };
+  116 |
+11:47:44 PM [vite] Pre-transform error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+11:47:44 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:47:44 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/FileDetail.jsx: Unterminated JSX contents. (113:26)
+
+  111 |         </footer>
+  112 |       </div>
+> 113 |     </AestheticBackground>
+      |                           ^
+  114 |   );
+  115 | };
+  116 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/FileDetail.jsx:113:26
+  111|          </footer>
+  112|        </div>
+  113|      </AestheticBackground>
+     |                            ^
+  114|    );
+  115|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:48:01 PM [vite] hmr update /src/pages/FileDetail.jsx, /src/index.css
+11:48:01 PM [vite] Pre-transform error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+11:48:01 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:31 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:37 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:39 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:39 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:39 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:51:40 PM [vite] Internal server error: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx: Unterminated JSX contents. (280:26)
+
+  278 |         </footer>
+  279 |       </div>
+> 280 |     </AestheticBackground>
+      |                           ^
+  281 |   );
+  282 | };
+  283 |
+  Plugin: vite:react-babel
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/pages/Dashboard.jsx:280:26
+  278|          </footer>
+  279|        </div>
+  280|      </AestheticBackground>
+     |                            ^
+  281|    );
+  282|  };
+      at constructor (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:365:19)
+      at JSXParserMixin.raise (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6599:19)
+      at JSXParserMixin.jsxReadToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4448:20)
+      at JSXParserMixin.getTokenFromCode (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4774:12)
+      at JSXParserMixin.nextToken (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5782:10)
+      at JSXParserMixin.next (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5692:10)
+      at JSXParserMixin.eat (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:5696:12)
+      at JSXParserMixin.expect (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:6898:15)
+      at JSXParserMixin.jsxParseClosingElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4680:10)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4695:37)
+      at JSXParserMixin.jsxParseElementAt (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4698:32)
+      at JSXParserMixin.jsxParseElement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4749:17)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4759:19)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12426:12)
+      at JSXParserMixin.parseMaybeAssignAllowIn (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10800:17)
+      at JSXParserMixin.parseMaybeAssignAllowInOrVoidPattern (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12493:17)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11675:28)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+      at JSXParserMixin.parseExprSubscripts (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11081:23)
+      at JSXParserMixin.parseUpdate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11066:21)
+      at JSXParserMixin.parseMaybeUnary (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11046:23)
+      at JSXParserMixin.parseMaybeUnaryOrPrivate (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10899:61)
+      at JSXParserMixin.parseExprOps (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10904:23)
+      at JSXParserMixin.parseMaybeConditional (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10881:23)
+      at JSXParserMixin.parseMaybeAssign (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10831:21)
+      at JSXParserMixin.parseExpressionBase (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10784:23)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:39
+      at JSXParserMixin.allowInAnd (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12421:16)
+      at JSXParserMixin.parseExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:10780:17)
+      at JSXParserMixin.parseReturnStatement (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13142:28)
+      at JSXParserMixin.parseStatementContent (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12798:21)
+      at JSXParserMixin.parseStatementLike (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12767:17)
+      at JSXParserMixin.parseStatementListItem (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12747:17)
+      at JSXParserMixin.parseBlockOrModuleBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13316:61)
+      at JSXParserMixin.parseBlockBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13309:10)
+      at JSXParserMixin.parseBlock (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:13297:10)
+      at JSXParserMixin.parseFunctionBody (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12100:24)
+      at JSXParserMixin.parseArrowExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:12075:10)
+      at JSXParserMixin.parseParenAndDistinguishExpression (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11687:12)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
+      at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
+11:52:33 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css

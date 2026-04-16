@@ -277,6 +277,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
            <span>© 2026 DebtScan Enterprise</span>
         </footer>
       </div>
+    </div>
     </AestheticBackground>
   );
 };
