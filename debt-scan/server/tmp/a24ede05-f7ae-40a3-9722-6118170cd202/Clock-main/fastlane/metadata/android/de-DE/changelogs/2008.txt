@@ -1,7 +1,0 @@
-**Verbesserungen**
- - Auswahl eines Standardstils für die Zeitauswahl;
- - Einblend-Übergang beim Durchblättern der Einstellungen;
- - Anpassung der Anzeige der Weckanimation;
- - Hinzufügen der Aktion „Nichts“ zu den Lautstärketasten;
- - Aktualisierung der Übersetzungen;
- - Alle Verbesserungen finden Sie unter: https://github.com/BlackyHawky/Clock/releases/tag/2.7
