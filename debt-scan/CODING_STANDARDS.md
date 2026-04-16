@@ -1,4 +1,5 @@
-# DebtScan: Core Coding Standards & Compliance
+# 8Vaults Coding Standards v1.1
+*Last Updated: 2026-04-17 (Identity Updated)*
 
 This document outlines the professional coding standards enforced by 8Vaults and expected from all contributors. Our goal is to maintain a codebase that is **Secure**, **Performant**, and **Self-Documenting**.
 
