@@ -110,7 +110,7 @@ const FileDetail = ({ file, issues, onBack }) => {
            <div className="flex items-center gap-2"><ShieldAlert size={14} /> CLASSIFIED AUDIT</div>
         </footer>
       </div>
-    </div>
+    </AestheticBackground>
   );
 };
 
