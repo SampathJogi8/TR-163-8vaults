@@ -142,7 +142,10 @@ const IssuesList = ({ issues = [], onBack, onFileClick }) => {
           <div className="space-y-2">
             {filtered.map((issue, i) => (
               <div key={issue.id || i}>
-                <IssueCard issue={issue} />
+                <IssueCard 
+                  issue={issue} 
+                  onFeedback={(status) => onIssueFeedback?.(issue.id, status)} 
+                />
               </div>
             ))}
           </div>

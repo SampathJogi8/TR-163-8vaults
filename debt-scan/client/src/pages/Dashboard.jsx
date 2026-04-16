@@ -140,26 +140,26 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
             icon={<ShieldCheck size={14} />}
           />
           <StatCard
-            label="Total Issues"
-            value={stats?.totalIssues ?? 0}
+            label="Acceptance Rate"
+            value={acceptanceRate !== null ? `${acceptanceRate}%` : '—'}
             color="lime"
-            subtext="Across all files"
-            icon={<Zap size={14} />}
+            subtext={feedbackTotal > 0 ? `Based on ${feedbackTotal} reviews` : 'Awaiting human feedback'}
+            icon={<BarChart2 size={14} />}
           />
           <StatCard
-            label="Critical"
+            label="Critical Issues"
             value={stats?.severityCounts?.Critical ?? 0}
             color="red"
-            subtext="Security & stability risks"
+            subtext="Immediate risks"
             icon={<AlertTriangle size={14} />}
           />
           <StatCard
-            label="Files Scanned"
-            value={stats?.filesAnalyzed ?? 0}
-            unit="files"
-            color="lime"
-            subtext="Total unique modules"
-            icon={<FileText size={14} />}
+            label="Performance"
+            value={(durationMs / 1000).toFixed(1)}
+            unit="sec"
+            color={isFastScan ? 'green' : 'amber'}
+            subtext={isFastScan ? 'Target met: < 60s' : 'Above target'}
+            icon={<Timer size={14} />}
           />
         </div>
 

@@ -59,6 +59,13 @@ const App = () => {
     window.scrollTo(0, 0);
   };
 
+  const handleIssueFeedback = (issueId, status) => {
+    setResults(prev => ({
+      ...prev,
+      issues: prev.issues.map(i => i.id === issueId ? { ...i, feedback: status } : i)
+    }));
+  };
+
   return (
     <div className="text-white selection:bg-purple-500/30">
       {view === 'landing' && (
@@ -83,6 +90,7 @@ const App = () => {
           issues={results.issues} 
           onBack={() => setView('dashboard')}
           onFileClick={(file) => navigateToFileDetail(file, 'issues')}
+          onIssueFeedback={handleIssueFeedback}
         />
       )}
 

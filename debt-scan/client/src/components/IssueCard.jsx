@@ -87,11 +87,30 @@ const IssueCard = ({ issue }) => {
               {issue.fix}
             </p>
           </div>
-          <div className="flex flex-wrap gap-2 pt-1">
             <span className="text-[11px] px-3 py-1 rounded-full border font-semibold"
                   style={{ background: cat.bg, borderColor: cat.border, color: cat.text }}>
               {issue.category}
             </span>
+
+            <div className="ml-auto flex items-center gap-2">
+              <span className="text-[10px] font-bold uppercase tracking-widest mr-2" style={{ color: 'var(--text-muted)' }}>
+                Was this fix helpful?
+              </span>
+              <button
+                onClick={(e) => { e.stopPropagation(); onFeedback('accepted'); }}
+                className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase transition-all border ${issue.feedback === 'accepted' ? 'bg-green-500/20 border-green-500/50 text-green-400' : 'border-var(--border) text-var(--text-muted) hover:text-white hover:border-white'}`}
+                style={{ borderColor: issue.feedback === 'accepted' ? '' : 'var(--border)' }}
+              >
+                Accept
+              </button>
+              <button
+                onClick={(e) => { e.stopPropagation(); onFeedback('rejected'); }}
+                className={`px-3 py-1 rounded-full text-[10px] font-bold uppercase transition-all border ${issue.feedback === 'rejected' ? 'bg-red-500/20 border-red-500/50 text-red-100' : 'border-var(--border) text-var(--text-muted) hover:text-white hover:border-white'}`}
+                style={{ borderColor: issue.feedback === 'rejected' ? '' : 'var(--border)' }}
+              >
+                Reject
+              </button>
+            </div>
           </div>
         </div>
       )}

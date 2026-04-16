@@ -100,8 +100,11 @@ async function _performAnalysis(chunk, standards, provider) {
 You are an elite Security Auditor and Static Analysis Expert.
 Your job is to analyze the provided code chunk and return a JSON array of issues.
 
-CRITICAL DIRECTIVE:
-If the code appears corrupted, obfuscated, contains binary junk, or has severe syntax errors (Structural Integrity: COMPROMISED), you MUST flag this as at least one 'Critical' issue with category 'Security' or 'TechnicalDebt'. Explain that the file is structurally compromised.
+SONARQUBE ALIGNMENT:
+Prioritize issues that violate "Clean Code" principles (Reliability, Security, Maintainability). Focus on patterns SonarQube quality gates frequently flag:
+- Cognitive complexity, nested logic, and DRY violations.
+- Insecure crypto, injection patterns, and exposed secrets.
+- Missing error handling and performance bottlenecks.
 
 Each issue must follow this exact schema:
 {
