@@ -79,7 +79,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
                             <BarChart2 size={16} className="text-emerald-500" /> Audit Spreadsheet (XLS)
                         </button>
                         <button onClick={() => handleExport('json')} className="w-full flex items-center gap-3 p-4 text-left text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-premium uppercase tracking-widest">
-                            <FileJson size={16} className="text-amber-500" /> Raw Neural JSON
+                            <FileJson size={16} className="text-amber-500" /> Export JSON
                         </button>
                     </div>
                 )}
@@ -103,7 +103,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
             icon={<ShieldCheck size={20} />}
           />
           <StatCard 
-            label="Neural Debt Rating" 
+            label="Technical Debt Rating" 
             value={overallScore} 
             color={scoreColor}
             subtext={scoreColor === 'red' ? 'Critical Refactoring Required' : scoreColor === 'amber' ? 'Moderate Structural Risk' : 'Optimized Architecture'}
@@ -274,7 +274,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
            <span className="w-2 h-2 rounded-full bg-accent/20" />
            <span>Secure Infrastructure</span>
            <span className="w-2 h-2 rounded-full bg-accent/20" />
-           <span>© 2026 Neural Enterprise</span>
+           <span>© 2026 CodeAnalyzer</span>
         </footer>
       </div>
     </div>

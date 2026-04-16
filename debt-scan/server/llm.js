@@ -22,7 +22,7 @@ if (!process.env.XAI_API_KEY) {
   console.warn('WARNING: XAI_API_KEY is missing from environment.');
 }
 
-console.log('Neural Audit Framework initializing with:', {
+console.log('Code Analysis Engine initializing with:', {
   gemini: !!process.env.GEMINI_API_KEY,
   deepseek: !!process.env.DEEPSEEK_API_KEY,
   grok: !!process.env.XAI_API_KEY,
@@ -139,8 +139,8 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         if (!jsonStr) throw new Error("No JSON array found in response");
         return JSON.parse(jsonStr);
       } catch (parseErr) {
-        console.error(`[Neural Core] JSON Parse Failure on Anthropic. Content snippet: ${content.substring(0, 100)}...`);
-        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+        console.error(`[Analyzer] JSON Parse Failure on Anthropic. Content snippet: ${content.substring(0, 100)}...`);
+        throw new Error(`Invalid JSON Payload: ${parseErr.message}`);
       }
     } catch (err) {
       throw err;
@@ -156,8 +156,8 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         if (!jsonStr) throw new Error("No JSON array found in response");
         return JSON.parse(jsonStr);
       } catch (parseErr) {
-        console.error(`[Neural Core] JSON Parse Failure on Gemini. Content snippet: ${content.substring(0, 100)}...`);
-        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+        console.error(`[Analyzer] JSON Parse Failure on Gemini. Content snippet: ${content.substring(0, 100)}...`);
+        throw new Error(`Invalid JSON Payload: ${parseErr.message}`);
       }
     } catch (err) {
       throw err;
@@ -220,8 +220,8 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         if (!jsonStr) throw new Error("No JSON found in OpenRouter response");
         return JSON.parse(jsonStr);
       } catch (parseErr) {
-        console.error(`[Neural Core] JSON Parse Failure on OpenRouter. Content: ${content.substring(0, 100)}`);
-        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+        console.error(`[Analyzer] JSON Parse Failure on OpenRouter. Content: ${content.substring(0, 100)}`);
+        throw new Error(`Invalid JSON Payload: ${parseErr.message}`);
       }
     } catch (err) {
       throw err;
@@ -282,7 +282,7 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
 
   for (const p of providersToTry) {
     try {
-      console.log(`[Neural Core] Analyzing ${chunk.filename} via [${p}]`);
+      console.log(`[Analyzer] Analyzing ${chunk.filename} via [${p}]`);
       return await _performAnalysis(chunk, standards, p);
     } catch (err) {
       lastError = err;
@@ -299,10 +299,10 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
 
       if (isRecoverable && providersToTry.length > 1) {
         if (is429) {
-          console.warn(`[Neural Core] Rate limit hit on [${p}]. Implementing 2s cooldown before rotation...`);
+          console.warn(`[Analyzer] Rate limit hit on [${p}]. Implementing 2s cooldown before rotation...`);
           await new Promise(r => setTimeout(r, 2000));
         }
-        console.warn(`[Neural Core] Provider [${p}] fallback initiated. Rotating...`);
+        console.warn(`[Analyzer] Provider [${p}] fallback initiated. Rotating...`);
         failedProviders.add(p);
         continue;
       }
@@ -310,19 +310,19 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
       if (!isRecoverable) {
         // LOCAL FALLBACK: If structural integrity is compromised, we can return a local finding
         if (chunk.metrics?.isUnparseable) {
-          console.warn(`[Neural Core] Fatal on [${p}] but structural integrity is COMPROMISED. Using local diagnostic.`);
+          console.warn(`[Analyzer] Fatal on [${p}] but structural integrity is COMPROMISED. Using local diagnostic.`);
           return [{
             id: `local-fail-${Date.now()}`,
             file: chunk.filename,
             line: 1,
             severity: "Critical",
             category: "TechnicalDebt",
-            title: "Severe Structural Corruption",
+            title: "Syntax Error",
             description: "The source module is structurally unparseable (Possible binary junk, obfuscation, or extreme syntax failure). Manual review REQUIRED.",
             fix: "Verify file encoding and restore from known-good source state. Ensure the file is not corrupted binary data incorrectly labeled with a source extension."
           }];
         }
-        console.error(`[Neural Core] Fatal Error on [${p}]:`, msg);
+        console.error(`[Analyzer] Fatal Error on [${p}]:`, msg);
         throw err;
       }
     }
@@ -330,23 +330,23 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
 
   // --- Final "Neural Safety Net" Fallback ---
   if (chunk.metrics?.isUnparseable) {
-     console.warn(`[Neural Core] Primary cores exhausted but file is compromised. Forcing local finding.`);
+     console.warn(`[Analyzer] Primary cores exhausted but file is compromised. Forcing local finding.`);
      return [{
         id: `local-fallback-${Date.now()}`,
         file: chunk.filename,
         line: 1,
         severity: "Critical",
         category: "TechnicalDebt",
-        title: "Structural Integrity Failure",
-        description: "Engine detected unparseable syntax or corrupted data. This module cannot be audited by intelligence systems in its current state.",
+        title: "Parser Failure",
+        description: "The file could not be parsed due to severe syntax errors or corrupted data. Static analysis cannot proceed for this module.",
         fix: "Perform a structural audit of the file content. Check for non-printable characters or mismatched bracket hierarchies."
      }];
   }
-  console.warn("--- [SYSTEM PANIC] PRIMARY CORES EXHAUSTED ---");
+  console.warn("--- [CRITICAL] ALL API PROVIDERS FAILED ---");
   
   if (process.env.OPENROUTER_API_KEY && !failedProviders.has('openrouter')) {
     try {
-      rotationLogs.push("Entering Emergency Protocol via OpenRouter Free Fallback");
+      rotationLogs.push("Entering Free model fallback via OpenRouter");
       const systemPrompt = `Analyze code for debt and quality. Return JSON array.`; 
       const userMessage = `File: ${chunk.filename}\nContent:\n${chunk.code}`;
       return await _performOpenRouterFreeFallback(standards, systemPrompt, userMessage);
@@ -356,7 +356,7 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   }
 
   const chainOfFailure = rotationLogs.join(" -> ");
-  throw new Error(`Infrastructure Exhausted. Failure Chain: ${chainOfFailure}`);
+  throw new Error(`All API requests failed. Failure Chain: ${chainOfFailure}`);
 }
 
 async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onProgress) {

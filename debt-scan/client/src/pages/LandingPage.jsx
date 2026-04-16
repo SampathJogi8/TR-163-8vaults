@@ -80,9 +80,9 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
               <Cpu className="text-white animate-pulse" size={40} />
             </div>
             <h1 className="text-5xl font-black text-white mb-6 tracking-tight font-['Outfit']">
-               Audit <span className="font-serif-italic">Emergence</span>
+               System <span className="font-serif-italic">Analysis</span>
             </h1>
-            <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Deconstructing neural pathways and architecture...</p>
+            <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Parsing syntax trees and analyzing logic routes...</p>
           </div>
           <div className="w-full max-w-xl relative z-10">
             <ProgressBar progress={progress} message={statusMessage} />
@@ -128,8 +128,8 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
              </div>
              
              <div className="flex flex-wrap justify-center gap-16 text-[9px] font-black text-white/20 uppercase tracking-[0.5em]">
-               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">IMMUTABLE AUDIT</div>
-               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">NEURAL COMPUTE</div>
+               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">STATIC ANALYSIS</div>
+               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">AI ASSISTED</div>
                <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">100% AUTOMATED</div>
              </div>
              

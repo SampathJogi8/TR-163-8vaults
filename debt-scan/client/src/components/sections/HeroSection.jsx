@@ -45,14 +45,14 @@ const HeroSection = ({
       <header className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 relative z-10">
         <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-[0.3em] uppercase mb-12 backdrop-blur-md">
           <Sparkles size={12} className="text-white/60" />
-          Neural Audit Framework v1.0
+          Code Analysis Engine v1.0
         </div>
         <h1 className="text-7xl lg:text-[100px] font-black text-white mb-10 tracking-tighter font-['Outfit'] leading-[0.85]">
-          Neural audits come to those <span className="font-serif-italic text-white underline decoration-white/10 underline-offset-8 decoration-1">who scan.</span>
+          Intelligent defaults for <span className="font-serif-italic text-white underline decoration-white/10 underline-offset-8 decoration-1">code review.</span>
         </h1>
         <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
-          The future of codebase intelligence. Identify structural entropy 
-          and logic gaps with <span className="text-white">autonomous precision</span>.
+          Automated codebase inspection. Identify vulnerabilities, technical debt, 
+          and logical errors with <span className="text-white">high precision</span>.
         </p>
       </header>
 
