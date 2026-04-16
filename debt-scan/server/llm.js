@@ -182,6 +182,9 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
                            msg.includes('credit') || 
                            msg.includes('429') || 
                            msg.includes('402') ||
+                           msg.includes('401') ||
+                           msg.includes('unauthorized') ||
+                           msg.includes('user not found') ||
                            msg.includes('credits');
 
       if (isQuotaError && (providersToTry.length > 1 || provider !== 'auto')) {
