@@ -41,7 +41,12 @@ const HeroSection = ({
           <a href="#steps"    className="hover:text-white transition-colors">How it works</a>
           <a href="#faq"      className="hover:text-white transition-colors">FAQ</a>
         </div>
-        <button className="btn-primary text-xs py-2 px-5 flex-shrink-0">Get started</button>
+        <button 
+          onClick={() => document.getElementById('scan-section')?.scrollIntoView({ behavior: 'smooth' })}
+          className="btn-primary text-xs py-2 px-5 flex-shrink-0"
+        >
+          Get started
+        </button>
       </nav>
 
       {/* ── TWO-COLUMN HERO ────────────────────────────────────── */}
@@ -102,7 +107,7 @@ const HeroSection = ({
         </div>
 
         {/* RIGHT — Form card */}
-        <div className="flex-1 w-full max-w-lg mx-auto lg:mx-0">
+        <div id="scan-section" className="flex-1 w-full max-w-lg mx-auto lg:mx-0 scroll-mt-32">
           <div className="bento-card p-6 space-y-5">
 
             {/* Tab switcher */}

@@ -41,7 +41,12 @@ const AuditSteps = () => (
           Get started in minutes and take full control of your codebase health.
           From submission to comprehensive report, everything is built for speed and clarity.
         </p>
-        <button className="btn-primary">Start a free scan</button>
+        <button 
+          onClick={() => document.getElementById('scan-section')?.scrollIntoView({ behavior: 'smooth' })}
+          className="btn-primary"
+        >
+          Start a free scan
+        </button>
       </div>
 
       {/* Right steps */}
