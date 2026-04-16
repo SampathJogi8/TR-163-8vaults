@@ -1,7 +1,7 @@
 const path = require('path');
 const dotenv = require('dotenv');
 
-// Load environment variables as early as possible
+// Load environment variables
 dotenv.config({ path: path.resolve(__dirname, '.env') });
 
 const express = require('express');
@@ -10,6 +10,7 @@ const { v4: uuidv4 } = require('uuid');
 const simpleGit = require('simple-git');
 const unzipper = require('unzipper');
 const fs = require('fs-extra');
+const { supabase } = require('./supabaseClient');
 
 const { walk, chunkFile, computeMetrics } = require('./analyzer');
 const { analyzeAllChunks } = require('./llm');
@@ -19,198 +20,159 @@ const app = express();
 app.use(cors());
 app.use(express.json({ limit: '50mb' }));
 
-const PORT = process.env.PORT || 3001;
-const TEMP_BASE_DIR = path.join(__dirname, 'tmp');
+// Vercel only allows writing to /tmp
+const TEMP_BASE_DIR = '/tmp/debtscan';
 fs.ensureDirSync(TEMP_BASE_DIR);
 
-// In-memory store for scans
-// { scanId: { status, progress, message, results, startTime } }
-const scans = new Map();
-
-app.get('/', (req, res) => {
-  res.json({ message: "DebtScan API is running!", status: "healthy" });
+app.get('/api/health', (req, res) => {
+  res.json({ message: "DebtScan API is running!", status: "healthy", environment: "vercel" });
 });
 
 app.post('/api/analyze', async (req, res) => {
-  console.log('Received analysis request:', { ...req.body, zipBase64: req.body.zipBase64 ? '[REDACTED]' : undefined });
   const { type, url, zipBase64, language: forcedLang, standards, provider } = req.body;
   const scanId = uuidv4();
   const repoDir = path.join(TEMP_BASE_DIR, scanId);
 
-  scans.set(scanId, {
+  // Initialize in Supabase instead of memory
+  await supabase.from('scans').insert([{
+    id: scanId,
     status: 'processing',
-    progress: 0,
-    message: 'Initializing...',
-    startTime: Date.now()
-  });
+    progress: 5,
+    message: 'Initializing environment...',
+    repo_url: type === 'github' ? url : 'Uploaded ZIP'
+  }]);
 
   res.json({ scanId, status: 'processing' });
 
-  // Background analysis
-  (async () => {
-    try {
-      await fs.ensureDir(repoDir);
+  // Background analysis logic for serverless
+  // NOTE: On Vercel Hobby, this process might be killed after the response.
+  // For production stability, larger repos should be processed via specialized 
+  // polling or background job queues.
+  try {
+    await fs.ensureDir(repoDir);
 
-      if (type === 'github') {
-        updateScan(scanId, 5, 'Cloning repository...');
-        try {
-          await simpleGit().clone(url, repoDir, ['--depth', '1']);
-        } catch (err) {
-          throw new Error('Repository not found or private. Only public repos supported.');
-        }
-      } else if (type === 'zip') {
-        updateScan(scanId, 5, 'Unzipping files...');
-        const buffer = Buffer.from(zipBase64, 'base64');
-        await fs.writeFile(path.join(TEMP_BASE_DIR, `${scanId}.zip`), buffer);
-        await fs.createReadStream(path.join(TEMP_BASE_DIR, `${scanId}.zip`))
-          .pipe(unzipper.Extract({ path: repoDir }))
-          .promise();
+    if (type === 'github') {
+      await updateScan(scanId, 10, 'Cloning repository...');
+      try {
+        await simpleGit().clone(url, repoDir, ['--depth', '1']);
+      } catch (err) {
+        throw new Error('Repository clone failed. Ensure repository is public.');
       }
-
-      updateScan(scanId, 15, 'Parsing files...');
-      const allFiles = await walk(repoDir);
-      
-      // Filter and limit to top 20 by line count if > 10,000 lines total
-      let processedFiles = [];
-      let totalLines = 0;
-      for (const f of allFiles) {
-        const content = await fs.readFile(f, 'utf-8');
-        const lines = content.split('\n').length;
-        processedFiles.push({ path: f, content, lines });
-        totalLines += lines;
-      }
-
-      if (totalLines > 10000) {
-        processedFiles.sort((a, b) => b.lines - a.lines);
-        processedFiles = processedFiles.slice(0, 20);
-      }
-
-      const chunks = [];
-      const fileDataList = [];
-
-      for (const fileObj of processedFiles) {
-        const relativePath = path.relative(repoDir, fileObj.path);
-        const language = forcedLang || detectLanguage(fileObj.path);
-        const metrics = computeMetrics(fileObj.path, fileObj.content);
-        
-        fileDataList.push({
-          path: relativePath,
-          lineCount: fileObj.lines,
-          metrics,
-          rawScore: 0
-        });
-
-        const fileChunks = chunkFile(fileObj.content, relativePath, language);
-        fileChunks.forEach(c => c.metrics = metrics);
-        chunks.push(...fileChunks);
-      }
-
-      updateScan(scanId, 30, 'Running LLM analysis...');
-      const issues = await analyzeAllChunks(chunks, standards, provider, (prog) => {
-        updateScan(scanId, 30 + Math.floor(prog * 0.6), `Analyzing chunks: ${prog}%`);
-      });
-
-      // Post-processing
-      updateScan(scanId, 95, 'Finalizing report...');
-      
-      // Deduplicate issues by (file + line + title)
-      const uniqueIssues = [];
-      const seen = new Set();
-      for (const issue of issues) {
-        const key = `${issue.file}-${issue.line}-${issue.title}`;
-        if (!seen.has(key)) {
-          seen.add(key);
-          uniqueIssues.push(issue);
-        }
-      }
-
-      // Compute scores
-      fileDataList.forEach(file => {
-        const fileIssues = uniqueIssues.filter(i => i.file === file.path);
-        file.rawScore = computeFileScore(fileIssues);
-        file.issueCount = fileIssues.length;
-      });
-
-      const normalizedFiles = normalizeScores(fileDataList);
-      const stats = computeRepoStats(normalizedFiles, uniqueIssues);
-      const durationMs = Date.now() - scans.get(scanId).startTime;
-
-      scans.set(scanId, {
-        status: 'complete',
-        progress: 100,
-        message: 'Analysis complete',
-        results: {
-          overallScore: stats.overallScore,
-          files: normalizedFiles,
-          issues: uniqueIssues,
-          stats: stats,
-          durationMs
-        }
-      });
-
-    } catch (err) {
-      console.error(err);
-      scans.set(scanId, {
-        status: 'error',
-        message: err.message,
-        progress: 0
-      });
-    } finally {
-      // Cleanup happens via periodic scheduler or explicit DELETE
+    } else if (type === 'zip') {
+      await updateScan(scanId, 10, 'Unzipping files...');
+      const buffer = Buffer.from(zipBase64, 'base64');
+      const zipFile = path.join(TEMP_BASE_DIR, `${scanId}.zip`);
+      await fs.writeFile(zipFile, buffer);
+      await fs.createReadStream(zipFile)
+        .pipe(unzipper.Extract({ path: repoDir }))
+        .promise();
     }
-  })();
-});
 
-app.get('/api/scan/:scanId/status', (req, res) => {
-  const scan = scans.get(req.params.scanId);
-  if (!scan) return res.status(404).json({ error: 'Scan not found' });
-  res.json({ status: scan.status, progress: scan.progress, message: scan.message });
-});
+    await updateScan(scanId, 25, 'Calculating structural metrics...');
+    const allFiles = await walk(repoDir);
+    
+    let processedFiles = [];
+    let totalLines = 0;
+    for (const f of allFiles) {
+      const content = await fs.readFile(f, 'utf-8');
+      const lines = content.split('\n').length;
+      processedFiles.push({ path: f, content, lines });
+      totalLines += lines;
+    }
 
-app.get('/api/scan/:scanId/results', (req, res) => {
-  const scan = scans.get(req.params.scanId);
-  if (!scan || scan.status !== 'complete') return res.status(404).json({ error: 'Results not ready' });
-  res.json(scan.results);
-});
+    // Limit analysis on Vercel to stay within standard limits
+    if (totalLines > 10000) {
+      processedFiles.sort((a, b) => b.lines - a.lines);
+      processedFiles = processedFiles.slice(0, 15);
+    }
 
-app.delete('/api/scan/:scanId', async (req, res) => {
-  const scanId = req.params.scanId;
-  scans.delete(scanId);
-  const repoDir = path.join(TEMP_BASE_DIR, scanId);
-  const zipPath = path.join(TEMP_BASE_DIR, `${scanId}.zip`);
-  await fs.remove(repoDir).catch(() => {});
-  await fs.remove(zipPath).catch(() => {});
-  res.json({ success: true });
-});
+    const chunks = [];
+    const fileDataList = [];
 
-function updateScan(id, progress, message) {
-  const scan = scans.get(id);
-  if (scan) {
-    scan.progress = progress;
-    scan.message = message;
+    for (const fileObj of processedFiles) {
+      const relativePath = path.relative(repoDir, fileObj.path);
+      const language = forcedLang || (relativePath.endsWith('.py') ? 'python' : relativePath.endsWith('.java') ? 'java' : 'javascript');
+      const metrics = computeMetrics(fileObj.path, fileObj.content);
+      
+      fileDataList.push({
+        path: relativePath,
+        lineCount: fileObj.lines,
+        metrics,
+        rawScore: 0
+      });
+
+      const fileChunks = chunkFile(fileObj.content, relativePath, language);
+      fileChunks.forEach(c => c.metrics = metrics);
+      chunks.push(...fileChunks);
+    }
+
+    await updateScan(scanId, 40, 'Generating neural audit...');
+    const issues = await analyzeAllChunks(chunks, standards, provider, async (prog) => {
+      await updateScan(scanId, 40 + Math.floor(prog * 0.5), `Analyzing chunks: ${prog}%`);
+    });
+
+    await updateScan(scanId, 95, 'Finalizing report...');
+    
+    const uniqueIssues = [];
+    const seen = new Set();
+    for (const issue of issues) {
+      const key = `${issue.file}-${issue.line}-${issue.title}`;
+      if (!seen.has(key)) {
+        seen.add(key);
+        uniqueIssues.push(issue);
+      }
+    }
+
+    fileDataList.forEach(file => {
+      const fileIssues = uniqueIssues.filter(i => i.file === file.path);
+      file.rawScore = computeFileScore(fileIssues);
+      file.issueCount = fileIssues.length;
+    });
+
+    const normalizedFiles = normalizeScores(fileDataList);
+    const stats = computeRepoStats(normalizedFiles, uniqueIssues);
+
+    await supabase.from('scans').update({
+      status: 'complete',
+      progress: 100,
+      message: 'Audit complete',
+      overall_score: stats.overallScore,
+      results: {
+        overallScore: stats.overallScore,
+        files: normalizedFiles,
+        issues: uniqueIssues,
+        stats: stats
+      }
+    }).eq('id', scanId);
+
+  } catch (err) {
+    console.error('Scan Error:', err.message);
+    await supabase.from('scans').update({
+      status: 'error',
+      message: err.message,
+      progress: 0
+    }).eq('id', scanId);
+  } finally {
+    // Cleanup /tmp for this scan
+    await fs.remove(repoDir).catch(() => {});
+    await fs.remove(path.join(TEMP_BASE_DIR, `${scanId}.zip`)).catch(() => {});
   }
+});
+
+app.get('/api/scan/:scanId/status', async (req, res) => {
+  const { data, error } = await supabase.from('scans').select('*').eq('id', req.params.scanId).single();
+  if (error || !data) return res.status(404).json({ error: 'Scan not found' });
+  res.json({ status: data.status, progress: data.progress, message: data.message });
+});
+
+app.get('/api/scan/:scanId/results', async (req, res) => {
+  const { data, error } = await supabase.from('scans').select('results').eq('id', req.params.scanId).single();
+  if (error || !data || !data.results) return res.status(404).json({ error: 'Results not ready' });
+  res.json(data.results);
+});
+
+async function updateScan(id, progress, message) {
+  await supabase.from('scans').update({ progress, message }).eq('id', id);
 }
 
-function detectLanguage(filePath) {
-  const ext = path.extname(filePath);
-  if (ext === '.py') return 'python';
-  if (ext === '.js' || ext === '.ts') return 'javascript';
-  if (ext === '.java') return 'java';
-  return 'javascript';
-}
-
-// Cleanup task: remove scans older than 10 mins
-setInterval(async () => {
-  const now = Date.now();
-  for (const [id, scan] of scans.entries()) {
-    if (now - scan.startTime > 10 * 60 * 1000) {
-      scans.delete(id);
-      await fs.remove(path.join(TEMP_BASE_DIR, id)).catch(() => {});
-      await fs.remove(path.join(TEMP_BASE_DIR, `${id}.zip`)).catch(() => {});
-    }
-  }
-}, 60000);
-
-app.listen(PORT, () => {
-  console.log(`Server running on http://localhost:${PORT}`);
-});
+module.exports = app;

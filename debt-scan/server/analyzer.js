@@ -90,8 +90,14 @@ function getPythonJavaMetrics(filePath, language) {
     const output = execSync(`python3 "${path.join(__dirname, scriptPath)}" "${filePath}"`).toString();
     return JSON.parse(output);
   } catch (e) {
-    console.error(`Error parsing ${filePath}:`, e.message);
-    return { functionCount: 0 };
+    console.warn(`System python3 not available for ${language}. Using heuristic fallback.`);
+    // Heuristic fallback for when python3 is missing (common on serverless)
+    const content = fs.readFileSync(filePath, 'utf-8');
+    const lines = content.split('\n');
+    return {
+      functionCount: (content.match(/def\s+\w+|public\s+\w+|private\s+\w+/g) || []).length,
+      maxNesting: Math.max(...lines.map(l => (l.match(/^\s*/)[0].length / 4)), 0)
+    };
   }
 }
 
