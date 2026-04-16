@@ -68,7 +68,7 @@ const HeroSection = ({
           </p>
 
           {/* Typographic stat row */}
-          <div className="flex items-center gap-0 pt-4 w-fit mx-auto lg:mx-0">
+          <div className="flex items-center gap-0 pt-8 w-fit mx-auto lg:mx-0">
             {[
               { stat: '250+',  label: 'issues\ndetected' },
               { stat: '< 60s', label: 'analysis\ntime'   },
@@ -92,7 +92,7 @@ const HeroSection = ({
                   </span>
                 </div>
                 {i < 2 && (
-                  <div className="w-px h-8 mx-6 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
+                  <div className="w-px h-7 mx-3 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
                 )}
               </div>
             ))}
