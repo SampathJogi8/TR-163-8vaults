@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { ArrowUpRight, AlertTriangle, ShieldCheck, FileText, Timer, Zap, Search, Download, Filter, ChevronDown, FileJson, BarChart2 } from 'lucide-react';
+import { ArrowUpRight, AlertTriangle, ShieldCheck, FileText, Timer, Zap, Search, Download, Filter, ChevronDown, FileJson, BarChart2, Cpu } from 'lucide-react';
 import StatCard from '../components/StatCard';
 import FileHeatmap from '../components/FileHeatmap';
 import CategoryChart from '../components/CategoryChart';
@@ -54,8 +54,13 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
             <div className="flex items-center gap-3">
               <div className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-accent text-[10px] font-black uppercase tracking-widest">Analytics Dashboard</div>
               <div className="flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest"><Timer size={14}/> Execution Time: {(durationMs / 1000).toFixed(1)}s</div>
+              {results.issues && results.issues.some(i => i.model_used) && (
+                <div className="flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest px-2 scale-90 border-l border-white/10">
+                  <Cpu size={14}/> Model Used: {[...new Set(results.issues.filter(i => i.model_used).map(i => i.model_used))].join(', ')}
+                </div>
+              )}
             </div>
-            <h1 className="text-6xl font-black text-white tracking-tighter font-['Outfit']">Audit <span className="text-accent underline decoration-accent/20 decoration-8 underline-offset-12">Intelligence</span></h1>
+            <h1 className="text-6xl font-black text-white tracking-tighter font-['Outfit']">System <span className="text-accent underline decoration-accent/20 decoration-8 underline-offset-12">Analysis</span></h1>
           </div>
           
           <div className="flex items-center gap-3">

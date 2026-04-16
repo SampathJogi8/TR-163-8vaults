@@ -81,7 +81,8 @@ async function _performOpenRouterFreeFallback(standards, systemPrompt, userMessa
       });
       const content = response.choices[0].message.content;
       const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
-      return JSON.parse(jsonStr || '[]');
+      const issues = JSON.parse(jsonStr || '[]');
+      return issues.map(i => ({ ...i, model_used: 'openrouter-free' }));
     } catch (fallbackErr) {
       console.warn(`Fallback ${model} failed:`, fallbackErr.message);
       lastFallbackErr = fallbackErr;
@@ -285,7 +286,11 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
     while (retries <= 3) {
       try {
         console.log(`[Analyzer] Processing ${chunk.filename} via [${p}] (Attempt ${retries + 1})`);
-        return await _performAnalysis(chunk, standards, p);
+        const issues = await _performAnalysis(chunk, standards, p);
+        if (Array.isArray(issues)) {
+          return issues.map(i => ({ ...i, model_used: p }));
+        }
+        return issues;
       } catch (err) {
         lastError = err;
         const msg = String(err.message || err).toLowerCase();
@@ -350,7 +355,8 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
         category: "TechnicalDebt",
         title: "Parser Failure",
         description: "The file could not be parsed due to severe syntax errors or corrupted data. Static analysis cannot proceed for this module.",
-        fix: "Perform a structural audit of the file content. Check for non-printable characters or mismatched bracket hierarchies."
+        fix: "Perform a structural audit of the file content. Check for non-printable characters or mismatched bracket hierarchies.",
+        model_used: "local-parser"
      }];
   }
   console.warn("--- [CRITICAL] ALL API PROVIDERS FAILED ---");
