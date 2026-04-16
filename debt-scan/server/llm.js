@@ -130,7 +130,10 @@ ${chunk.code}
 ${standards ? `Compliance Standards:\n${standards}` : ''}
 `;
 
-  if (provider === 'anthropic') {
+  if (provider === 'dummy') {
+    // Intentional instant failure — for testing provider-shift animation only
+    throw Object.assign(new Error('Dummy provider: intentional failure for rotation testing'), { status: 400 });
+  } else if (provider === 'anthropic') {
     try {
       const response = await anthropic.messages.create({
         model: 'claude-3-5-sonnet-latest',
@@ -277,9 +280,9 @@ const getAvailableProviders = (requested) => {
   };
 
   if (requested === 'auto') {
-    // Priority shift: Gemini + DeepSeek + Grok for absolute resilience
     return ['gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => config[p]);
   }
+  if (requested === 'dummy') return ['dummy', 'gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => p === 'dummy' || config[p]);
   return config[requested] ? [requested] : [];
 };
 

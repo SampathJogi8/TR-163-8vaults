@@ -177,9 +177,11 @@ const HeroSection = ({
                 <div className="space-y-1.5">
                   <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
                   <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input py-2.5 text-sm">
-                    {['auto','gemini','openai','anthropic','deepseek','grok','openrouter'].map(p => (
+                    {['auto','gemini','openai','anthropic','deepseek','grok','openrouter','dummy'].map(p => (
                       <option key={p} value={p} style={{ background: 'var(--surface)' }}>
-                        {p === 'auto' ? 'Auto' : p.charAt(0).toUpperCase() + p.slice(1)}
+                        {p === 'auto'    ? 'Auto'
+                       : p === 'dummy'  ? '🧪 Dummy (test rotation)'
+                       : p.charAt(0).toUpperCase() + p.slice(1)}
                       </option>
                     ))}
                   </select>
