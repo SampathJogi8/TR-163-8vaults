@@ -212,9 +212,10 @@ const getAvailableProviders = (requested) => {
 async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   const providersToTry = getAvailableProviders(provider);
   const failedProviders = new Set();
+  const rotationLogs = [];
   
   if (providersToTry.length === 0) {
-    console.warn(`[!] Infrastructure Crisis: No configured API keys for [${provider}].`);
+    rotationLogs.push(`Infrastructure Crisis: No API keys configured for ${provider}`);
   }
 
   let lastError = null;
@@ -228,26 +229,23 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
       const msg = String(err.message || err).toLowerCase();
       const status = err.status || (err.response ? err.response.status : null);
       
-      // Aggressive matching for ALL auth/quota errors
-      const isRecoverable = 
-        status === 401 || status === 402 || status === 403 || status === 429 ||
-        msg.includes('quota') || 
-        msg.includes('rate limit') || 
-        msg.includes('credit') || 
-        msg.includes('unauthorized') || 
-        msg.includes('user not found') ||
-        msg.includes('invalid api key') ||
-        msg.includes('401') ||
-        msg.includes('403') ||
-        msg.includes('balance');
+      const is429 = status === 429 || msg.includes('429') || msg.includes('rate limit');
+      const isRecoverable = is429 || status === 401 || status === 402 || status === 403 ||
+        msg.includes('quota') || msg.includes('credit') || msg.includes('unauthorized') || 
+        msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance');
+
+      rotationLogs.push(`${p}: ${msg.substring(0, 100)}${is429 ? ' [RETRIABLE 429]' : ''}`);
 
       if (isRecoverable && providersToTry.length > 1) {
-        console.warn(`[Neural Core] Provider [${p}] rejected request: "${msg.substring(0, 50)}...". Switching focus.`);
+        if (is429) {
+          console.warn(`[Neural Core] Rate limit hit on [${p}]. Implementing 2s cooldown before rotation...`);
+          await new Promise(r => setTimeout(r, 2000));
+        }
+        console.warn(`[Neural Core] Provider [${p}] fallback initiated. Rotating...`);
         failedProviders.add(p);
         continue;
       }
       
-      // Throw immediately if it's a structural error (e.g. malformed JSON, network failure NOT status-related)
       if (!isRecoverable) {
         console.error(`[Neural Core] Fatal Error on [${p}]:`, msg);
         throw err;
@@ -256,20 +254,21 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   }
 
   // --- Final "Neural Safety Net" Fallback ---
-  console.warn("--- [SYSTEM PANIC] PRIMARY CORES EXHAUSTED. DEPLOYING EMERGENCY FALLBACK ---");
+  console.warn("--- [SYSTEM PANIC] PRIMARY CORES EXHAUSTED ---");
   
-  // Only attempt fallback if OpenRouter hasn't already failed our 401/429 check
   if (process.env.OPENROUTER_API_KEY && !failedProviders.has('openrouter')) {
     try {
+      rotationLogs.push("Entering Emergency Protocol via OpenRouter Free Fallback");
       const systemPrompt = `Analyze code for debt and quality. Return JSON array.`; 
       const userMessage = `File: ${chunk.filename}\nContent:\n${chunk.code}`;
       return await _performOpenRouterFreeFallback(standards, systemPrompt, userMessage);
     } catch (finalErr) {
-      throw new Error(`${lastError.message} (Emergency Logic also collapsed)`);
+      rotationLogs.push(`Emergency Protocol failed: ${finalErr.message}`);
     }
   }
 
-  throw new Error(lastError ? lastError.message : "Infrastructure Collapse: All configured AI providers are non-responsive.");
+  const chainOfFailure = rotationLogs.join(" -> ");
+  throw new Error(`Infrastructure Exhausted. Failure Chain: ${chainOfFailure}`);
 }
 
 async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onProgress) {
