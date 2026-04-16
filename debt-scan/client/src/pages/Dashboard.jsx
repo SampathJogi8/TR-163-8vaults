@@ -4,6 +4,7 @@ import StatCard from '../components/StatCard';
 import FileHeatmap from '../components/FileHeatmap';
 import CategoryChart from '../components/CategoryChart';
 import { generatePDF, generateXLS, generateJSON } from '../utils/exportUtils';
+import AestheticBackground from '../components/AestheticBackground';
 
 const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
   const [showExportMenu, setShowExportMenu] = useState(false);
@@ -35,12 +36,17 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
   };
 
   const isTimeCompliant = durationMs < 60000;
-
   return (
-    <div className="min-h-screen bg-[#050505] p-6 lg:p-10 animate-in fade-in duration-700 relative overflow-hidden">
-      {/* Background Orbs */}
-      <div className="absolute top-0 right-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
-      <div className="absolute bottom-0 left-0 w-[800px] h-[800px] bg-accent/5 rounded-full blur-[150px] pointer-events-none" />
+    <AestheticBackground>
+      <div className="p-6 lg:p-10 relative">
+        {/* Visual Asset: Neural Nebula (Dashboard Variant) */}
+        <div className="absolute top-0 right-0 w-[1000px] h-[1000px] pointer-events-none opacity-40 blur-[100px] translate-x-1/3 -translate-y-1/3">
+          <img 
+            src="/assets/hero-nebula.png" 
+            alt="Neural Nebula" 
+            className="w-full h-full object-contain animate-float"
+          />
+        </div>
 
       <div className="max-w-[1600px] mx-auto relative z-10">
         <header className="flex flex-wrap items-end justify-between gap-8 mb-16 px-2">

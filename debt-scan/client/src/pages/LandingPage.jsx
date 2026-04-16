@@ -9,6 +9,7 @@ import FeaturesGrid from '../components/sections/FeaturesGrid';
 import AuditSteps from '../components/sections/AuditSteps';
 import PricingTable from '../components/sections/PricingTable';
 import AuditFAQ from '../components/sections/AuditFAQ';
+import AestheticBackground from '../components/AestheticBackground';
 
 const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const [inputType, setInputType] = useState('github');
@@ -69,42 +70,28 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
 
   if (isScanning) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#010101] relative overflow-hidden">
-        <div className="star-field" />
-        <div className="horizon-arc scale-150 blur-[150px] opacity-100 transition-all duration-1000" />
-        <div className="relative z-10 text-center mb-16 animate-float">
-          <div className="w-24 h-24 bg-white/[0.03] rounded-full flex items-center justify-center mx-auto mb-10 border border-white/10 shadow-2xl">
-            <Cpu className="text-white animate-pulse" size={40} />
+      <AestheticBackground>
+        <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
+          <div className="relative z-10 text-center mb-16 animate-float">
+            <div className="w-24 h-24 bg-white/[0.03] rounded-full flex items-center justify-center mx-auto mb-10 border border-white/10 shadow-2xl">
+              <Cpu className="text-white animate-pulse" size={40} />
+            </div>
+            <h1 className="text-5xl font-black text-white mb-6 tracking-tight font-['Outfit']">
+               Audit <span className="font-serif-italic">Emergence</span>
+            </h1>
+            <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Deconstructing neural pathways and architecture...</p>
           </div>
-          <h1 className="text-5xl font-black text-white mb-6 tracking-tight font-['Outfit']">
-             Audit <span className="font-serif-italic">Emergence</span>
-          </h1>
-          <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Deconstructing neural pathways and architecture...</p>
+          <div className="w-full max-w-xl relative z-10">
+            <ProgressBar progress={progress} message={statusMessage} />
+          </div>
         </div>
-        <div className="w-full max-w-xl relative z-10">
-          <ProgressBar progress={progress} message={statusMessage} />
-        </div>
-      </div>
+      </AestheticBackground>
     );
   }
 
   return (
-    <div className="min-h-screen bg-[#010101] selection:bg-white/10 relative overflow-x-hidden">
-      {/* Universal Aesthetic Layers */}
-      <div className="fixed inset-0 pointer-events-none z-0">
-        <div className="star-field" />
-        <div className="mesh-gradient" />
-        <div className="noise-overlay" />
-        <div className="horizon-arc" />
-      </div>
-      
-      {/* Top Navigation Watermark */}
-      <div className="fixed top-10 left-10 z-20 flex items-center gap-4 opacity-40 hover:opacity-100 transition-premium cursor-crosshair">
-        <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-lg font-black text-[10px]">DS</div>
-        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Intelligence</span>
-      </div>
-
-      <div className="relative z-10 flex flex-col items-center">
+    <AestheticBackground>
+      <div className="flex flex-col items-center">
         <HeroSection 
           inputType={inputType} setInputType={setInputType}
           url={url} setUrl={setUrl}

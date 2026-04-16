@@ -1,14 +1,22 @@
 import React from 'react';
 import { ArrowLeft, FileCode, CheckCircle2, ChevronRight, Hash, Code2, ShieldAlert } from 'lucide-react';
 import IssueCard from '../components/IssueCard';
+import AestheticBackground from '../components/AestheticBackground';
 
 const FileDetail = ({ file, issues, onBack }) => {
   if (!file) return null;
 
   return (
-    <div className="min-h-screen bg-[#050505] p-6 lg:p-12 animate-in fade-in ease-out duration-700 relative overflow-hidden">
-      {/* Atmosphere */}
-      <div className="absolute top-0 left-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[120px] pointer-events-none" />
+    <AestheticBackground>
+      <div className="p-6 lg:p-12 relative animate-in fade-in ease-out duration-700">
+        {/* Visual Asset: Neural Nebula (File Detail Variant) */}
+        <div className="absolute bottom-0 right-0 w-[800px] h-[800px] pointer-events-none opacity-20 blur-[120px] translate-x-1/4 translate-y-1/4">
+          <img 
+            src="/assets/hero-nebula.png" 
+            alt="Neural Nebula" 
+            className="w-full h-full object-contain animate-float"
+          />
+        </div>
       
       <div className="max-w-5xl mx-auto relative z-10">
         <header className="mb-16">

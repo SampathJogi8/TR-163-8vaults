@@ -1,6 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { Search, Filter, ArrowLeft, ArrowUpDown, ChevronRight, ShieldCheck, Zap, AlertTriangle } from 'lucide-react';
 import IssueCard from '../components/IssueCard';
+import AestheticBackground from '../components/AestheticBackground';
 
 const IssuesList = ({ issues, onBack, onFileClick }) => {
   const [searchTerm, setSearchTerm] = useState('');
@@ -47,11 +48,17 @@ const IssuesList = ({ issues, onBack, onFileClick }) => {
 
     return result;
   }, [issues, searchTerm, severityFilter, categoryFilter, sortBy]);
-
   return (
-    <div className="min-h-screen bg-[#050505] p-6 lg:p-12 animate-in fade-in duration-700 relative overflow-hidden">
-      {/* Background Ambience */}
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-accent/5 rounded-full blur-[100px] pointer-events-none" />
+    <AestheticBackground>
+      <div className="p-6 lg:p-12 relative">
+        {/* Visual Asset: Neural Nebula (Audit Variant) */}
+        <div className="absolute top-0 left-0 w-[800px] h-[800px] pointer-events-none opacity-20 blur-[120px] -translate-x-1/2 -translate-y-1/2">
+          <img 
+            src="/assets/hero-nebula.png" 
+            alt="Neural Nebula" 
+            className="w-full h-full object-contain animate-float"
+          />
+        </div>
       
       <div className="max-w-6xl mx-auto relative z-10">
         <header className="mb-16">
