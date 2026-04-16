@@ -31,12 +31,24 @@ const FeaturesGrid = () => {
       </header>
 
       <div className="bento-grid">
-        <FeatureCard 
-          size="large"
-          icon={Search}
-          title="Deep Logic Inspection"
-          description="Advanced cross-file analysis that detects subtle logic gaps often missed by standard static analysis. Our LLM core understands the intent behind your code, not just the syntax."
-        />
+        <div className="col-span-12 lg:col-span-8 bento-card group flex flex-col lg:flex-row items-center gap-12 relative overflow-hidden h-[500px]">
+          <div className="relative z-10 lg:max-w-md">
+            <div className="w-12 h-12 bg-white/[0.03] rounded-xl flex items-center justify-center mb-6 border border-white/10 group-hover:border-accent/40 transition-premium">
+              <Search className="text-white/60 group-hover:text-white transition-premium" size={24} />
+            </div>
+            <h3 className="text-4xl font-black text-white mb-6 tracking-tight">Deep Logic Inspection</h3>
+            <p className="text-gray-500 font-medium leading-relaxed">Advanced cross-file analysis that detects subtle logic gaps often missed by standard static analysis. Our LLM core understands the intent behind your code, not just the syntax.</p>
+          </div>
+          
+          <div className="relative w-full h-full lg:flex-1 lg:absolute lg:right-[-100px] lg:top-0 animate-float opacity-80 group-hover:opacity-100 transition-premium">
+             <img 
+               src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/dashboard_mockup_3d_1776356792672.png" 
+               alt="Dashboard Mockup" 
+               className="w-full h-full object-contain"
+             />
+          </div>
+        </div>
+        
         <FeatureCard 
           icon={Shield}
           title="Zero-Trust Audits"

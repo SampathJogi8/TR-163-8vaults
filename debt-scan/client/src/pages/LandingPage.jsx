@@ -90,10 +90,12 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
 
   return (
     <div className="min-h-screen bg-[#010101] selection:bg-white/10 relative overflow-x-hidden">
-      {/* Universal Background Elements */}
-      <div className="fixed inset-0 pointer-events-none">
+      {/* Universal Aesthetic Layers */}
+      <div className="fixed inset-0 pointer-events-none z-0">
         <div className="star-field" />
-        <div className="horizon-arc opacity-50" />
+        <div className="mesh-gradient" />
+        <div className="noise-overlay" />
+        <div className="horizon-arc" />
       </div>
       
       {/* Top Navigation Watermark */}

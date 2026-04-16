@@ -106,49 +106,67 @@
   50% { transform: translateY(-10px); }
 }
 
-.animate-float {
-  animation: celestial-float 6s infinite ease-in-out;
+/* Aesthetic Overhaul */
+body {
+  @apply font-['Inter'] antialiased bg-[#020202] text-white;
 }
 
-/* Enterprise UI Additions */
-.bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  gap: 1.5rem;
+.star-field {
+  @apply fixed inset-0 pointer-events-none;
+  background-image: 
+    radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 100px 200px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+    radial-gradient(1.5px 1.5px at 900px 100px, rgba(255,255,255,0.8), rgba(0,0,0,0));
+  background-repeat: repeat;
+  background-size: 1000px 1000px;
+  opacity: 0.1;
+  z-index: 0;
+}
+
+.mesh-gradient {
+  @apply fixed inset-0 pointer-events-none;
+  background: 
+    radial-gradient(at 0% 0%, hsla(253,16%,7%,1) 0, transparent 50%), 
+    radial-gradient(at 50% 0%, hsla(225,39%,30%,0.2) 0, transparent 50%), 
+    radial-gradient(at 100% 0%, hsla(339,49%,30%,0.15) 0, transparent 50%);
+  filter: blur(100px);
+  z-index: 0;
+}
+
+.noise-overlay {
+  @apply fixed inset-0 pointer-events-none opacity-[0.03];
+  background-image: url('https://grainy-gradients.vercel.app/noise.svg');
+  z-index: 1;
 }
 
 .bento-card {
-  @apply bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 transition-premium hover:bg-white/[0.05] hover:border-white/10 relative overflow-hidden;
+  @apply bg-white/[0.01] border border-white/[0.05] rounded-[2.5rem] p-8 transition-premium hover:bg-white/[0.03] hover:border-white/20 relative overflow-hidden backdrop-blur-xl;
+  box-shadow: 0 10px 40px rgba(0,0,0,0.5);
 }
 
-.section-glow {
-  @apply absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-4xl h-48 bg-accent/20 rounded-full blur-[120px] pointer-events-none opacity-50;
+.bento-card::before {
+  content: '';
+  @apply absolute inset-0 opacity-0 group-hover:opacity-100 transition-premium;
+  background: radial-gradient(800px circle at var(--mouse-x) var(--mouse-y), rgba(255,255,255,0.06), transparent 40%);
 }
 
-.text-glow {
-  @apply text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)];
+.vibrant-glow {
+  @apply absolute rounded-full blur-[120px] opacity-30 pointer-events-none;
 }
 
-.vibrant-gradient {
-  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #ec4899 100%);
-  @apply bg-clip-text text-transparent;
+.font-serif-italic {
+  font-family: 'Instrument Serif', serif;
+  font-style: italic;
+  @apply tracking-wide;
 }
 
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
+.horizon-arc {
+  @apply fixed bottom-0 left-1/2 -translate-x-1/2 w-[150%] h-[400px] opacity-30 pointer-events-none;
+  background: radial-gradient(50% 50% at 50% 100%, rgba(255,255,255,0.1) 0%, transparent 100%);
+  z-index: 1;
 }
 
 .pricing-card {
-  @apply flex flex-col p-10 bg-white/[0.02] border border-white/5 rounded-[2.5rem] transition-premium hover:scale-[1.02] relative z-10;
-}
-
-.pricing-card.popular {
-  @apply border-accent/20 bg-accent/[0.03] scale-105 shadow-2xl shadow-accent/10;
+  @apply flex flex-col p-10 bg-[#080808] border border-white/5 rounded-[3rem] transition-premium hover:scale-[1.02] relative z-10;
+  box-shadow: 0 20px 50px rgba(0,0,0,0.8);
 }

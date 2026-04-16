@@ -13,8 +13,18 @@ const HeroSection = ({
   handleFileChange
 }) => {
   return (
-    <div className="max-w-4xl w-full relative z-10 flex flex-col items-center pt-20 pb-32">
-      <header className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
+    <div className="max-w-6xl w-full relative z-10 flex flex-col items-center pt-20 pb-32 min-h-screen justify-center">
+      {/* Visual Asset: Neural Nebula */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none opacity-60">
+        <img 
+          src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/hero_neural_nebula_1776356768587.png" 
+          alt="Neural Nebula" 
+          className="w-full h-full object-contain animate-float"
+          style={{ filter: 'blur(20px) contrast(1.2)' }}
+        />
+      </div>
+
+      <header className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 relative z-10">
         <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-[0.3em] uppercase mb-12 backdrop-blur-md">
           <Sparkles size={12} className="text-white/60" />
           Neural Audit Framework v1.0

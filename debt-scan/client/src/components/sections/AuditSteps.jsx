@@ -37,10 +37,14 @@ const AuditSteps = () => {
         <div className="hidden lg:block absolute top-[2.25rem] left-0 w-full h-[1px] bg-white/5 -z-10" />
         
         {steps.map((step, index) => (
-          <div key={index} className="flex flex-col items-center text-center reveal">
-            <div className="w-18 h-18 bg-black border border-white/10 rounded-3xl flex items-center justify-center mb-10 text-xl font-black text-white shadow-2xl relative">
-              <div className="absolute inset-0 bg-accent/5 blur-xl rounded-full" />
-              <span className="relative">{step.id}</span>
+          <div key={index} className="flex flex-col items-center text-center reveal group">
+            <div className="w-24 h-24 bg-black border border-white/10 rounded-3xl flex items-center justify-center mb-10 relative overflow-hidden transition-premium group-hover:border-white/30">
+              <img 
+                src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/security_core_glow_1776356817491.png" 
+                alt="Audit Core" 
+                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-premium"
+              />
+              <span className="absolute inset-0 flex items-center justify-center text-xl font-black text-white mix-blend-difference">{step.id}</span>
             </div>
             <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-tight">{step.title}</h3>
             <p className="text-gray-500 font-medium leading-relaxed max-w-[280px]">{step.description}</p>
