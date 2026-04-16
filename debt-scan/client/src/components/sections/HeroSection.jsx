@@ -41,12 +41,12 @@ const HeroSection = ({
           <a href="#steps"    className="hover:text-white transition-colors">How it works</a>
           <a href="#faq"      className="hover:text-white transition-colors">FAQ</a>
         </div>
-        <button 
-          onClick={() => document.getElementById('scan-section')?.scrollIntoView({ behavior: 'smooth' })}
+        <a 
+          href="#scan-section"
           className="btn-primary text-xs py-2 px-5 flex-shrink-0"
         >
           Get started
-        </button>
+        </a>
       </nav>
 
       {/* ── TWO-COLUMN HERO ────────────────────────────────────── */}

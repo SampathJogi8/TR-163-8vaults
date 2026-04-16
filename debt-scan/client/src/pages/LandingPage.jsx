@@ -232,12 +232,12 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
             <p className="text-base font-medium" style={{ color: 'var(--text-muted)' }}>
               Thousands of developers are already scanning smarter. Don't ship issues you could have caught.
             </p>
-            <button 
+            <a 
+              href="#scan-section"
               className="btn-primary mx-auto" 
-              onClick={() => document.getElementById('scan-section')?.scrollIntoView({ behavior: 'smooth' })}
             >
               Run your first scan — free
-            </button>
+            </a>
           </div>
         </section>
 
