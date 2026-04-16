@@ -32,6 +32,8 @@ app.post('/api/analyze', async (req, res) => {
   const { type, url, zipBase64, language: forcedLang, standards, provider } = req.body;
   const scanId = uuidv4();
   const repoDir = path.join(TEMP_BASE_DIR, scanId);
+  const startTime = Date.now();
+  console.log(`Starting scan ${scanId} for ${url || 'ZIP'}`);
 
   // Initialize in Supabase instead of memory
   await supabase.from('scans').insert([{
@@ -111,17 +113,24 @@ app.post('/api/analyze', async (req, res) => {
       await updateScan(scanId, 40 + Math.floor(prog * 0.5), `Analyzing chunks: ${prog}%`);
     });
 
+    console.log(`Finalizing scan ${scanId} with ${issues.length} total issues`);
     await updateScan(scanId, 95, 'Finalizing report...');
     
+    // Safety check for empty or malformed issues
+    const safeIssues = Array.isArray(issues) ? issues : [];
     const uniqueIssues = [];
     const seen = new Set();
-    for (const issue of issues) {
-      const key = `${issue.file}-${issue.line}-${issue.title}`;
+    
+    for (const issue of safeIssues) {
+      if (!issue || typeof issue !== 'object') continue;
+      const key = `${issue.file || 'unknown'}-${issue.line || 0}-${issue.title || 'issue'}`;
       if (!seen.has(key)) {
         seen.add(key);
         uniqueIssues.push(issue);
       }
     }
+
+    console.log(`Deduplicated to ${uniqueIssues.length} unique issues. Scoring files...`);
 
     fileDataList.forEach(file => {
       const fileIssues = uniqueIssues.filter(i => i.file === file.path);
@@ -132,7 +141,8 @@ app.post('/api/analyze', async (req, res) => {
     const normalizedFiles = normalizeScores(fileDataList);
     const stats = computeRepoStats(normalizedFiles, uniqueIssues);
 
-    await supabase.from('scans').update({
+    console.log(`Final update for scan ${scanId}...`);
+    const { error: finalError } = await supabase.from('scans').update({
       status: 'complete',
       progress: 100,
       message: 'Audit complete',
@@ -140,8 +150,13 @@ app.post('/api/analyze', async (req, res) => {
       files: normalizedFiles,
       issues: uniqueIssues,
       stats: stats,
-      duration_ms: Date.now() - (req._startTime || Date.now()) // Heuristic duration if not tracked elsewhere
+      duration_ms: Date.now() - startTime
     }).eq('id', scanId);
+
+    if (finalError) {
+      throw new Error(`DB Final Update Failed: ${finalError.message}`);
+    }
+    console.log(`Scan ${scanId} marked complete.`);
 
   } catch (err) {
     console.error('Scan Error:', err.message);
