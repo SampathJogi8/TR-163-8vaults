@@ -338,7 +338,6 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
         throw err;
       }
     }
-  }
 
   // --- Final "Neural Safety Net" Fallback ---
   if (chunk.metrics?.isUnparseable) {
