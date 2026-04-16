@@ -162,7 +162,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
   } else if (provider === 'grok') {
     try {
       const response = await grok.chat.completions.create({
-        model: "grok-2-1212",
+        model: "grok-beta",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage }
