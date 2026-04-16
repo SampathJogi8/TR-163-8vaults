@@ -228,7 +228,7 @@ const HeroSection = ({
       </div>
 
       {/* ── TICKER STRIP ───────────────────────────────────────── */}
-      <div className="w-full max-w-5xl mx-auto mt-20 overflow-hidden">
+      <div className="w-full max-w-5xl mx-auto mt-24 overflow-hidden">
         <p className="text-center text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
           What's supported
         </p>
