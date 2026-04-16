@@ -1,6 +1,6 @@
 # DebtScan: Core Coding Standards & Compliance
 
-This document outlines the professional coding standards enforced by DebtScan and expected from all contributors. Our goal is to maintain a codebase that is **Secure**, **Performant**, and **Self-Documenting**.
+This document outlines the professional coding standards enforced by 8Vaults and expected from all contributors. Our goal is to maintain a codebase that is **Secure**, **Performant**, and **Self-Documenting**.
 
 ---
 
