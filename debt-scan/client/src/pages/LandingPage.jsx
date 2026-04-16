@@ -123,7 +123,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
         <footer className="w-full py-20 px-6 border-t border-white/5 bg-black/40">
            <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
              <div className="text-center lg:text-left">
-               <h3 className="text-2xl font-black text-white mb-4 tracking-tighter uppercase font-['Outfit']">DebtScan Intelligence</h3>
+               <h3 className="text-2xl font-black text-white mb-4 tracking-tighter uppercase font-['Outfit']">Neural Intelligence</h3>
                <p className="text-gray-600 font-medium text-sm max-w-xs">Autonomous logic auditing for modern software ecosystems.</p>
              </div>
              
@@ -134,7 +134,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
              </div>
              
              <div className="text-[9px] font-bold text-gray-700 tracking-widest uppercase">
-               © 2026 DEBTSCAN PROTOCOL
+               © 2026 NEURAL PROTOCOL
              </div>
            </div>
         </footer>

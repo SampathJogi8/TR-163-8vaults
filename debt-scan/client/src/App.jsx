@@ -12,6 +12,7 @@ const App = () => {
   const [statusMessage, setStatusMessage] = useState('');
   const [results, setResults] = useState(null);
   const [selectedFile, setSelectedFile] = useState(null);
+  const [previousView, setPreviousView] = useState('dashboard');
 
   useEffect(() => {
     let interval;
@@ -47,12 +48,13 @@ const App = () => {
     setStatusMessage('Checking status...');
   };
 
-  const navigateToFileDetail = (filePathOrObj) => {
+  const navigateToFileDetail = (filePathOrObj, originView) => {
     const fileObj = typeof filePathOrObj === 'string' 
       ? results.files.find(f => f.path === filePathOrObj)
       : filePathOrObj;
     
     setSelectedFile(fileObj);
+    setPreviousView(originView || 'dashboard');
     setView('detail');
     window.scrollTo(0, 0);
   };
@@ -70,7 +72,7 @@ const App = () => {
       {view === 'dashboard' && (
         <Dashboard 
           results={results} 
-          onFileClick={navigateToFileDetail}
+          onFileClick={(file) => navigateToFileDetail(file, 'dashboard')}
           onNavigateToIssues={() => { setView('issues'); window.scrollTo(0, 0); }}
         />
       )}
@@ -79,7 +81,7 @@ const App = () => {
         <IssuesList 
           issues={results.issues} 
           onBack={() => setView('dashboard')}
-          onFileClick={navigateToFileDetail}
+          onFileClick={(file) => navigateToFileDetail(file, 'issues')}
         />
       )}
 
@@ -92,7 +94,7 @@ const App = () => {
             const targetFile = selectedFile.path.replace(/\\/g, '/');
             return targetFile.endsWith(issueFile) || issueFile.endsWith(targetFile);
           })}
-          onBack={() => setView('dashboard')}
+          onBack={() => setView(previousView)}
         />
       )}
     </div>

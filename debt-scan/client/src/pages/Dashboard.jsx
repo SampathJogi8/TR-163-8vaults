@@ -274,7 +274,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
            <span className="w-2 h-2 rounded-full bg-accent/20" />
            <span>Secure Infrastructure</span>
            <span className="w-2 h-2 rounded-full bg-accent/20" />
-           <span>© 2026 DebtScan Enterprise</span>
+           <span>© 2026 Neural Enterprise</span>
         </footer>
       </div>
     </div>

@@ -11,11 +11,6 @@ const AestheticBackground = ({ children, className = "" }) => {
         <div className="horizon-arc" />
       </div>
 
-      {/* Top Navigation Watermark (Common for all sub-pages) */}
-      <div className="fixed top-10 left-10 z-20 flex items-center gap-4 opacity-40 hover:opacity-100 transition-premium cursor-crosshair">
-        <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-lg font-black text-[10px]">DS</div>
-        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Intelligence</span>
-      </div>
 
       <div className="relative z-10">
         {children}

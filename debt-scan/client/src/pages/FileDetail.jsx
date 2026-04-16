@@ -25,7 +25,7 @@ const FileDetail = ({ file, issues, onBack }) => {
             className="group flex items-center gap-3 text-gray-600 hover:text-white transition-premium text-[10px] font-black tracking-[0.3em] uppercase mb-12"
           >
             <ArrowLeft size={16} className="group-hover:-translate-x-2 transition-premium" />
-            Navigate to Dashboard
+            Go Back
           </button>
           
           <div className="flex flex-wrap items-center justify-between gap-10">

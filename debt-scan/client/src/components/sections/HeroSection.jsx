@@ -1,5 +1,5 @@
 import React from 'react';
-import { Sparkles, Github, FileArchive, Settings2, Shield } from 'lucide-react';
+import { Sparkles, Github, FileArchive, Settings2, Shield, Cpu } from 'lucide-react';
 
 const HeroSection = ({ 
   inputType, setInputType, 

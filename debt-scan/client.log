@@ -4325,3 +4325,9 @@ AggregateError [ECONNREFUSED]:
 11:52:33 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
 12:05:52 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
 12:06:04 AM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
+12:08:22 AM [vite] hmr update /src/components/AestheticBackground.jsx, /src/index.css
+12:08:24 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+12:08:26 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+12:08:47 AM [vite] hmr update /src/App.jsx, /src/index.css
+12:09:04 AM [vite] hmr update /src/pages/FileDetail.jsx, /src/index.css
+12:10:45 AM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css

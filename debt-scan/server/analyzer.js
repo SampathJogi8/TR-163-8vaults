@@ -58,7 +58,7 @@ function chunkFile(content, filename, language) {
 function getJSMetrics(content) {
   try {
     // TOKEN ENTROPY SCAN: Detection of syntactically impossible character clusters
-    const entropyCheck = /%%%|\^\^\^|&&&|\*\*\*|###/.test(content);
+    const entropyCheck = /%%%|\^\^\^/.test(content); // Removed *** and ### as they appear in valid comments
     if (entropyCheck) throw new Error("Extreme token entropy detected");
 
     const ast = parser.parse(content, {
@@ -127,7 +127,7 @@ function computeMetrics(filePath, content) {
   // CORRUPTION SENSOR: Check for binary junk or extreme symbol density
   const binaryCheck = /[\x00-\x08\x0E-\x1F\x7F]/.test(content);
   const symbolDensity = (content.match(/[^\w\s]/g) || []).length / (content.length || 1);
-  const isSuspicious = binaryCheck || symbolDensity > 0.2; // Reduced from 0.4 for higher sensitivity
+  const isSuspicious = binaryCheck || symbolDensity > 0.45; // Relieved threshold to prevent false positives
   
   let metrics = { 
     lineCount, 
