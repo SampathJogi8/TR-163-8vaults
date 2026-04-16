@@ -67,6 +67,37 @@ const HeroSection = ({
             technical debt, and logic errors across any codebase — in seconds.
           </p>
 
+          {/* Typographic stat row */}
+          <div className="flex items-center gap-0 pt-4 w-fit mx-auto lg:mx-0">
+            {[
+              { stat: '250+',  label: 'issues\ndetected' },
+              { stat: '< 60s', label: 'analysis\ntime'   },
+              { stat: '3',     label: 'export\nformats'  },
+            ].map(({ stat, label }, i) => (
+              <div key={stat} className="flex items-center">
+                <div className="px-5 first:pl-0 flex flex-col items-start gap-0.5">
+                  <span
+                    className="text-3xl font-black leading-none"
+                    style={{
+                      background: 'linear-gradient(135deg, #8B5CF6, #C4B5FD)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      letterSpacing: '-0.04em',
+                    }}
+                  >
+                    {stat}
+                  </span>
+                  <span className="text-[11px] font-medium leading-tight" style={{ color: 'var(--text-muted)', whiteSpace: 'pre-line' }}>
+                    {label}
+                  </span>
+                </div>
+                {i < 2 && (
+                  <div className="w-px h-8 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
+                )}
+              </div>
+            ))}
+          </div>
+
 
         </div>
 
