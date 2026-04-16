@@ -87,6 +87,12 @@ app.post('/api/analyze', async (req, res) => {
       await fs.createReadStream(zipFile)
         .pipe(unzipper.Extract({ path: repoDir }))
         .promise();
+    } else if (type === 'paste') {
+      await updateScan(scanId, 10, 'Processing code buffer...');
+      const { pastedCode } = req.body;
+      const ext = forcedLang === 'python' ? '.py' : forcedLang === 'java' ? '.java' : '.js';
+      const filepath = path.join(repoDir, `pasted_module${ext}`);
+      await fs.writeFile(filepath, pastedCode);
     }
 
     await updateScan(scanId, 25, 'Calculating structural metrics...');

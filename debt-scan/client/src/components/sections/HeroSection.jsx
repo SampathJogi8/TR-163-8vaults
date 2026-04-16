@@ -10,8 +10,26 @@ const HeroSection = ({
   provider, setProvider,
   language, setLanguage,
   standards, setStandards,
-  handleFileChange
+  handleFileChange,
+  pastedCode, setPastedCode
 }) => {
+  const getNextInputType = () => {
+    const modes = ['github', 'zip', 'paste'];
+    const currentIndex = modes.indexOf(inputType);
+    return modes[(currentIndex + 1) % modes.length];
+  };
+
+  const modeIcons = {
+    github: <Github size={14} />,
+    zip: <FileArchive size={14} />,
+    paste: <Cpu size={14} />
+  };
+
+  const modeLabels = {
+    github: 'Source Repo',
+    zip: 'Local Archive',
+    paste: 'Code Buffer'
+  };
   return (
     <div className="max-w-6xl w-full relative z-10 flex flex-col items-center pt-20 pb-32 min-h-screen justify-center">
       {/* Visual Asset: Neural Nebula */}
@@ -60,14 +78,23 @@ const HeroSection = ({
                     }
                   }}
                 >
-                  <input 
-                    type="text" 
-                    placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : zipFile ? "Archive Anchored (Drag new to replace)" : "Drop ZIP archive here..."}
-                    readOnly={inputType === 'zip'}
-                    className="w-full bg-transparent border-none outline-none"
-                    value={inputType === 'github' ? url : ''}
-                    onChange={(e) => setUrl(e.target.value)}
-                  />
+                  {inputType === 'paste' ? (
+                    <textarea 
+                      placeholder="Paste your code snippet here..."
+                      className="w-full bg-transparent border-none outline-none min-h-[120px] pt-4 font-mono text-sm resize-none scrollbar-hide"
+                      value={pastedCode}
+                      onChange={(e) => setPastedCode(e.target.value)}
+                    />
+                  ) : (
+                    <input 
+                      type="text" 
+                      placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : zipFile ? "Archive Anchored (Drag new to replace)" : "Drop ZIP archive here..."}
+                      readOnly={inputType === 'zip'}
+                      className="w-full bg-transparent border-none outline-none"
+                      value={inputType === 'github' ? url : ''}
+                      onChange={(e) => setUrl(e.target.value)}
+                    />
+                  )}
                   
                   <div className="absolute right-3 flex items-center gap-2">
                     <button 
@@ -83,11 +110,11 @@ const HeroSection = ({
             <div className="flex items-center justify-between px-4 pb-2">
               <div className="flex gap-6">
                 <button 
-                  onClick={() => setInputType(inputType === 'github' ? 'zip' : 'github')}
+                  onClick={() => setInputType(getNextInputType())}
                   className="flex items-center gap-2 text-[9px] font-black text-white/40 hover:text-white transition-premium uppercase tracking-widest"
                 >
-                  {inputType === 'github' ? <FileArchive size={14} /> : <Github size={14} />}
-                  Switch to {inputType === 'github' ? 'Local Archive' : 'Source Repo'}
+                  {modeIcons[getNextInputType()]}
+                  Switch to {modeLabels[getNextInputType()]}
                 </button>
                 <button 
                   onClick={() => setShowAdvanced(!showAdvanced)}

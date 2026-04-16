@@ -20,6 +20,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const [showAdvanced, setShowAdvanced] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
   const [provider, setProvider] = useState('auto');
+  const [pastedCode, setPastedCode] = useState('');
 
   // Animation Trigger for Scroll Reveal
   useEffect(() => {
@@ -49,6 +50,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const handleAnalyze = async () => {
     if (inputType === 'github' && !url) return alert('Please enter a GitHub URL');
     if (inputType === 'zip' && !zipFile) return alert('Please upload a ZIP file');
+    if (inputType === 'paste' && !pastedCode) return alert('Please paste your code snippet');
 
     setIsScanning(true);
     try {
@@ -56,6 +58,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
         type: inputType,
         url: inputType === 'github' ? url : undefined,
         zipBase64: inputType === 'zip' ? zipFile : undefined,
+        pastedCode: inputType === 'paste' ? pastedCode : undefined,
         language: language === 'auto' ? undefined : language,
         standards,
         provider
@@ -102,6 +105,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
           language={language} setLanguage={setLanguage}
           standards={standards} setStandards={setStandards}
           handleFileChange={handleFileChange}
+          pastedCode={pastedCode} setPastedCode={setPastedCode}
         />
 
         <FeaturesGrid />

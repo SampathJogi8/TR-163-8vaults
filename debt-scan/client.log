@@ -4323,3 +4323,5 @@ AggregateError [ECONNREFUSED]:
       at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:11331:23)
       at JSXParserMixin.parseExprAtom (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/@babel/parser/lib/index.js:4764:20)
 11:52:33 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+12:05:52 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+12:06:04 AM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
