@@ -74,7 +74,7 @@ const HeroSection = ({
               { stat: '< 60s', label: 'analysis\ntime'   },
               { stat: '3',     label: 'export\nformats'  },
             ].map(({ stat, label }, i) => (
-              <div key={stat} className="flex items-center">
+              <div key={stat} className="flex items-center gap-6">
                 <div className="px-5 first:pl-0 flex flex-col items-start gap-0.5">
                   <span
                     className="text-3xl font-black leading-none"
@@ -92,7 +92,7 @@ const HeroSection = ({
                   </span>
                 </div>
                 {i < 2 && (
-                  <div className="w-px h-8 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
+                  <div className="w-px h-8 mx-6 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
                 )}
               </div>
             ))}
@@ -228,7 +228,7 @@ const HeroSection = ({
       </div>
 
       {/* ── TICKER STRIP ───────────────────────────────────────── */}
-      <div className="w-full max-w-5xl mx-auto mt-16 overflow-hidden">
+      <div className="w-full max-w-5xl mx-auto mt-28 overflow-hidden">
         <p className="text-center text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
           What's supported
         </p>
