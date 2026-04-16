@@ -186,7 +186,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
   } else if (provider === 'grok') {
     try {
       const response = await grok.chat.completions.create({
-        model: "grok-2",
+        model: "grok-3",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage }
@@ -281,31 +281,43 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   let lastError = null;
 
   for (const p of providersToTry) {
-    try {
-      console.log(`[Analyzer] Analyzing ${chunk.filename} via [${p}]`);
-      return await _performAnalysis(chunk, standards, p);
-    } catch (err) {
-      lastError = err;
-      const msg = String(err.message || err).toLowerCase();
-      const status = err.status || (err.response ? err.response.status : null);
-      
-      const is429 = status === 429 || msg.includes('429') || msg.includes('rate limit');
-      const isRecoverable = is429 || status === 401 || status === 402 || status === 403 || status === 400 ||
-        msg.includes('quota') || msg.includes('credit') || msg.includes('unauthorized') || 
-        msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance') ||
-        msg.includes('model not found') || msg.includes('invalid model');
-
-      rotationLogs.push(`${p}: ${msg.substring(0, 100)}${is429 ? ' [RETRIABLE 429]' : ''}`);
-
-      if (isRecoverable && providersToTry.length > 1) {
-        if (is429) {
-          console.warn(`[Analyzer] Rate limit hit on [${p}]. Implementing 2s cooldown before rotation...`);
-          await new Promise(r => setTimeout(r, 2000));
+    let retries = 0;
+    while (retries <= 3) {
+      try {
+        console.log(`[Analyzer] Processing ${chunk.filename} via [${p}] (Attempt ${retries + 1})`);
+        return await _performAnalysis(chunk, standards, p);
+      } catch (err) {
+        lastError = err;
+        const msg = String(err.message || err).toLowerCase();
+        const status = err.status || (err.response ? err.response.status : null);
+        const is429 = status === 429 || msg.includes('429') || msg.includes('rate limit');
+        
+        if (is429 && retries < 3) {
+          retries++;
+          console.warn(`[Analyzer] Rate limit on [${p}]. Backing off for ${retries * 5}s before retry...`);
+          await new Promise(r => setTimeout(r, 5000 * retries));
+          continue; // Re-attempt same provider
         }
-        console.warn(`[Analyzer] Provider [${p}] fallback initiated. Rotating...`);
-        failedProviders.add(p);
-        continue;
+        break; // Exit retry loop, proceed to rotation
       }
+    }
+
+    const err = lastError;
+    const msg = String(err.message || err).toLowerCase();
+    const status = err.status || (err.response ? err.response.status : null);
+    
+    const isRecoverable = status === 401 || status === 402 || status === 403 || status === 400 ||
+      msg.includes('quota') || msg.includes('credit') || msg.includes('unauthorized') || 
+      msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance') ||
+      msg.includes('model not found') || msg.includes('invalid model') || msg.includes('429');
+
+    rotationLogs.push(`${p}: ${msg.substring(0, 100)}`);
+
+    if (isRecoverable && providersToTry.length > 1) {
+      console.warn(`[Analyzer] Provider [${p}] fallback initiated. Rotating...`);
+      failedProviders.add(p);
+      continue;
+    }
       
       if (!isRecoverable) {
         // LOCAL FALLBACK: If structural integrity is compromised, we can return a local finding
