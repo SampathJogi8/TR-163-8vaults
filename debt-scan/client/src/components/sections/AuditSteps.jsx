@@ -40,7 +40,7 @@ const AuditSteps = () => {
           <div key={index} className="flex flex-col items-center text-center reveal group">
             <div className="w-24 h-24 bg-black border border-white/10 rounded-3xl flex items-center justify-center mb-10 relative overflow-hidden transition-premium group-hover:border-white/30">
               <img 
-                src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/security_core_glow_1776356817491.png" 
+                src="/assets/security-core.png" 
                 alt="Audit Core" 
                 className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-premium"
               />

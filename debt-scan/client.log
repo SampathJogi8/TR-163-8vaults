@@ -1491,3 +1491,6 @@ AggregateError [ECONNREFUSED]:
 9:58:59 PM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
 9:59:38 PM [vite] hmr update /src/components/sections/FeaturesGrid.jsx, /src/index.css
 10:00:18 PM [vite] hmr update /src/components/sections/AuditSteps.jsx, /src/index.css
+10:02:57 PM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
+10:03:00 PM [vite] hmr update /src/components/sections/FeaturesGrid.jsx, /src/index.css
+10:03:02 PM [vite] hmr update /src/components/sections/AuditSteps.jsx, /src/index.css

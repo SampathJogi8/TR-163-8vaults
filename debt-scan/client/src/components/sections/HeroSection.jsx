@@ -17,7 +17,7 @@ const HeroSection = ({
       {/* Visual Asset: Neural Nebula */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none opacity-60">
         <img 
-          src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/hero_neural_nebula_1776356768587.png" 
+          src="/assets/hero-nebula.png" 
           alt="Neural Nebula" 
           className="w-full h-full object-contain animate-float"
           style={{ filter: 'blur(20px) contrast(1.2)' }}

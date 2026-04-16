@@ -42,7 +42,7 @@ const FeaturesGrid = () => {
           
           <div className="relative w-full h-full lg:flex-1 lg:absolute lg:right-[-100px] lg:top-0 animate-float opacity-80 group-hover:opacity-100 transition-premium">
              <img 
-               src="/Users/sampathjogipusala/.gemini/antigravity/brain/a96bbfe1-bd62-45a9-a044-3d24a3446f09/dashboard_mockup_3d_1776356792672.png" 
+               src="/assets/dashboard-mockup.png" 
                alt="Dashboard Mockup" 
                className="w-full h-full object-contain"
              />
