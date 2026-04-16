@@ -83,7 +83,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   /* ── LANDING PAGE ─────────────────────────────────────────────────── */
   return (
     <AestheticBackground>
-      <div className="flex flex-col items-center">
+      <div className="flex flex-col items-center w-full">
         {/* Hero with nav + form */}
         <HeroSection
           inputType={inputType} setInputType={setInputType}

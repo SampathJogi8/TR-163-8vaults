@@ -33,7 +33,7 @@ const HeroSection = ({
   const [analysisType, setAnalysisType] = useState('standard');
 
   return (
-    <section className="w-full min-h-screen flex flex-col items-center pt-32 pb-24 px-6 relative">
+    <section className="w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-24 px-6 relative">
       {/* ── NAVBAR ───────────────────────────────────────────── */}
       <nav className="nav-pill w-auto min-w-0 max-w-2xl">
         <span className="text-sm font-bold text-white tracking-tight flex-shrink-0">CodeAnalyzer</span>

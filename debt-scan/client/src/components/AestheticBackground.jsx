@@ -2,7 +2,7 @@ import React from 'react';
 
 const AestheticBackground = ({ children }) => {
   return (
-    <div className="min-h-screen relative" style={{ background: 'var(--bg)' }}>
+    <div className="min-h-screen w-full relative" style={{ background: 'var(--bg)' }}>
       {/* Subtle purple grid */}
       <div className="fixed inset-0 grid-bg pointer-events-none z-0" />
       {/* Noise */}
