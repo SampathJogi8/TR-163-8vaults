@@ -8,8 +8,16 @@ const INPUT_TABS = [
 ];
 
 const TICKER_ITEMS = [
-  'JavaScript', 'TypeScript', 'Python', 'Java', 'Go', 'Rust', 'C#',
-  'PHP', 'Ruby', 'Swift', 'Kotlin', 'React', 'Vue', 'Node.js',
+  { label: 'JavaScript', tag: 'Supported' },
+  { label: 'TypeScript', tag: 'Supported' },
+  { label: 'Python',     tag: 'Supported' },
+  { label: 'Java',       tag: 'Supported' },
+  { label: 'AI-powered', tag: '6 Providers' },
+  { label: 'GitHub URLs', tag: 'Public repos' },
+  { label: 'ZIP upload', tag: 'Any archive' },
+  { label: 'Code paste', tag: 'Snippets' },
+  { label: 'PDF export', tag: 'Full report' },
+  { label: 'JSON export', tag: 'Raw data' },
 ];
 
 const HeroSection = ({
@@ -177,13 +185,19 @@ const HeroSection = ({
       {/* ── LANGUAGE TICKER ───────────────────────────────────── */}
       <div className="w-full max-w-3xl mt-16 overflow-hidden" style={{ animationDelay: '160ms' }}>
         <p className="text-center text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
-          Supports all major languages
+          What's supported
         </p>
         <div className="relative overflow-hidden">
           <div className="flex gap-3 animate-ticker whitespace-nowrap">
-            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((lang, i) => (
-              <span key={i} className="ticker-strip flex-shrink-0">
-                {lang}
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
+              <span key={i} className="ticker-strip flex-shrink-0 flex items-center gap-2">
+                <span className="text-white font-semibold">{item.label}</span>
+                <span
+                  className="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
+                  style={{ background: 'rgba(139,92,246,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.2)' }}
+                >
+                  {item.tag}
+                </span>
               </span>
             ))}
           </div>

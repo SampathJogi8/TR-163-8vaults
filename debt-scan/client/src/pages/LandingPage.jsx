@@ -5,7 +5,6 @@ import ProgressBar from '../components/ProgressBar';
 import HeroSection from '../components/sections/HeroSection';
 import FeaturesGrid from '../components/sections/FeaturesGrid';
 import AuditSteps from '../components/sections/AuditSteps';
-import PricingTable from '../components/sections/PricingTable';
 import AuditFAQ from '../components/sections/AuditFAQ';
 import AestheticBackground from '../components/AestheticBackground';
 
@@ -101,7 +100,6 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
 
         <FeaturesGrid />
         <AuditSteps />
-        <PricingTable />
         <AuditFAQ />
 
         {/* ── CTA Banner ──────────────────────────────────────────── */}
