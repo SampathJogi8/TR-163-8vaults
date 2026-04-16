@@ -137,12 +137,10 @@ app.post('/api/analyze', async (req, res) => {
       progress: 100,
       message: 'Audit complete',
       overall_score: stats.overallScore,
-      results: {
-        overallScore: stats.overallScore,
-        files: normalizedFiles,
-        issues: uniqueIssues,
-        stats: stats
-      }
+      files: normalizedFiles,
+      issues: uniqueIssues,
+      stats: stats,
+      duration_ms: Date.now() - (req._startTime || Date.now()) // Heuristic duration if not tracked elsewhere
     }).eq('id', scanId);
 
   } catch (err) {
@@ -166,9 +164,19 @@ app.get('/api/scan/:scanId/status', async (req, res) => {
 });
 
 app.get('/api/scan/:scanId/results', async (req, res) => {
-  const { data, error } = await supabase.from('scans').select('results').eq('id', req.params.scanId).single();
-  if (error || !data || !data.results) return res.status(404).json({ error: 'Results not ready' });
-  res.json(data.results);
+  const { data, error } = await supabase.from('scans')
+    .select('files, issues, stats, overall_score, duration_ms')
+    .eq('id', req.params.scanId)
+    .single();
+
+  if (error || !data || !data.files) return res.status(404).json({ error: 'Results not ready' });
+  res.json({
+    files: data.files,
+    issues: data.issues,
+    stats: data.stats,
+    overallScore: data.overall_score,
+    durationMs: data.duration_ms || 0
+  });
 });
 
 async function updateScan(id, progress, message) {
