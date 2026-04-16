@@ -97,7 +97,7 @@ const App = () => {
       {view === 'detail' && (
         <FileDetail 
           file={selectedFile}
-          issues={results.issues.filter(i => {
+          issues={(results?.issues || []).filter(i => {
             if (!i?.file || !selectedFile?.path) return false;
             const issueFile = i.file.replace(/\\/g, '/');
             const targetFile = selectedFile.path.replace(/\\/g, '/');
