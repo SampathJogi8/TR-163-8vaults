@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, FileArchive, Clipboard, ChevronDown, ChevronRight, Settings2, Zap } from 'lucide-react';
+import { Github, FileArchive, Clipboard, ChevronDown, Settings2, Zap, ArrowRight } from 'lucide-react';
 
 const INPUT_TABS = [
   { key: 'github', label: 'GitHub', icon: Github },
@@ -30,164 +30,202 @@ const HeroSection = ({
   handleFileChange,
   pastedCode, setPastedCode,
 }) => {
-  const [analysisType, setAnalysisType] = useState('standard');
-
   return (
-    <section className="w-full min-h-screen flex flex-col items-center justify-start pt-32 pb-24 px-6 relative">
-      {/* ── NAVBAR ───────────────────────────────────────────── */}
-      <nav className="nav-pill w-auto min-w-0 max-w-2xl">
+    <section className="w-full min-h-screen flex flex-col justify-start pt-28 pb-20 px-6 relative">
+
+      {/* ── NAVBAR ─────────────────────────────────────────────── */}
+      <nav className="nav-pill">
         <span className="text-sm font-bold text-white tracking-tight flex-shrink-0">CodeAnalyzer</span>
         <div className="hidden md:flex items-center gap-6 text-[13px] font-medium" style={{ color: 'var(--text-muted)' }}>
           <a href="#features" className="hover:text-white transition-colors">Features</a>
-          <a href="#steps" className="hover:text-white transition-colors">How it works</a>
-          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+          <a href="#steps"    className="hover:text-white transition-colors">How it works</a>
+          <a href="#faq"      className="hover:text-white transition-colors">FAQ</a>
         </div>
         <button className="btn-primary text-xs py-2 px-5 flex-shrink-0">Get started</button>
       </nav>
 
-      {/* ── HERO COPY ─────────────────────────────────────────── */}
-      <div className="text-center mt-20 mb-14 max-w-3xl animate-fade-up">
-        <div className="section-label mb-8">
-          <span className="accent-dot" />
-          AI-Powered Code Analysis
-        </div>
-        <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6"
-            style={{ letterSpacing: '-0.04em', lineHeight: 1.05 }}>
-          Find every flaw.{' '}
-          <span style={{ color: 'var(--accent)' }}>Fix it fast.</span>
-        </h1>
-        <p className="text-lg font-medium max-w-xl mx-auto leading-relaxed"
-           style={{ color: 'var(--text-muted)' }}>
-          Automated static analysis and AI-driven code review. Identify security vulnerabilities,
-          technical debt, and logic errors across any codebase — in seconds.
-        </p>
-      </div>
+      {/* ── TWO-COLUMN HERO ────────────────────────────────────── */}
+      <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mt-16 animate-fade-up">
 
-      {/* ── INPUT CONSOLE ─────────────────────────────────────── */}
-      <div className="w-full max-w-2xl animate-fade-up" style={{ animationDelay: '80ms' }}>
-        <div className="bento-card p-8 space-y-6">
-          {/* Tab switcher */}
-          <div className="flex gap-1 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
-            {INPUT_TABS.map(({ key, label, icon: Icon }) => (
-              <button
-                key={key}
-                onClick={() => setInputType(key)}
-                className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-semibold transition-all duration-200"
-                style={{
-                  background: inputType === key ? 'var(--surface-hover)' : 'transparent',
-                  color: inputType === key ? '#fff' : 'var(--text-muted)',
-                  border: inputType === key ? '1px solid var(--border-hover)' : '1px solid transparent',
-                }}
+        {/* LEFT — Copy */}
+        <div className="flex-1 text-center lg:text-left space-y-6">
+          <div className="section-label lg:self-start mx-auto lg:mx-0 w-fit">
+            <span className="accent-dot" />
+            AI-Powered Code Analysis
+          </div>
+          <h1
+            className="text-5xl sm:text-6xl font-black text-white"
+            style={{ letterSpacing: '-0.04em', lineHeight: 1.05 }}
+          >
+            Find every flaw.{' '}
+            <span style={{ background: 'var(--gradient)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent' }}>
+              Fix it fast.
+            </span>
+          </h1>
+          <p className="text-base font-medium leading-relaxed max-w-md mx-auto lg:mx-0" style={{ color: 'var(--text-muted)' }}>
+            Automated static analysis and AI-driven code review. Identify security vulnerabilities,
+            technical debt, and logic errors across any codebase — in seconds.
+          </p>
+
+          {/* Trust badges */}
+          <div className="flex flex-wrap gap-3 justify-center lg:justify-start pt-2">
+            {[
+              ['JS / TS', 'supported'],
+              ['Python',  'supported'],
+              ['Java',    'supported'],
+              ['6 AI models', 'in rotation'],
+            ].map(([lang, sub]) => (
+              <div
+                key={lang}
+                className="flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold"
+                style={{ background: 'rgba(139,92,246,0.06)', border: '1px solid var(--border)', color: '#fff' }}
               >
-                <Icon size={13} />
-                {label}
-              </button>
+                <span
+                  className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                  style={{ background: 'var(--gradient)' }}
+                />
+                {lang}
+                <span style={{ color: 'var(--text-muted)' }}>· {sub}</span>
+              </div>
             ))}
           </div>
+        </div>
 
-          {/* Input area */}
-          {inputType === 'github' && (
-            <div className="flex gap-3">
+        {/* RIGHT — Form card */}
+        <div className="flex-1 w-full max-w-lg mx-auto lg:mx-0">
+          <div className="bento-card p-6 space-y-5">
+
+            {/* Tab switcher */}
+            <div className="flex gap-1 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
+              {INPUT_TABS.map(({ key, label, icon: Icon }) => (
+                <button
+                  key={key}
+                  onClick={() => setInputType(key)}
+                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all duration-200"
+                  style={{
+                    background: inputType === key ? 'var(--surface-hover)' : 'transparent',
+                    color: inputType === key ? '#fff' : 'var(--text-muted)',
+                    border: inputType === key ? '1px solid var(--border-hover)' : '1px solid transparent',
+                  }}
+                >
+                  <Icon size={12} />
+                  {label}
+                </button>
+              ))}
+            </div>
+
+            {/* Input area */}
+            {inputType === 'github' && (
               <input
                 type="text"
                 placeholder="https://github.com/owner/repository"
                 value={url}
                 onChange={e => setUrl(e.target.value)}
                 onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
-                className="crypton-input flex-1"
+                className="crypton-input"
               />
-            </div>
-          )}
-          {inputType === 'zip' && (
-            <div
-              className="flex flex-col items-center justify-center gap-3 py-8 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
-              style={{ borderColor: zipFile ? 'var(--accent)' : 'var(--border)', background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent' }}
-              onClick={() => document.getElementById('zip-upload').click()}
+            )}
+            {inputType === 'zip' && (
+              <div
+                className="flex flex-col items-center justify-center gap-3 py-7 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
+                style={{
+                  borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
+                  background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent',
+                }}
+                onClick={() => document.getElementById('zip-upload').click()}
+              >
+                <FileArchive size={22} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
+                <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
+                  {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
+                </span>
+                <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
+              </div>
+            )}
+            {inputType === 'paste' && (
+              <textarea
+                placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
+                value={pastedCode}
+                onChange={e => setPastedCode(e.target.value)}
+                rows={6}
+                className="crypton-input resize-none font-mono text-sm"
+              />
+            )}
+
+            {/* Advanced toggle */}
+            <button
+              onClick={() => setShowAdvanced(!showAdvanced)}
+              className="flex items-center gap-2 text-xs font-semibold transition-colors"
+              style={{ color: showAdvanced ? 'var(--accent-light)' : 'var(--text-muted)' }}
             >
-              <FileArchive size={24} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
-              <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
-                {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
-              </span>
-              <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
-            </div>
-          )}
-          {inputType === 'paste' && (
-            <textarea
-              placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
-              value={pastedCode}
-              onChange={e => setPastedCode(e.target.value)}
-              rows={8}
-              className="crypton-input w-full resize-none font-mono text-sm"
-            />
-          )}
+              <Settings2 size={12} />
+              Advanced options
+              <ChevronDown size={12} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
+            </button>
 
-          {/* Advanced options toggle */}
-          <button
-            onClick={() => setShowAdvanced(!showAdvanced)}
-            className="flex items-center gap-2 text-xs font-semibold transition-colors"
-            style={{ color: showAdvanced ? 'var(--accent)' : 'var(--text-muted)' }}
-          >
-            <Settings2 size={13} />
-            Advanced options
-            <ChevronDown size={13} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
-          </button>
+            {showAdvanced && (
+              <div className="grid grid-cols-2 gap-3 animate-fade-up">
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
+                  <select value={language} onChange={e => setLanguage(e.target.value)} className="crypton-input py-2.5 text-sm">
+                    {['auto','javascript','typescript','python','java'].map(l => (
+                      <option key={l} value={l} style={{ background: 'var(--surface)' }}>
+                        {l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="space-y-1.5">
+                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
+                  <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input py-2.5 text-sm">
+                    {['auto','gemini','openai','anthropic','deepseek','grok','openrouter'].map(p => (
+                      <option key={p} value={p} style={{ background: 'var(--surface)' }}>
+                        {p === 'auto' ? 'Auto' : p.charAt(0).toUpperCase() + p.slice(1)}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <div className="col-span-2 space-y-1.5">
+                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards</label>
+                  <input
+                    type="text"
+                    placeholder="e.g. OWASP Top 10, PCI-DSS"
+                    value={standards}
+                    onChange={e => setStandards(e.target.value)}
+                    className="crypton-input text-sm"
+                  />
+                </div>
+              </div>
+            )}
 
-          {showAdvanced && (
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 animate-fade-up">
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
-                <select
-                  value={language}
-                  onChange={e => setLanguage(e.target.value)}
-                  className="crypton-input py-2.5 text-sm"
-                >
-                  {['auto', 'javascript', 'python', 'java', 'typescript', 'go', 'rust'].map(l => (
-                    <option key={l} value={l} style={{ background: 'var(--surface)' }}>{l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="space-y-1.5">
-                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
-                <select
-                  value={provider}
-                  onChange={e => setProvider(e.target.value)}
-                  className="crypton-input py-2.5 text-sm"
-                >
-                  {['auto', 'gemini', 'openai', 'anthropic', 'deepseek', 'grok', 'openrouter'].map(p => (
-                    <option key={p} value={p} style={{ background: 'var(--surface)' }}>{p === 'auto' ? 'Auto (best available)' : p.charAt(0).toUpperCase() + p.slice(1)}</option>
-                  ))}
-                </select>
-              </div>
-              <div className="sm:col-span-2 space-y-1.5">
-                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards (optional)</label>
-                <input
-                  type="text"
-                  placeholder="e.g. OWASP Top 10, PCI-DSS, GDPR"
-                  value={standards}
-                  onChange={e => setStandards(e.target.value)}
-                  className="crypton-input text-sm"
-                />
-              </div>
-            </div>
-          )}
+            {/* CTA */}
+            <button
+              onClick={handleAnalyze}
+              className="btn-primary w-full py-3.5 text-sm font-bold gap-2"
+            >
+              <Zap size={15} />
+              Run Analysis
+              <ArrowRight size={14} className="ml-auto" />
+            </button>
 
-          {/* CTA */}
-          <button
-            onClick={handleAnalyze}
-            className="btn-primary w-full py-4 text-sm font-bold gap-3"
-          >
-            <Zap size={16} />
-            Run Analysis
-          </button>
+            {/* Footer note */}
+            <p className="text-center text-[11px] font-medium" style={{ color: 'var(--text-muted)' }}>
+              Free to use · No account required · Results in seconds
+            </p>
+          </div>
         </div>
       </div>
 
-      {/* ── LANGUAGE TICKER ───────────────────────────────────── */}
-      <div className="w-full max-w-3xl mt-16 overflow-hidden" style={{ animationDelay: '160ms' }}>
-        <p className="text-center text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
+      {/* ── TICKER STRIP ───────────────────────────────────────── */}
+      <div className="w-full max-w-5xl mx-auto mt-16 overflow-hidden">
+        <p className="text-center text-[10px] font-bold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
           What's supported
         </p>
         <div className="relative overflow-hidden">
+          {/* Fade edges */}
+          <div className="absolute left-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+               style={{ background: 'linear-gradient(to right, var(--bg), transparent)' }} />
+          <div className="absolute right-0 top-0 bottom-0 w-16 z-10 pointer-events-none"
+               style={{ background: 'linear-gradient(to left, var(--bg), transparent)' }} />
           <div className="flex gap-3 animate-ticker whitespace-nowrap">
             {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
               <span key={i} className="ticker-strip flex-shrink-0 flex items-center gap-2">
@@ -203,6 +241,7 @@ const HeroSection = ({
           </div>
         </div>
       </div>
+
     </section>
   );
 };
