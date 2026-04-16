@@ -166,12 +166,18 @@ app.post('/api/analyze', async (req, res) => {
     const uniqueIssues = [];
     const seen = new Set();
     
-    for (const issue of safeIssues) {
+    for (let i = 0; i < safeIssues.length; i++) {
+      const issue = safeIssues[i];
       if (!issue || typeof issue !== 'object') continue;
-      const key = `${issue.file || 'unknown'}-${issue.line || 0}-${issue.title || 'issue'}`;
-      if (!seen.has(key)) {
-        seen.add(key);
-        uniqueIssues.push(issue);
+      
+      // Generate a stable unique ID if not present or to ensure system-wide uniqueness
+      const compositeKey = `${issue.file || 'f'}-${issue.line || 0}-${issue.title || 't'}`;
+      if (!seen.has(compositeKey)) {
+        seen.add(compositeKey);
+        uniqueIssues.push({
+          ...issue,
+          id: issue.id || `iss-${Buffer.from(compositeKey).toString('base64').substring(0, 12)}`
+        });
       }
     }
 

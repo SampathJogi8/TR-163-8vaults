@@ -137,26 +137,33 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
         </header>
 
         {/* ── STAT CARDS ─────────────────────────────────────── */}
-        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 stagger">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 stagger">
           <StatCard
             label="Debt Score"
             value={overallScore}
             color={scoreColor}
-            subtext={scoreColor === 'red' ? 'Critical refactoring needed' : scoreColor === 'amber' ? 'Moderate risk' : 'Good shape'}
+            subtext={scoreColor === 'red' ? 'Critical refactoring' : 'Stable'}
             icon={<ShieldCheck size={14} />}
           />
           <StatCard
-            label="Acceptance Rate"
+            label="Sonar Alignment"
+            value={`${sonarAlignment}%`}
+            color="lime"
+            subtext="Accuracy vs Baseline"
+            icon={<Zap size={14} />}
+          />
+          <StatCard
+            label="Fix Acceptance"
             value={acceptanceRate !== null ? `${acceptanceRate}%` : '—'}
             color="lime"
-            subtext={feedbackTotal > 0 ? `Based on ${feedbackTotal} reviews` : 'Awaiting human feedback'}
+            subtext={feedbackTotal > 0 ? `${feedbackTotal} reviews` : 'Awaiting feedback'}
             icon={<BarChart2 size={14} />}
           />
           <StatCard
             label="Critical Issues"
             value={stats?.severityCounts?.Critical ?? 0}
             color="red"
-            subtext="Immediate risks"
+            subtext="Security & Stability"
             icon={<AlertTriangle size={14} />}
           />
           <StatCard
