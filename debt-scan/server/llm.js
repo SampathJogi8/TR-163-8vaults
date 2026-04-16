@@ -131,8 +131,29 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
 `;
 
   if (provider === 'dummy') {
-    // Intentional instant failure — for testing provider-shift animation only
-    throw Object.assign(new Error('Dummy provider: intentional failure for rotation testing'), { status: 400 });
+    // Return mock results for testing without consuming API credits
+    return [
+      {
+        id: `mock-${Date.now()}-1`,
+        file: chunk.filename,
+        line: 1,
+        severity: 'Minor',
+        category: 'CodeSmell',
+        title: 'Mock Issue: Variable shadowing',
+        description: 'This is a simulated issue for testing the DebtScan UI and provider visualization.',
+        fix: 'Rename the local variable to avoid confusion with the outer scope module.'
+      },
+      {
+        id: `mock-${Date.now()}-2`,
+        file: chunk.filename,
+        line: 10,
+        severity: 'Major',
+        category: 'Security',
+        title: 'Mock Issue: Potential hardcoded secret',
+        description: 'Detected a string literal that looks like a dummy API key or token.',
+        fix: 'Use environment variables via process.env for all sensitive credentials.'
+      }
+    ];
   } else if (provider === 'anthropic') {
     try {
       const response = await anthropic.messages.create({
@@ -282,7 +303,7 @@ const getAvailableProviders = (requested) => {
   if (requested === 'auto') {
     return ['gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => config[p]);
   }
-  if (requested === 'dummy') return ['dummy', 'gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => p === 'dummy' || config[p]);
+  if (requested === 'dummy') return ['dummy'];
   return config[requested] ? [requested] : [];
 };
 
