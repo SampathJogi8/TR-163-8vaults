@@ -30,6 +30,20 @@ const HeroSection = ({
   handleFileChange,
   pastedCode, setPastedCode,
 }) => {
+  const inputRef = React.useRef(null);
+
+  const handleGetStarted = (e) => {
+    e.preventDefault();
+    const section = document.getElementById('scan-section');
+    if (section) {
+      section.scrollIntoView({ behavior: 'smooth' });
+      // Pulse the card for feedback
+      section.classList.add('animate-pulse-glow');
+      setTimeout(() => section.classList.remove('animate-pulse-glow'), 2000);
+      // Focus the input
+      setTimeout(() => inputRef.current?.focus(), 500);
+    }
+  };
   return (
     <section className="w-full min-h-screen flex flex-col justify-start pt-28 pb-20 px-6 relative">
 
@@ -41,12 +55,12 @@ const HeroSection = ({
           <a href="#steps"    className="hover:text-white transition-colors">How it works</a>
           <a href="#faq"      className="hover:text-white transition-colors">FAQ</a>
         </div>
-        <a 
-          href="#scan-section"
+        <button 
+          onClick={handleGetStarted}
           className="btn-primary text-xs py-2 px-5 flex-shrink-0"
         >
           Get started
-        </a>
+        </button>
       </nav>
 
       {/* ── TWO-COLUMN HERO ────────────────────────────────────── */}
@@ -132,6 +146,7 @@ const HeroSection = ({
             {/* Input area */}
             {inputType === 'github' && (
               <input
+                ref={inputRef}
                 type="text"
                 placeholder="https://github.com/owner/repository"
                 value={url}
