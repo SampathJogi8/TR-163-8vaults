@@ -18,6 +18,9 @@ if (!process.env.OPENROUTER_API_KEY) {
 if (!process.env.DEEPSEEK_API_KEY) {
   console.warn('WARNING: DEEPSEEK_API_KEY is missing from environment.');
 }
+if (!process.env.XAI_API_KEY) {
+  console.warn('WARNING: XAI_API_KEY is missing from environment.');
+}
 
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || 'dummy-key',
@@ -41,6 +44,11 @@ const openrouter = new OpenAI({
 const deepseek = new OpenAI({
   baseURL: "https://api.deepseek.com",
   apiKey: process.env.DEEPSEEK_API_KEY || 'dummy-key',
+});
+
+const grok = new OpenAI({
+  baseURL: "https://api.x.ai/v1",
+  apiKey: process.env.XAI_API_KEY || 'dummy-key',
 });
 
 const MAX_CONCURRENT = parseInt(process.env.MAX_CONCURRENT_LLM_CALLS || '5');
@@ -151,6 +159,27 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
     } catch (err) {
       throw err;
     }
+  } else if (provider === 'grok') {
+    try {
+      const response = await grok.chat.completions.create({
+        model: "grok-2-1212",
+        messages: [
+          { role: "system", content: systemPrompt },
+          { role: "user", content: userMessage }
+        ],
+        response_format: { type: "json_object" },
+      });
+      const content = response.choices[0].message.content;
+      try {
+        const parsed = JSON.parse(content);
+        return Array.isArray(parsed) ? parsed : (parsed.issues || []);
+      } catch (e) {
+        const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
+        return JSON.parse(jsonStr || '[]');
+      }
+    } catch (err) {
+      throw err;
+    }
   } else if (provider === 'openrouter') {
     try {
       const response = await openrouter.chat.completions.create({
@@ -199,12 +228,13 @@ const getAvailableProviders = (requested) => {
     gemini: !!process.env.GEMINI_API_KEY,
     openai: !!process.env.OPENAI_API_KEY,
     openrouter: !!process.env.OPENROUTER_API_KEY,
-    deepseek: !!process.env.DEEPSEEK_API_KEY
+    deepseek: !!process.env.DEEPSEEK_API_KEY,
+    grok: !!process.env.XAI_API_KEY
   };
 
   if (requested === 'auto') {
-    // Priority shift: Gemini + DeepSeek first for massive reliability
-    return ['gemini', 'deepseek', 'openrouter', 'anthropic', 'openai'].filter(p => config[p]);
+    // Priority shift: Gemini + DeepSeek + Grok for absolute resilience
+    return ['gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => config[p]);
   }
   return config[requested] ? [requested] : [];
 };
