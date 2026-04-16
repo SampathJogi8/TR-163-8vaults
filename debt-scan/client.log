@@ -4388,3 +4388,4 @@ AggregateError [ECONNREFUSED]:
     at afterConnectMultiple (node:net:1715:7)
 1:28:20 AM [vite] hmr update /src/App.jsx, /src/index.css
 1:28:35 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+2:20:24 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css

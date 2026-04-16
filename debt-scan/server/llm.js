@@ -384,7 +384,7 @@ function _localHeuristicFallback(chunk) {
   return issues;
 }
 
-async function analyzeChunk(chunk, standards = '', provider = 'auto') {
+async function analyzeChunk(chunk, standards = '', provider = 'auto', onProviderShift) {
   const providersToTry = getAvailableProviders(provider);
   const failedProviders = new Set();
   const rotationLogs = [];
@@ -399,6 +399,9 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
     let retries = 0;
     while (retries <= 3) {
       try {
+        if (retries === 0 && onProviderShift) {
+          await onProviderShift(p, providersToTry.indexOf(p) === 0 ? 'start' : 'rotate').catch(() => {});
+        }
         console.log(`[Analyzer] Processing ${chunk.filename} via [${p}] (Attempt ${retries + 1})`);
         const issues = await _performAnalysis(chunk, standards, p);
         if (Array.isArray(issues)) {
@@ -477,6 +480,7 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   // --- Emergency: OpenRouter free models ---
   if (process.env.OPENROUTER_API_KEY && !failedProviders.has('openrouter')) {
     try {
+      if (onProviderShift) await onProviderShift('openrouter-free', 'fallback').catch(() => {});
       rotationLogs.push('Entering emergency free-model fallback via OpenRouter');
       const shortPrompt = `You are a code reviewer. Analyze this code chunk and return a JSON array of code quality issues. Each issue: {"id":"uuid","file":"filename","line":1,"severity":"Minor","category":"CodeSmell","title":"short","description":"1 sentence","fix":"suggestion"}. Return ONLY valid JSON array.`;
       const shortMsg = `File: ${chunk.filename}\n\n${chunk.code.substring(0, 1500)}`;
@@ -492,7 +496,7 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   return _localHeuristicFallback(chunk);
 }
 
-async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onProgress) {
+async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onProgress, onProviderShift) {
   const results = [];
   const total = chunks.length;
   let completed = 0;
@@ -504,7 +508,7 @@ async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onPro
 
     const batch = chunks.slice(i, i + MAX_CONCURRENT);
     const batchResults = await Promise.allSettled(
-      batch.map(chunk => analyzeChunk(chunk, standards, provider))
+      batch.map(chunk => analyzeChunk(chunk, standards, provider, onProviderShift))
     );
 
     for (const res of batchResults) {

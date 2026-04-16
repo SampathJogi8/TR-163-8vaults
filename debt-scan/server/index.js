@@ -133,10 +133,21 @@ app.post('/api/analyze', async (req, res) => {
       chunks.push(...fileChunks);
     }
 
-    await updateScan(scanId, 40, 'Generating neural audit...');
-    const issues = await analyzeAllChunks(chunks, standards, provider, async (prog) => {
-      await updateScan(scanId, 40 + Math.floor(prog * 0.5), `Analyzing chunks: ${prog}%`);
-    });
+    await updateScan(scanId, 40, 'Starting AI analysis...');
+    const issues = await analyzeAllChunks(chunks, standards, provider,
+      async (prog) => {
+        await updateScan(scanId, 40 + Math.floor(prog * 0.5), `Analyzing: ${prog}%`);
+      },
+      async (providerName, event) => {
+        // event: 'start' | 'rotate' | 'fallback'
+        const msgs = {
+          start:    `provider:${providerName}:Scanning with ${providerName}`,
+          rotate:   `provider:${providerName}:Switched to ${providerName}`,
+          fallback: `provider:${providerName}:Fallback → ${providerName}`,
+        };
+        await updateScan(scanId, null, msgs[event] || `provider:${providerName}:Using ${providerName}`);
+      }
+    );
 
     console.log(`Finalizing scan ${scanId} with ${issues.length} total issues`);
     await updateScan(scanId, 95, 'Finalizing report...');
@@ -230,7 +241,9 @@ app.get('/api/scan/:scanId/results', async (req, res) => {
 });
 
 async function updateScan(id, progress, message) {
-  await supabase.from('scans').update({ progress, message }).eq('id', id);
+  const update = { message };
+  if (progress !== null && progress !== undefined) update.progress = progress;
+  await supabase.from('scans').update(update).eq('id', id);
 }
 
 const PORT = process.env.PORT || 3001;

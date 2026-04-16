@@ -53,27 +53,144 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   };
 
   /* ── SCANNING SCREEN ──────────────────────────────────────────────── */
+  const ALL_PROVIDERS = ['gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'];
+
+  // Parse provider info from statusMessage: "provider:NAME:label"
+  const parseProviderMsg = (msg = '') => {
+    if (!msg.startsWith('provider:')) return { active: null, label: msg };
+    const parts = msg.split(':');
+    return { active: parts[1], label: parts.slice(2).join(':') };
+  };
+
+  const { active: activeProvider, label: providerLabel } = parseProviderMsg(statusMessage);
+
+  const PROVIDER_META = {
+    gemini:      { name: 'Gemini',     color: '#4285F4', emoji: '✦' },
+    deepseek:    { name: 'DeepSeek',   color: '#8B5CF6', emoji: '◈' },
+    grok:        { name: 'Grok',       color: '#A78BFA', emoji: '◎' },
+    openrouter:  { name: 'OpenRouter', color: '#7C3AED', emoji: '⬡' },
+    'openrouter-free': { name: 'OpenRouter Free', color: '#6D28D9', emoji: '⬡' },
+    anthropic:   { name: 'Anthropic',  color: '#C084FC', emoji: '◇' },
+    openai:      { name: 'OpenAI',     color: '#34D399', emoji: '◻' },
+  };
+
   if (isScanning) {
+    const displayProviders = provider === 'auto' ? ALL_PROVIDERS : [provider];
+    const activeIdx = displayProviders.findIndex(
+      p => p === activeProvider || (activeProvider === 'openrouter-free' && p === 'openrouter')
+    );
+
     return (
       <AestheticBackground>
-        <div className="min-h-screen flex flex-col items-center justify-center px-6">
-          <div className="w-full max-w-md text-center space-y-8">
-            {/* Animated icon */}
-            <div
-            className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center animate-pulse-glow"
-            style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)' }}
-          >
-            <Cpu size={28} style={{ color: 'var(--accent)' }} />
+        <div className="min-h-screen flex flex-col items-center justify-center px-6 py-12">
+          <div className="w-full max-w-lg space-y-8 animate-fade-up">
+
+            {/* Pulsing icon */}
+            <div className="flex justify-center">
+              <div
+                className="w-16 h-16 rounded-2xl flex items-center justify-center animate-pulse-glow"
+                style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)' }}
+              >
+                <Cpu size={28} style={{ color: 'var(--accent)' }} />
+              </div>
             </div>
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold text-white" style={{ letterSpacing: '-0.03em' }}>
+
+            {/* Title */}
+            <div className="text-center space-y-1">
+              <h1 className="text-2xl font-black text-white" style={{ letterSpacing: '-0.03em' }}>
                 Analyzing codebase
               </h1>
               <p className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
-                Parsing syntax trees and detecting issues…
+                {activeProvider
+                  ? providerLabel || `Running on ${PROVIDER_META[activeProvider]?.name ?? activeProvider}`
+                  : 'Parsing syntax trees and preparing chunks…'
+                }
               </p>
             </div>
-            <ProgressBar progress={progress} message={statusMessage} />
+
+            {/* Progress bar */}
+            <ProgressBar progress={progress} message={''} />
+
+            {/* Provider chain — only shown in 'auto' mode */}
+            {provider === 'auto' && (
+              <div className="bento-card p-5 space-y-4">
+                <p className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
+                  AI Engine Chain
+                </p>
+                <div className="flex flex-wrap gap-2">
+                  {displayProviders.map((p, i) => {
+                    const meta   = PROVIDER_META[p] ?? { name: p, color: '#8B5CF6', emoji: '●' };
+                    const isActive  = p === activeProvider || (activeProvider === 'openrouter-free' && p === 'openrouter');
+                    const isFailed  = activeIdx > -1 && i < activeIdx;
+                    const isPending = !isActive && !isFailed;
+
+                    return (
+                      <div
+                        key={p}
+                        className="flex items-center gap-2 px-3 py-2 rounded-xl border text-xs font-semibold transition-all duration-500"
+                        style={{
+                          background: isActive  ? `${meta.color}18`
+                                    : isFailed  ? 'rgba(239,68,68,0.06)'
+                                    : 'rgba(255,255,255,0.03)',
+                          border: `1px solid ${isActive ? meta.color + '55' : isFailed ? 'rgba(239,68,68,0.15)' : 'var(--border)'}`,
+                          color: isActive  ? meta.color
+                               : isFailed  ? '#ef4444'
+                               : 'var(--text-muted)',
+                          opacity: isPending ? 0.5 : 1,
+                          transform: isActive ? 'scale(1.04)' : 'scale(1)',
+                        }}
+                      >
+                        {/* Status dot */}
+                        <span
+                          className="w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{
+                            background: isActive  ? meta.color
+                                      : isFailed  ? '#ef4444'
+                                      : 'var(--border)',
+                            boxShadow: isActive ? `0 0 6px ${meta.color}` : 'none',
+                            animation: isActive ? 'pulse 1.2s ease-in-out infinite' : 'none',
+                          }}
+                        />
+                        {meta.name}
+                        {isFailed  && <span className="ml-1 opacity-60">✕</span>}
+                        {isActive  && <span className="ml-1 opacity-80 text-[10px]">active</span>}
+                      </div>
+                    );
+                  })}
+                </div>
+
+                {/* Live status line */}
+                {activeProvider && (
+                  <div
+                    className="flex items-center gap-2 px-3 py-2 rounded-lg text-xs font-mono animate-fade-up"
+                    style={{ background: 'rgba(139,92,246,0.06)', border: '1px solid var(--border)', color: 'var(--text-muted)' }}
+                  >
+                    <span style={{ color: PROVIDER_META[activeProvider]?.color ?? 'var(--accent)' }}>›</span>
+                    {providerLabel || `Using ${activeProvider}`}
+                  </div>
+                )}
+              </div>
+            )}
+
+            {/* Single-provider mode note */}
+            {provider !== 'auto' && (
+              <div
+                className="flex items-center gap-3 px-4 py-3 rounded-xl border text-sm font-medium animate-fade-up"
+                style={{ background: 'rgba(139,92,246,0.08)', border: '1px solid var(--border-hover)', color: 'var(--accent-light)' }}
+              >
+                <span
+                  className="w-2 h-2 rounded-full animate-pulse flex-shrink-0"
+                  style={{ background: PROVIDER_META[provider]?.color ?? 'var(--accent)', boxShadow: `0 0 8px ${PROVIDER_META[provider]?.color ?? 'var(--accent)'}` }}
+                />
+                Running on {PROVIDER_META[provider]?.name ?? provider}
+                {activeProvider && activeProvider !== provider && (
+                  <span className="text-xs ml-auto" style={{ color: 'var(--text-muted)' }}>
+                    → shifted to {PROVIDER_META[activeProvider]?.name ?? activeProvider}
+                  </span>
+                )}
+              </div>
+            )}
+
           </div>
         </div>
       </AestheticBackground>
