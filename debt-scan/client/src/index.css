@@ -109,3 +109,46 @@
 .animate-float {
   animation: celestial-float 6s infinite ease-in-out;
 }
+
+/* Enterprise UI Additions */
+.bento-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+}
+
+.bento-card {
+  @apply bg-white/[0.02] border border-white/5 rounded-[2rem] p-8 transition-premium hover:bg-white/[0.05] hover:border-white/10 relative overflow-hidden;
+}
+
+.section-glow {
+  @apply absolute -top-24 left-1/2 -translate-x-1/2 w-full max-w-4xl h-48 bg-accent/20 rounded-full blur-[120px] pointer-events-none opacity-50;
+}
+
+.text-glow {
+  @apply text-white drop-shadow-[0_0_15px_rgba(255,255,255,0.3)];
+}
+
+.vibrant-gradient {
+  background: linear-gradient(135deg, #7c3aed 0%, #3b82f6 50%, #ec4899 100%);
+  @apply bg-clip-text text-transparent;
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.pricing-card {
+  @apply flex flex-col p-10 bg-white/[0.02] border border-white/5 rounded-[2.5rem] transition-premium hover:scale-[1.02] relative z-10;
+}
+
+.pricing-card.popular {
+  @apply border-accent/20 bg-accent/[0.03] scale-105 shadow-2xl shadow-accent/10;
+}
