@@ -1,88 +1,107 @@
 import React, { useState } from 'react';
-import { ChevronDown, ChevronUp, AlertCircle, Shield, Zap, Hash, Type, Code2, ArrowRight } from 'lucide-react';
+import { ChevronDown, AlertTriangle, Zap, Info, ExternalLink } from 'lucide-react';
 
-const IssueCard = ({ issue, onFileClick }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const categoryColors = {
+  Security:     { bg: 'rgba(239,68,68,0.08)',   border: 'rgba(239,68,68,0.2)',   text: '#ef4444', icon: '🔒' },
+  Performance:  { bg: 'rgba(245,158,11,0.08)',  border: 'rgba(245,158,11,0.2)',  text: '#f59e0b', icon: '⚡' },
+  TechnicalDebt:{ bg: 'rgba(139,92,246,0.08)',  border: 'rgba(139,92,246,0.2)',  text: '#8b5cf6', icon: '🔧' },
+  CodeSmell:    { bg: 'rgba(191,255,0,0.08)',   border: 'rgba(191,255,0,0.2)',   text: '#BFFF00', icon: '🧹' },
+  Naming:       { bg: 'rgba(99,102,241,0.08)',  border: 'rgba(99,102,241,0.2)',  text: '#6366f1', icon: '🏷️' },
+};
 
-  const severityColors = {
-    Critical: 'text-red-500 border-red-500/30 bg-red-500/5',
-    Major: 'text-amber-500 border-amber-500/30 bg-amber-500/5',
-    Minor: 'text-emerald-500 border-emerald-500/30 bg-emerald-500/5'
-  };
+const IssueCard = ({ issue }) => {
+  const [open, setOpen] = useState(false);
+  const cat  = categoryColors[issue.category] || categoryColors.TechnicalDebt;
+  const sev  = issue.severity || 'Minor';
 
-  const glowColors = {
-    Critical: 'bg-red-500/20 shadow-[0_0_30px_rgba(239,68,68,0.2)]',
-    Major: 'bg-amber-500/20 shadow-[0_0_30px_rgba(245,158,11,0.2)]',
-    Minor: 'bg-emerald-500/20 shadow-[0_0_30px_rgba(16,185,129,0.2)]'
-  };
-
-  const categoryIcons = {
-    Security: <Shield size={14} />,
-    CodeSmell: <AlertCircle size={14} />,
-    TechnicalDebt: <Hash size={14} />,
-    Performance: <Zap size={14} />,
-    Naming: <Type size={14} />
-  };
+  const severityBadgeClass =
+    sev === 'Critical' ? 'badge-critical' :
+    sev === 'Major'    ? 'badge-major'    :
+                         'badge-minor';
 
   return (
-    <div className="glass-panel rounded-[2rem] overflow-hidden group/card relative transition-premium hover:border-white/20">
-      {/* Localized Severity Glow */}
-      <div className={`absolute -left-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-20 pointer-events-none ${glowColors[issue.severity]}`} />
-      
-      <div className="p-8 sm:p-10 relative z-10">
-        <div className="flex flex-wrap items-center gap-4 mb-8">
-          <div className={`text-[9px] font-black px-4 py-1.5 rounded-full uppercase border tracking-[0.2em] animate-pulse ${severityColors[issue.severity]}`}>
-            {issue.severity}
+    <div className="crypton-card overflow-hidden">
+      {/* Collapsed header */}
+      <button
+        onClick={() => setOpen(!open)}
+        className="w-full flex items-start gap-4 p-5 text-left transition-premium hover:bg-white/[0.02]"
+      >
+        {/* Category icon chip */}
+        <span
+          className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-sm"
+          style={{ background: cat.bg, border: `1px solid ${cat.border}` }}
+        >
+          {cat.icon}
+        </span>
+
+        {/* Title + file */}
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-wrap items-center gap-2 mb-1">
+            <span className="text-sm font-semibold text-white truncate">
+              {issue.title}
+            </span>
+            <span className={severityBadgeClass}>{sev}</span>
           </div>
-          <div className="flex items-center gap-2 text-[9px] bg-white/[0.03] text-gray-500 font-black px-4 py-1.5 rounded-full uppercase border border-white/5 tracking-[0.2em]">
-            {categoryIcons[issue.category]}
-            {issue.category}
+          <div className="flex items-center gap-2 flex-wrap">
+            <span className="text-[11px] font-mono" style={{ color: 'var(--text-muted)' }}>
+              {issue.file}
+            </span>
+            {issue.line && (
+              <span className="text-[11px] font-mono" style={{ color: 'var(--text-muted)' }}>
+                :L{issue.line}
+              </span>
+            )}
+            {issue.model_used && (
+              <span
+                className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full border"
+                style={{ color: 'var(--accent)', background: 'rgba(191,255,0,0.06)', borderColor: 'rgba(191,255,0,0.15)' }}
+              >
+                {issue.model_used}
+              </span>
+            )}
           </div>
-          {issue.file && (
-            <button 
-              onClick={() => onFileClick && onFileClick(issue.file)}
-              className="flex items-center gap-3 text-[9px] text-accent hover:text-white font-black tracking-[0.2em] uppercase transition-premium ml-auto"
-            >
-              <Code2 size={16} strokeWidth={1.5} />
-              <span className="font-mono">{issue.file.split('/').pop()}{issue.line ? `:${issue.line}` : ''}</span>
-              <ArrowRight size={14} className="opacity-0 group-hover/card:opacity-100 group-hover/card:translate-x-1 transition-premium" />
-            </button>
-          )}
         </div>
 
-        <h4 className="text-3xl font-black text-white mb-4 tracking-tighter font-['Outfit'] group-hover/card:text-accent transition-premium">{issue.title}</h4>
-        <p className="text-gray-500 text-base leading-relaxed mb-10 max-w-4xl font-medium">{issue.description}</p>
+        {/* Expand toggle */}
+        <ChevronDown
+          size={16}
+          className="flex-shrink-0 mt-0.5 transition-transform duration-200"
+          style={{ color: 'var(--text-muted)', transform: open ? 'rotate(180deg)' : 'rotate(0)' }}
+        />
+      </button>
 
-        <button 
-          onClick={() => setIsOpen(!isOpen)}
-          className={`flex items-center gap-4 text-[10px] font-black tracking-[0.3em] transition-premium uppercase ${isOpen ? 'text-white' : 'text-accent/60 hover:text-accent'}`}
+      {/* Expanded detail */}
+      {open && (
+        <div
+          className="px-5 pb-5 space-y-4 border-t animate-fade-up"
+          style={{ borderColor: 'var(--border)' }}
         >
-          <div className={`w-10 h-10 rounded-xl border border-white/10 flex items-center justify-center transition-premium ${isOpen ? 'bg-accent border-accent text-white' : 'group-hover/card:border-accent/40'}`}>
-            {isOpen ? <ChevronUp size={18} /> : <ChevronDown size={18} />}
+          <div className="pt-4 space-y-1">
+            <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>
+              Description
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {issue.description}
+            </p>
           </div>
-          {isOpen ? 'Conceal Remediating Protocol' : 'Reveal Neural Fix'}
-        </button>
-
-        {isOpen && (
-          <div className="mt-10 animate-in fade-in slide-in-from-top-6 duration-500">
-             <div className="p-10 bg-black/60 backdrop-blur-3xl rounded-[2rem] border border-white/5 relative overflow-hidden group/fix">
-                <div className="absolute top-0 right-0 p-8 text-[80px] font-black text-white/[0.01] pointer-events-none select-none -translate-y-4 translate-x-4 uppercase font-['Outfit']">Repair</div>
-                
-                <div className="flex items-center justify-between mb-8">
-                  <div className="text-accent font-black uppercase tracking-[0.3em] text-[10px] flex items-center gap-4">
-                    <Zap size={16} fill="currentColor" className="animate-pulse" />
-                    Neural Suggestion Engine
-                  </div>
-                  <div className="px-3 py-1 bg-white/[0.03] border border-white/10 rounded-lg text-[9px] font-black text-gray-700 uppercase tracking-widest">v2.0 Logic</div>
-                </div>
-
-                <div className="font-mono text-[13px] text-gray-400 whitespace-pre-wrap leading-loose pl-4 border-l-2 border-accent/20">
-                  {issue.fix}
-                </div>
-             </div>
+          <div className="space-y-1">
+            <p className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--accent)' }}>
+              Suggested Fix
+            </p>
+            <p className="text-sm leading-relaxed" style={{ color: 'var(--text-secondary)' }}>
+              {issue.fix}
+            </p>
           </div>
-        )}
-      </div>
+          <div className="flex flex-wrap gap-2 pt-1">
+            <span
+              className="text-[11px] px-3 py-1 rounded-full border font-semibold"
+              style={{ background: cat.bg, borderColor: cat.border, color: cat.text }}
+            >
+              {issue.category}
+            </span>
+          </div>
+        </div>
+      )}
     </div>
   );
 };

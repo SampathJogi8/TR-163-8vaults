@@ -1,200 +1,195 @@
-import React from 'react';
-import { Sparkles, Github, FileArchive, Settings2, Shield, Cpu } from 'lucide-react';
+import React, { useState } from 'react';
+import { Github, FileArchive, Clipboard, ChevronDown, ChevronRight, Settings2, Zap } from 'lucide-react';
 
-const HeroSection = ({ 
-  inputType, setInputType, 
-  url, setUrl, 
-  handleAnalyze, 
-  showAdvanced, setShowAdvanced,
-  zipFile,
-  provider, setProvider,
+const INPUT_TABS = [
+  { key: 'github', label: 'GitHub', icon: Github },
+  { key: 'zip',    label: 'Upload ZIP', icon: FileArchive },
+  { key: 'paste',  label: 'Paste Code', icon: Clipboard },
+];
+
+const TICKER_ITEMS = [
+  'JavaScript', 'TypeScript', 'Python', 'Java', 'Go', 'Rust', 'C#',
+  'PHP', 'Ruby', 'Swift', 'Kotlin', 'React', 'Vue', 'Node.js',
+];
+
+const HeroSection = ({
+  inputType, setInputType,
+  url, setUrl,
+  handleAnalyze, showAdvanced, setShowAdvanced,
+  zipFile, provider, setProvider,
   language, setLanguage,
   standards, setStandards,
   handleFileChange,
-  pastedCode, setPastedCode
+  pastedCode, setPastedCode,
 }) => {
-  const getNextInputType = () => {
-    const modes = ['github', 'zip', 'paste'];
-    const currentIndex = modes.indexOf(inputType);
-    return modes[(currentIndex + 1) % modes.length];
-  };
+  const [analysisType, setAnalysisType] = useState('standard');
 
-  const modeIcons = {
-    github: <Github size={14} />,
-    zip: <FileArchive size={14} />,
-    paste: <Cpu size={14} />
-  };
-
-  const modeLabels = {
-    github: 'Source Repo',
-    zip: 'Local Archive',
-    paste: 'Code Buffer'
-  };
   return (
-    <div className="max-w-6xl w-full relative z-10 flex flex-col items-center pt-20 pb-32 min-h-screen justify-center">
-      {/* Visual Asset: Neural Nebula */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1200px] h-[1200px] pointer-events-none opacity-60">
-        <img 
-          src="/assets/hero-nebula.png" 
-          alt="Neural Nebula" 
-          className="w-full h-full object-contain animate-float"
-          style={{ filter: 'blur(20px) contrast(1.2)' }}
-        />
+    <section className="w-full min-h-screen flex flex-col items-center pt-32 pb-24 px-6 relative">
+      {/* ── NAVBAR ───────────────────────────────────────────── */}
+      <nav className="nav-pill w-auto min-w-0 max-w-2xl">
+        <span className="text-sm font-bold text-white tracking-tight flex-shrink-0">CodeAnalyzer</span>
+        <div className="hidden md:flex items-center gap-6 text-[13px] font-medium" style={{ color: 'var(--text-muted)' }}>
+          <a href="#features" className="hover:text-white transition-colors">Features</a>
+          <a href="#steps" className="hover:text-white transition-colors">How it works</a>
+          <a href="#faq" className="hover:text-white transition-colors">FAQ</a>
+        </div>
+        <button className="btn-primary text-xs py-2 px-5 flex-shrink-0">Get started</button>
+      </nav>
+
+      {/* ── HERO COPY ─────────────────────────────────────────── */}
+      <div className="text-center mt-20 mb-14 max-w-3xl animate-fade-up">
+        <div className="section-label mb-8">
+          <span className="accent-dot" />
+          AI-Powered Code Analysis
+        </div>
+        <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-white mb-6"
+            style={{ letterSpacing: '-0.04em', lineHeight: 1.05 }}>
+          Find every flaw.{' '}
+          <span style={{ color: 'var(--accent)' }}>Fix it fast.</span>
+        </h1>
+        <p className="text-lg font-medium max-w-xl mx-auto leading-relaxed"
+           style={{ color: 'var(--text-muted)' }}>
+          Automated static analysis and AI-driven code review. Identify security vulnerabilities,
+          technical debt, and logic errors across any codebase — in seconds.
+        </p>
       </div>
 
-      <header className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000 relative z-10">
-        <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-[0.3em] uppercase mb-12 backdrop-blur-md">
-          <Sparkles size={12} className="text-white/60" />
-          Code Analysis Engine v1.0
-        </div>
-        <h1 className="text-7xl lg:text-[100px] font-black text-white mb-10 tracking-tighter font-['Outfit'] leading-[0.85]">
-          Intelligent defaults for <span className="font-serif-italic text-white underline decoration-white/10 underline-offset-8 decoration-1">code review.</span>
-        </h1>
-        <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
-          Automated codebase inspection. Identify vulnerabilities, technical debt, 
-          and logical errors with <span className="text-white">high precision</span>.
-        </p>
-      </header>
+      {/* ── INPUT CONSOLE ─────────────────────────────────────── */}
+      <div className="w-full max-w-2xl animate-fade-up" style={{ animationDelay: '80ms' }}>
+        <div className="bento-card p-8 space-y-6">
+          {/* Tab switcher */}
+          <div className="flex gap-1 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
+            {INPUT_TABS.map(({ key, label, icon: Icon }) => (
+              <button
+                key={key}
+                onClick={() => setInputType(key)}
+                className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-xs font-semibold transition-all duration-200"
+                style={{
+                  background: inputType === key ? 'var(--surface-hover)' : 'transparent',
+                  color: inputType === key ? '#fff' : 'var(--text-muted)',
+                  border: inputType === key ? '1px solid var(--border-hover)' : '1px solid transparent',
+                }}
+              >
+                <Icon size={13} />
+                {label}
+              </button>
+            ))}
+          </div>
 
-      {/* Celestial Command Console */}
-      <div className="w-full max-w-2xl relative group">
-        <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-[2rem] blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
-        
-        <div className="relative bg-black/60 backdrop-blur-3xl rounded-[2rem] p-4 border border-white/10 shadow-2xl">
-          <div className="flex flex-col gap-4">
-                <div 
-                  className={`w-full bg-white/[0.03] border border-white/5 focus:border-white/20 rounded-2xl px-10 py-6 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg pr-40 relative flex items-center ${inputType === 'zip' ? 'cursor-pointer group/zip' : ''}`}
-                  onDragOver={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                  }}
-                  onDrop={(e) => {
-                    e.preventDefault();
-                    e.stopPropagation();
-                    const file = e.dataTransfer.files[0];
-                    if (file && file.name.endsWith('.zip')) {
-                      setInputType('zip');
-                      handleFileChange({ target: { files: [file] } });
-                    }
-                  }}
-                >
-                  {inputType === 'paste' ? (
-                    <textarea 
-                      placeholder="Paste your code snippet here..."
-                      className="w-full bg-transparent border-none outline-none min-h-[120px] pt-4 font-mono text-sm resize-none scrollbar-hide"
-                      value={pastedCode}
-                      onChange={(e) => setPastedCode(e.target.value)}
-                    />
-                  ) : (
-                    <input 
-                      type="text" 
-                      placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : zipFile ? "Archive Anchored (Drag new to replace)" : "Drop ZIP archive here..."}
-                      readOnly={inputType === 'zip'}
-                      className="w-full bg-transparent border-none outline-none"
-                      value={inputType === 'github' ? url : ''}
-                      onChange={(e) => setUrl(e.target.value)}
-                    />
-                  )}
-                  
-                  <div className="absolute right-3 flex items-center gap-2">
-                    <button 
-                      onClick={handleAnalyze}
-                      className="px-8 py-4 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-gray-200 active:scale-95 transition-all shadow-xl"
-                    >
-                      Execute Scan
-                    </button>
-                  </div>
-                </div>
-
-            {/* Action Bar */}
-            <div className="flex items-center justify-between px-4 pb-2">
-              <div className="flex gap-6">
-                <button 
-                  onClick={() => setInputType(getNextInputType())}
-                  className="flex items-center gap-2 text-[9px] font-black text-white/40 hover:text-white transition-premium uppercase tracking-widest"
-                >
-                  {modeIcons[getNextInputType()]}
-                  Switch to {modeLabels[getNextInputType()]}
-                </button>
-                <button 
-                  onClick={() => setShowAdvanced(!showAdvanced)}
-                  className={`flex items-center gap-2 text-[9px] font-black transition-premium uppercase tracking-widest ${showAdvanced ? 'text-white' : 'text-white/40 hover:text-white'}`}
-                >
-                  <Settings2 size={14} />
-                  Configuration
-                </button>
-              </div>
-              
-              {inputType === 'zip' && zipFile && (
-                <div className="flex items-center gap-2 text-[9px] font-black text-green-500 uppercase tracking-widest">
-                  <Shield size={12} /> Archive Ready
-                </div>
-              )}
+          {/* Input area */}
+          {inputType === 'github' && (
+            <div className="flex gap-3">
+              <input
+                type="text"
+                placeholder="https://github.com/owner/repository"
+                value={url}
+                onChange={e => setUrl(e.target.value)}
+                onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
+                className="crypton-input flex-1"
+              />
             </div>
+          )}
+          {inputType === 'zip' && (
+            <div
+              className="flex flex-col items-center justify-center gap-3 py-8 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
+              style={{ borderColor: zipFile ? 'var(--accent)' : 'var(--border)', background: zipFile ? 'rgba(191,255,0,0.04)' : 'transparent' }}
+              onClick={() => document.getElementById('zip-upload').click()}
+            >
+              <FileArchive size={24} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
+              <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }}>
+                {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
+              </span>
+              <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
+            </div>
+          )}
+          {inputType === 'paste' && (
+            <textarea
+              placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
+              value={pastedCode}
+              onChange={e => setPastedCode(e.target.value)}
+              rows={8}
+              className="crypton-input w-full resize-none font-mono text-sm"
+            />
+          )}
 
-            {/* Advanced Panel */}
-            {showAdvanced && (
-              <div className="p-4 bg-white/[0.02] border-t border-white/5 rounded-b-2xl animate-in fade-in slide-in-from-top-4 duration-500 mt-2">
-                <div className="grid grid-cols-2 gap-6 mb-6">
-                  <div className="space-y-4">
-                    <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Analysis Core</label>
-                    <select 
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-[10px] outline-none font-bold tracking-widest uppercase cursor-pointer"
-                      value={provider}
-                      onChange={(e) => setProvider(e.target.value)}
-                    >
-                      <option value="auto">AUTODETECT (OPTIMIZED)</option>
-                      <option value="gemini">GOOGLE GEMINI 2.0</option>
-                      <option value="deepseek">DEEPSEEK V3</option>
-                      <option value="grok">xAI GROK-2</option>
-                      <option value="anthropic">CLAUDE-3.5 SONNET</option>
-                      <option value="openrouter">OPENROUTER ARCH</option>
-                      <option value="openai">GPT-4O OMNI</option>
-                    </select>
-                  </div>
-                  <div className="space-y-4">
-                    <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Language Mapping</label>
-                    <select 
-                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-[10px] outline-none font-bold tracking-widest uppercase cursor-pointer"
-                      value={language}
-                      onChange={(e) => setLanguage(e.target.value)}
-                    >
-                      <option value="auto">AUTO-PROTOCOL</option>
-                      <option value="javascript">JS / TS MODULES</option>
-                      <option value="python">PY (NEURAL ARCH)</option>
-                    </select>
-                  </div>
-                </div>
-                
-                {inputType === 'zip' && (
-                  <div className="mb-6">
-                     <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-white/10 hover:border-white/30 bg-white/[0.01] rounded-2xl cursor-pointer transition-premium group/upload">
-                      <div className="flex items-center gap-3">
-                        <FileArchive className="text-white/20 group-hover/upload:text-white transition-premium" size={20} />
-                        <p className="text-[9px] font-black text-white/20 group-hover/upload:text-white transition-premium uppercase tracking-widest">
-                          {zipFile ? 'File Anchored' : 'Select Local Repository ZIP'}
-                        </p>
-                      </div>
-                      <input type="file" className="hidden" accept=".zip" onChange={handleFileChange} />
-                    </label>
-                  </div>
-                )}
+          {/* Advanced options toggle */}
+          <button
+            onClick={() => setShowAdvanced(!showAdvanced)}
+            className="flex items-center gap-2 text-xs font-semibold transition-colors"
+            style={{ color: showAdvanced ? 'var(--accent)' : 'var(--text-muted)' }}
+          >
+            <Settings2 size={13} />
+            Advanced options
+            <ChevronDown size={13} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
+          </button>
 
-                <div className="space-y-4">
-                  <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Compliance Standards</label>
-                  <textarea 
-                    className="w-full bg-white/[0.03] border border-white/10 rounded-xl p-4 text-white text-xs outline-none focus:border-white/20 transition-premium h-24 font-mono placeholder:text-gray-800"
-                    placeholder="Specify custom architectural constraints or patterns..."
-                    value={standards}
-                    onChange={(e) => setStandards(e.target.value)}
-                  />
-                </div>
+          {showAdvanced && (
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2 animate-fade-up">
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
+                <select
+                  value={language}
+                  onChange={e => setLanguage(e.target.value)}
+                  className="crypton-input py-2.5 text-sm"
+                >
+                  {['auto', 'javascript', 'python', 'java', 'typescript', 'go', 'rust'].map(l => (
+                    <option key={l} value={l} style={{ background: 'var(--surface)' }}>{l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}</option>
+                  ))}
+                </select>
               </div>
-            )}
+              <div className="space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
+                <select
+                  value={provider}
+                  onChange={e => setProvider(e.target.value)}
+                  className="crypton-input py-2.5 text-sm"
+                >
+                  {['auto', 'gemini', 'openai', 'anthropic', 'deepseek', 'grok', 'openrouter'].map(p => (
+                    <option key={p} value={p} style={{ background: 'var(--surface)' }}>{p === 'auto' ? 'Auto (best available)' : p.charAt(0).toUpperCase() + p.slice(1)}</option>
+                  ))}
+                </select>
+              </div>
+              <div className="sm:col-span-2 space-y-1.5">
+                <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards (optional)</label>
+                <input
+                  type="text"
+                  placeholder="e.g. OWASP Top 10, PCI-DSS, GDPR"
+                  value={standards}
+                  onChange={e => setStandards(e.target.value)}
+                  className="crypton-input text-sm"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* CTA */}
+          <button
+            onClick={handleAnalyze}
+            className="btn-primary w-full py-4 text-sm font-bold gap-3"
+          >
+            <Zap size={16} />
+            Run Analysis
+          </button>
+        </div>
+      </div>
+
+      {/* ── LANGUAGE TICKER ───────────────────────────────────── */}
+      <div className="w-full max-w-3xl mt-16 overflow-hidden" style={{ animationDelay: '160ms' }}>
+        <p className="text-center text-xs font-semibold uppercase tracking-widest mb-4" style={{ color: 'var(--text-muted)' }}>
+          Supports all major languages
+        </p>
+        <div className="relative overflow-hidden">
+          <div className="flex gap-3 animate-ticker whitespace-nowrap">
+            {[...TICKER_ITEMS, ...TICKER_ITEMS].map((lang, i) => (
+              <span key={i} className="ticker-strip flex-shrink-0">
+                {lang}
+              </span>
+            ))}
           </div>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 

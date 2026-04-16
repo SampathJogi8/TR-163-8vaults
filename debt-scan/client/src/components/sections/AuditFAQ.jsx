@@ -1,66 +1,74 @@
 import React, { useState } from 'react';
 import { Plus, Minus } from 'lucide-react';
 
-const FAQItem = ({ question, answer }) => {
-  const [isOpen, setIsOpen] = useState(false);
-
-  return (
-    <div className="border-b border-white/5 reveal">
-      <button 
-        onClick={() => setIsOpen(!isOpen)}
-        className="w-full py-8 flex items-center justify-between group transition-all"
-      >
-        <span className={`text-xl font-bold tracking-tight transition-premium ${isOpen ? 'text-white' : 'text-gray-500 group-hover:text-gray-300'}`}>
-          {question}
-        </span>
-        <div className={`w-8 h-8 rounded-full border border-white/10 flex items-center justify-center transition-premium ${isOpen ? 'bg-white text-black border-white' : 'text-gray-500 group-hover:border-white/20'}`}>
-          {isOpen ? <Minus size={16} /> : <Plus size={16} />}
-        </div>
-      </button>
-      
-      <div className={`overflow-hidden transition-all duration-500 ease-in-out ${isOpen ? 'max-h-96 pb-12' : 'max-h-0'}`}>
-        <p className="text-gray-500 font-medium leading-[1.8] max-w-3xl">
-          {answer}
-        </p>
-      </div>
-    </div>
-  );
-};
+const FAQS = [
+  {
+    q: 'Which programming languages does the analyzer support?',
+    a: 'JavaScript, TypeScript, Python, Java, Go, Rust, C#, PHP, Ruby, Swift, Kotlin, and more. The engine auto-detects language from file extensions.',
+  },
+  {
+    q: 'How secure is my code when I submit it?',
+    a: 'Code is processed in an ephemeral serverless environment and discarded immediately after analysis. Nothing is stored beyond your scan session.',
+  },
+  {
+    q: 'Which AI providers are used for analysis?',
+    a: 'The engine rotates across Gemini, GPT-4o, Claude 3.5, DeepSeek, Grok-3, and OpenRouter with automatic failover. You can pin a specific provider in Advanced options.',
+  },
+  {
+    q: 'Can I analyze private GitHub repositories?',
+    a: 'Currently only public repositories are supported via GitHub URL. For private code, use the ZIP upload or Code Paste mode.',
+  },
+  {
+    q: 'What export formats are available?',
+    a: 'You can export your full audit as a PDF report, XLS spreadsheet, or raw JSON for integration with your own tooling.',
+  },
+];
 
 const AuditFAQ = () => {
-  const faqs = [
-    {
-      question: "How secure is my source code during an audit?",
-      answer: "We treat your intellectual property with absolute priority. Repositories are scanned in transient sandboxed environments. We never store source code locally on our engine, and all analysis is performed over encrypted channels."
-    },
-    {
-      question: "What AI models power the Reasoning Core?",
-      answer: "Our 'Dual-Core' engine leverages a hybrid of Anthropic's Claude 3.5 Sonnet and Google's Gemini 1.5 Pro. This combination allows for both high-level architectural reasoning and granular, line-by-line vulnerability detection."
-    },
-    {
-      question: "Can I use DebtScan for private repositories?",
-      answer: "Yes. Our Professional and Enterprise protocols support private source integration via secure access tokens or local ZIP archive uploads, ensuring even internal infrastructure remains optimized."
-    },
-    {
-      question: "How accurate is the Health Score?",
-      answer: "The Health Score is derived from a cross-weighted matrix of severity (Critical/Major/Minor) and structural impact. Research shows our scoring correlates with actual maintenance effort with over 92% accuracy."
-    },
-    {
-      question: "Does it support monolithic architectures?",
-      answer: "Absolutely. In fact, large-scale monoliths are where our engine thrives. We excel at identifying dependencies and fragility that often go unnoticed in massive codebases."
-    }
-  ];
+  const [open, setOpen] = useState(null);
 
   return (
-    <section className="w-full max-w-4xl py-32 px-6 mx-auto">
-      <div className="text-center mb-20">
-        <h2 className="text-4xl font-black text-white tracking-widest uppercase mb-4">FAQs</h2>
-        <p className="text-gray-600 font-bold text-[10px] tracking-[0.4em]">DOCUMENTATION & INTEL REPOSITORY</p>
-      </div>
+    <section id="faq" className="w-full max-w-6xl mx-auto px-6 py-24">
+      <hr className="crypton-divider mb-24" />
 
-      <div className="flex flex-col">
-        {faqs.map((faq, i) => (
-          <FAQItem key={i} {...faq} />
+      <div className="max-w-2xl mx-auto space-y-6">
+        <div className="text-center space-y-4 mb-12">
+          <div className="section-label mx-auto">
+            <span className="accent-dot" />
+            FAQ
+          </div>
+          <h2 className="section-heading">Your questions, answered</h2>
+        </div>
+
+        {FAQS.map(({ q, a }, i) => (
+          <div
+            key={i}
+            className="crypton-card overflow-hidden transition-premium"
+            style={{ borderColor: open === i ? 'var(--border-hover)' : 'var(--border)' }}
+          >
+            <button
+              onClick={() => setOpen(open === i ? null : i)}
+              className="w-full flex items-center justify-between gap-4 p-6 text-left transition-premium"
+            >
+              <span className="text-sm font-semibold text-white leading-tight">{q}</span>
+              <span
+                className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
+                style={{
+                  background: open === i ? 'rgba(191,255,0,0.1)' : 'rgba(255,255,255,0.04)',
+                  border: `1px solid ${open === i ? 'rgba(191,255,0,0.2)' : 'var(--border)'}`,
+                  color: open === i ? 'var(--accent)' : 'var(--text-muted)',
+                  transition: '0.2s',
+                }}
+              >
+                {open === i ? <Minus size={13} /> : <Plus size={13} />}
+              </span>
+            </button>
+            {open === i && (
+              <div className="px-6 pb-6 animate-fade-up">
+                <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{a}</p>
+              </div>
+            )}
+          </div>
         ))}
       </div>
     </section>

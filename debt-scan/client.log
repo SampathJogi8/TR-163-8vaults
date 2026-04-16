@@ -4343,3 +4343,20 @@ AggregateError [ECONNREFUSED]:
 12:22:37 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
 12:22:53 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
 12:50:03 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+1:01:38 AM [vite] hmr update /src/index.css
+1:01:57 AM [vite] hmr update /src/components/AestheticBackground.jsx, /src/index.css
+1:02:03 AM [vite] hmr update /src/components/StatCard.jsx, /src/index.css
+1:02:05 AM [vite] hmr update /src/components/ProgressBar.jsx, /src/index.css
+1:02:40 AM [vite] hmr update /src/components/IssueCard.jsx, /src/index.css
+1:02:49 AM [vite] hmr update /src/components/FileHeatmap.jsx, /src/index.css
+1:02:51 AM [vite] hmr update /src/components/CategoryChart.jsx, /src/index.css
+1:04:01 AM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
+1:04:03 AM [vite] hmr update /src/components/sections/FeaturesGrid.jsx, /src/index.css
+1:04:41 AM [vite] hmr update /src/components/sections/AuditSteps.jsx, /src/index.css
+1:04:54 AM [vite] hmr update /src/components/sections/PricingTable.jsx, /src/index.css
+1:04:56 AM [vite] hmr update /src/components/sections/AuditFAQ.jsx, /src/index.css
+1:05:27 AM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+1:06:15 AM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+1:07:04 AM [vite] hmr update /src/pages/IssuesList.jsx, /src/index.css
+1:07:06 AM [vite] hmr update /src/pages/FileDetail.jsx, /src/index.css
+1:07:16 AM [vite] hmr update /src/App.jsx, /src/index.css

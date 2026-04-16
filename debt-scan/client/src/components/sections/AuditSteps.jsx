@@ -1,58 +1,79 @@
 import React from 'react';
-import { ChevronRight } from 'lucide-react';
 
-const AuditSteps = () => {
-  const steps = [
-    {
-      id: "01",
-      title: "Connect Source",
-      description: "Provide a public GitHub URL or upload a local repository ZIP. Our system begins structural mapping immediately."
-    },
-    {
-      id: "02",
-      title: "Execute Intelligence",
-      description: "Our dual-core reasoning engine scans for security leaks, logic gaps, and architectural fragility."
-    },
-    {
-      id: "03",
-      title: "Deconstruct Debt",
-      description: "Access an interactive health dashboard with prioritized fixes and structural gap analysis."
-    }
-  ];
+const STEPS = [
+  {
+    num: '01',
+    title: 'Connect your codebase',
+    body: 'Paste a GitHub URL, upload a ZIP archive, or paste code directly into the editor.',
+  },
+  {
+    num: '02',
+    title: 'Configure the scan',
+    body: 'Choose programming language, AI provider, and optional compliance standards.',
+  },
+  {
+    num: '03',
+    title: 'AI analysis runs automatically',
+    body: 'The engine parses ASTs, calls the AI model, and aggregates issues with severity scores.',
+  },
+  {
+    num: '04',
+    title: 'Review and export results',
+    body: 'Explore the file heatmap, drill into issues, and export a full PDF or JSON audit report.',
+  },
+];
 
-  return (
-    <section className="w-full max-w-5xl py-32 px-6">
-      <div className="text-center mb-24">
-        <div className="inline-flex items-center px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-widest uppercase mb-8">
-          The Deployment Path
+const AuditSteps = () => (
+  <section id="steps" className="w-full max-w-6xl mx-auto px-6 py-24">
+    <hr className="crypton-divider mb-24" />
+
+    <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+      {/* Left copy */}
+      <div className="space-y-6 lg:sticky lg:top-32">
+        <div className="section-label">
+          <span className="accent-dot" />
+          How it works
         </div>
-        <h2 className="text-5xl lg:text-7xl font-black text-white tracking-tighter">
-          Three steps to <br/>
-          <span className="font-serif-italic">Codebase Clarity.</span>
+        <h2 className="section-heading">
+          Simple steps to smarter code review
         </h2>
+        <p className="text-base font-medium leading-relaxed" style={{ color: 'var(--text-muted)' }}>
+          Get started in minutes and take full control of your codebase health.
+          From submission to comprehensive report, everything is built for speed and clarity.
+        </p>
+        <button className="btn-primary">Start a free scan</button>
       </div>
 
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-12 relative">
-        {/* Connection Line */}
-        <div className="hidden lg:block absolute top-[2.25rem] left-0 w-full h-[1px] bg-white/5 -z-10" />
-        
-        {steps.map((step, index) => (
-          <div key={index} className="flex flex-col items-center text-center reveal group">
-            <div className="w-24 h-24 bg-black border border-white/10 rounded-3xl flex items-center justify-center mb-10 relative overflow-hidden transition-premium group-hover:border-white/30">
-              <img 
-                src="/assets/security-core.png" 
-                alt="Audit Core" 
-                className="w-full h-full object-cover opacity-60 group-hover:opacity-100 group-hover:scale-110 transition-premium"
-              />
-              <span className="absolute inset-0 flex items-center justify-center text-xl font-black text-white mix-blend-difference">{step.id}</span>
+      {/* Right steps */}
+      <div className="relative space-y-0">
+        {/* Vertical line - desktop only */}
+        <div
+          className="absolute left-[22px] top-0 bottom-0 w-px hidden lg:block"
+          style={{ background: 'var(--border)' }}
+        />
+        {STEPS.map(({ num, title, body }, i) => (
+          <div key={num} className="relative flex gap-6 pb-10 last:pb-0">
+            {/* Number chip */}
+            <div
+              className="flex-shrink-0 w-11 h-11 rounded-full flex items-center justify-center text-xs font-black z-10 relative"
+              style={{
+                background: i === 0 ? 'var(--accent)' : 'var(--surface)',
+                color: i === 0 ? '#000' : 'var(--text-muted)',
+                border: '1px solid var(--border)',
+              }}
+            >
+              {num}
             </div>
-            <h3 className="text-2xl font-bold text-white mb-6 uppercase tracking-tight">{step.title}</h3>
-            <p className="text-gray-500 font-medium leading-relaxed max-w-[280px]">{step.description}</p>
+            {/* Content */}
+            <div className="pt-2.5 space-y-1.5">
+              <h3 className="text-base font-bold text-white">{title}</h3>
+              <p className="text-sm leading-relaxed" style={{ color: 'var(--text-muted)' }}>{body}</p>
+            </div>
           </div>
         ))}
       </div>
-    </section>
-  );
-};
+    </div>
+  </section>
+);
 
 export default AuditSteps;

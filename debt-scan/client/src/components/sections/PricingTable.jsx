@@ -1,95 +1,106 @@
 import React from 'react';
 import { Check } from 'lucide-react';
 
-const PlanCard = ({ title, price, description, features, popular = false }) => (
-  <div className={`pricing-card reveal ${popular ? 'popular' : ''}`}>
-    <div className="mb-10">
-      <h3 className="text-sm font-black text-gray-400 uppercase tracking-[0.3em] mb-4">{title}</h3>
-      <div className="flex items-baseline gap-1">
-        <span className="text-5xl font-black text-white tracking-tighter">${price}</span>
-        <span className="text-gray-600 font-bold text-sm tracking-widest uppercase">/ Month</span>
+const PLANS = [
+  {
+    name: 'Free',
+    price: '$0',
+    period: 'Forever, no credit card',
+    description: 'Start scanning instantly. Access essential analysis tools at no cost.',
+    features: ['5 scans per month', 'GitHub & ZIP input', 'Basic issue report', 'PDF export'],
+    cta: 'Get started',
+    popular: false,
+  },
+  {
+    name: 'Pro',
+    price: '$19',
+    period: 'Per user / month',
+    description: 'Unlock advanced analysis, unlimited scans, and priority AI access.',
+    features: ['Unlimited scans', 'All AI providers', 'Compliance standards', 'JSON + XLS export', 'Priority support'],
+    cta: 'Start with Pro',
+    popular: true,
+  },
+  {
+    name: 'Lifetime',
+    price: '$249',
+    period: 'One-time payment',
+    description: 'Pay once, analyze forever. All Pro features with lifetime updates included.',
+    features: ['Everything in Pro', 'Lifetime updates', 'Self-host option', 'No recurring fees'],
+    cta: 'Get lifetime access',
+    popular: false,
+  },
+];
+
+const PricingTable = () => (
+  <section id="pricing" className="w-full max-w-6xl mx-auto px-6 py-24">
+    <hr className="crypton-divider mb-24" />
+
+    <div className="text-center mb-16 space-y-4">
+      <div className="section-label mx-auto">
+        <span className="accent-dot" />
+        Pricing
       </div>
-      <p className="mt-6 text-gray-500 font-medium text-sm leading-relaxed">{description}</p>
+      <h2 className="section-heading">Choose the plan that fits.</h2>
+      <p className="text-base font-medium" style={{ color: 'var(--text-muted)' }}>
+        Simple, transparent pricing. No hidden fees.
+      </p>
     </div>
-    
-    <div className="space-y-4 mb-12 flex-grow">
-      {features.map((feature, i) => (
-        <div key={i} className="flex items-center gap-3">
-          <div className={`w-5 h-5 rounded-full flex items-center justify-center ${popular ? 'bg-white text-black' : 'bg-white/5 text-gray-500'}`}>
-            <Check size={12} strokeWidth={3} />
+
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+      {PLANS.map(({ name, price, period, description, features, cta, popular }) => (
+        <div
+          key={name}
+          className="relative flex flex-col p-8 rounded-2xl transition-premium"
+          style={{
+            background: popular ? 'rgba(191,255,0,0.04)' : 'var(--card)',
+            border: `1px solid ${popular ? 'rgba(191,255,0,0.3)' : 'var(--border)'}`,
+          }}
+        >
+          {/* Popular badge */}
+          {popular && (
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="px-4 py-1 rounded-full text-[10px] font-black uppercase tracking-widest"
+                    style={{ background: 'var(--accent)', color: '#000' }}>
+                Popular
+              </span>
+            </div>
+          )}
+
+          <div className="space-y-1 mb-6">
+            <p className="text-xs font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>{name}</p>
+            <div className="flex items-end gap-2">
+              <span className="text-5xl font-black text-white" style={{ letterSpacing: '-0.04em' }}>{price}</span>
+            </div>
+            <p className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>{period}</p>
           </div>
-          <span className="text-sm text-gray-400 font-medium">{feature}</span>
+
+          <p className="text-sm leading-relaxed mb-6" style={{ color: 'var(--text-muted)' }}>{description}</p>
+
+          <ul className="space-y-3 mb-8 flex-1">
+            {features.map(f => (
+              <li key={f} className="flex items-center gap-3 text-sm" style={{ color: 'var(--text-secondary)' }}>
+                <Check
+                  size={14}
+                  style={{ color: popular ? 'var(--accent)' : 'var(--text-muted)', flexShrink: 0 }}
+                />
+                {f}
+              </li>
+            ))}
+          </ul>
+
+          <button
+            className="w-full py-3 rounded-full text-sm font-semibold transition-all duration-200"
+            style={popular
+              ? { background: 'var(--accent)', color: '#000' }
+              : { background: 'transparent', border: '1px solid var(--border-hover)', color: '#fff' }
+            }
+          >
+            {cta}
+          </button>
         </div>
       ))}
     </div>
-
-    <button className={`w-full py-5 rounded-2xl font-black text-[10px] uppercase tracking-[0.2em] transition-premium ${popular ? 'bg-white text-black hover:bg-gray-200 shadow-xl shadow-white/10' : 'bg-white/5 text-white hover:bg-white/10 border border-white/10'}`}>
-      Select Protocol
-    </button>
-  </div>
+  </section>
 );
-
-const PricingTable = () => {
-  const plans = [
-    {
-      title: "Hobbyist",
-      price: "0",
-      description: "Ideal for open-source exploration and single developers.",
-      features: [
-        "3 Repository Audits / mo",
-        "Public GitHub Only",
-        "Basic Debt Scoring",
-        "Standard Reasoning Engine"
-      ]
-    },
-    {
-      title: "Professional",
-      price: "49",
-      popular: true,
-      description: "Scale your software quality with deep architectural insights.",
-      features: [
-        "Unlimited Repositories",
-        "ZIP & Private Repo support",
-        "Advanced Gap Analysis",
-        "Dual-Core LLM Engine",
-        "Custom Compliance Standards"
-      ]
-    },
-    {
-      title: "Enterprise",
-      price: "199",
-      description: "Massive scale analysis for modern organizations.",
-      features: [
-        "Multi-Org Support",
-        "API access for CI/CD",
-        "Custom Neural Training",
-        "Priority Reasoning Nodes",
-        "Dedicated Success Arch"
-      ]
-    }
-  ];
-
-  return (
-    <section className="w-full max-w-6xl py-32 px-6 text-center relative">
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-accent/5 rounded-full blur-[120px] -z-10" />
-      
-      <div className="mb-24">
-        <div className="inline-flex items-center px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-widest uppercase mb-8">
-          Analysis Economics
-        </div>
-        <h2 className="text-5xl lg:text-7xl font-black text-white tracking-tighter mb-6">
-          Simple Plans, <br/>
-          <span className="font-serif-italic">Powerful Audits.</span>
-        </h2>
-      </div>
-
-      <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-stretch pt-12">
-        {plans.map((plan, i) => (
-          <PlanCard key={i} {...plan} />
-        ))}
-      </div>
-    </section>
-  );
-};
 
 export default PricingTable;

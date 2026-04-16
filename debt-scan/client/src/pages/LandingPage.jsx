@@ -2,8 +2,6 @@ import React, { useState, useEffect } from 'react';
 import { Cpu } from 'lucide-react';
 import api from '../api';
 import ProgressBar from '../components/ProgressBar';
-
-// Section Components
 import HeroSection from '../components/sections/HeroSection';
 import FeaturesGrid from '../components/sections/FeaturesGrid';
 import AuditSteps from '../components/sections/AuditSteps';
@@ -12,45 +10,29 @@ import AuditFAQ from '../components/sections/AuditFAQ';
 import AestheticBackground from '../components/AestheticBackground';
 
 const LandingPage = ({ onStartScan, progress, statusMessage }) => {
-  const [inputType, setInputType] = useState('github');
-  const [url, setUrl] = useState('');
-  const [zipFile, setZipFile] = useState(null);
-  const [language, setLanguage] = useState('auto');
-  const [standards, setStandards] = useState('');
+  const [inputType, setInputType]     = useState('github');
+  const [url, setUrl]                 = useState('');
+  const [zipFile, setZipFile]         = useState(null);
+  const [language, setLanguage]       = useState('auto');
+  const [standards, setStandards]     = useState('');
   const [showAdvanced, setShowAdvanced] = useState(false);
-  const [isScanning, setIsScanning] = useState(false);
-  const [provider, setProvider] = useState('auto');
-  const [pastedCode, setPastedCode] = useState('');
-
-  // Animation Trigger for Scroll Reveal
-  useEffect(() => {
-    const observer = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          entry.target.classList.add('active');
-        }
-      });
-    }, { threshold: 0.15 });
-
-    document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
-    return () => observer.disconnect();
-  }, [isScanning]);
+  const [isScanning, setIsScanning]   = useState(false);
+  const [provider, setProvider]       = useState('auto');
+  const [pastedCode, setPastedCode]   = useState('');
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
     if (file) {
       const reader = new FileReader();
-      reader.onload = (event) => {
-        setZipFile(event.target.result.split(',')[1]);
-      };
+      reader.onload = (event) => setZipFile(event.target.result.split(',')[1]);
       reader.readAsDataURL(file);
     }
   };
 
   const handleAnalyze = async () => {
-    if (inputType === 'github' && !url) return alert('Please enter a GitHub URL');
-    if (inputType === 'zip' && !zipFile) return alert('Please upload a ZIP file');
-    if (inputType === 'paste' && !pastedCode) return alert('Please paste your code snippet');
+    if (inputType === 'github' && !url)       return alert('Please enter a GitHub URL');
+    if (inputType === 'zip' && !zipFile)      return alert('Please upload a ZIP file');
+    if (inputType === 'paste' && !pastedCode) return alert('Please paste your code');
 
     setIsScanning(true);
     try {
@@ -61,30 +43,37 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
         pastedCode: inputType === 'paste' ? pastedCode : undefined,
         language: language === 'auto' ? undefined : language,
         standards,
-        provider
+        provider,
       });
       onStartScan(res.data.scanId);
     } catch (err) {
-      const errorMsg = err.response?.data?.error || err.response?.data?.message || err.message;
-      alert('Analysis failed: ' + (typeof errorMsg === 'object' ? JSON.stringify(errorMsg) : errorMsg));
+      const msg = err.response?.data?.error || err.response?.data?.message || err.message;
+      alert('Analysis failed: ' + (typeof msg === 'object' ? JSON.stringify(msg) : msg));
       setIsScanning(false);
     }
   };
 
+  /* ── SCANNING SCREEN ──────────────────────────────────────────────── */
   if (isScanning) {
     return (
       <AestheticBackground>
-        <div className="min-h-screen flex flex-col items-center justify-center p-6 relative overflow-hidden">
-          <div className="relative z-10 text-center mb-16 animate-float">
-            <div className="w-24 h-24 bg-white/[0.03] rounded-full flex items-center justify-center mx-auto mb-10 border border-white/10 shadow-2xl">
-              <Cpu className="text-white animate-pulse" size={40} />
+        <div className="min-h-screen flex flex-col items-center justify-center px-6">
+          <div className="w-full max-w-md text-center space-y-8">
+            {/* Animated icon */}
+            <div
+              className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center animate-pulse-glow"
+              style={{ background: 'rgba(191,255,0,0.1)', border: '1px solid rgba(191,255,0,0.2)' }}
+            >
+              <Cpu size={28} style={{ color: 'var(--accent)' }} />
             </div>
-            <h1 className="text-5xl font-black text-white mb-6 tracking-tight font-['Outfit']">
-               System <span className="font-serif-italic">Analysis</span>
-            </h1>
-            <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Parsing syntax trees and analyzing logic routes...</p>
-          </div>
-          <div className="w-full max-w-xl relative z-10">
+            <div className="space-y-2">
+              <h1 className="text-3xl font-bold text-white" style={{ letterSpacing: '-0.03em' }}>
+                Analyzing codebase
+              </h1>
+              <p className="text-sm font-medium" style={{ color: 'var(--text-muted)' }}>
+                Parsing syntax trees and detecting issues…
+              </p>
+            </div>
             <ProgressBar progress={progress} message={statusMessage} />
           </div>
         </div>
@@ -92,10 +81,12 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
     );
   }
 
+  /* ── LANDING PAGE ─────────────────────────────────────────────────── */
   return (
     <AestheticBackground>
       <div className="flex flex-col items-center">
-        <HeroSection 
+        {/* Hero with nav + form */}
+        <HeroSection
           inputType={inputType} setInputType={setInputType}
           url={url} setUrl={setUrl}
           handleAnalyze={handleAnalyze}
@@ -109,34 +100,54 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
         />
 
         <FeaturesGrid />
-        
         <AuditSteps />
-
-        {/* Dynamic CTA / Transition Section */}
-        <div className="w-full h-px bg-gradient-to-r from-transparent via-white/10 to-transparent my-10" />
-
         <PricingTable />
-        
         <AuditFAQ />
 
-        {/* Global Footer */}
-        <footer className="w-full py-20 px-6 border-t border-white/5 bg-black/40">
-           <div className="max-w-6xl mx-auto flex flex-col lg:flex-row justify-between items-center gap-12">
-             <div className="text-center lg:text-left">
-               <h3 className="text-2xl font-black text-white mb-4 tracking-tighter uppercase font-['Outfit']">Neural Intelligence</h3>
-               <p className="text-gray-600 font-medium text-sm max-w-xs">Autonomous logic auditing for modern software ecosystems.</p>
-             </div>
-             
-             <div className="flex flex-wrap justify-center gap-16 text-[9px] font-black text-white/20 uppercase tracking-[0.5em]">
-               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">STATIC ANALYSIS</div>
-               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">AI ASSISTED</div>
-               <div className="flex items-center gap-3 hover:text-white transition-premium cursor-default">100% AUTOMATED</div>
-             </div>
-             
-             <div className="text-[9px] font-bold text-gray-700 tracking-widest uppercase">
-               © 2026 NEURAL PROTOCOL
-             </div>
-           </div>
+        {/* ── CTA Banner ──────────────────────────────────────────── */}
+        <section className="w-full max-w-6xl mx-auto px-6 py-24">
+          <div
+            className="rounded-3xl p-12 md:p-16 text-center space-y-6"
+            style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
+          >
+            <h2 className="section-heading mx-auto max-w-xl">
+              Take control of your code quality
+            </h2>
+            <p className="text-base font-medium" style={{ color: 'var(--text-muted)' }}>
+              Thousands of developers are already scanning smarter. Don't ship issues you could have caught.
+            </p>
+            <button className="btn-primary mx-auto" onClick={handleAnalyze}>
+              Run your first scan — free
+            </button>
+          </div>
+        </section>
+
+        {/* ── Footer ──────────────────────────────────────────────── */}
+        <footer
+          className="w-full px-6 py-12"
+          style={{ borderTop: '1px solid var(--border)' }}
+        >
+          <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
+            <div className="flex items-center gap-3">
+              <span className="text-base font-bold text-white">CodeAnalyzer</span>
+              <span
+                className="text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest"
+                style={{ background: 'rgba(191,255,0,0.1)', color: 'var(--accent)', border: '1px solid rgba(191,255,0,0.2)' }}
+              >
+                Beta
+              </span>
+            </div>
+
+            <div className="flex items-center gap-6 text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
+              <a href="#features" className="hover:text-white transition-colors">Features</a>
+              <a href="#pricing"  className="hover:text-white transition-colors">Pricing</a>
+              <a href="#faq"      className="hover:text-white transition-colors">FAQ</a>
+            </div>
+
+            <p className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
+              © 2026 CodeAnalyzer. All rights reserved.
+            </p>
+          </div>
         </footer>
       </div>
     </AestheticBackground>

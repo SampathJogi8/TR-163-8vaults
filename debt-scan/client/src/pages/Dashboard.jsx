@@ -1,5 +1,9 @@
 import React, { useState, useRef } from 'react';
-import { ArrowUpRight, AlertTriangle, ShieldCheck, FileText, Timer, Zap, Search, Download, Filter, ChevronDown, FileJson, BarChart2, Cpu } from 'lucide-react';
+import {
+  ArrowUpRight, AlertTriangle, ShieldCheck, FileText,
+  Timer, Zap, Download, Filter, ChevronDown,
+  FileJson, BarChart2, Cpu, Search
+} from 'lucide-react';
 import StatCard from '../components/StatCard';
 import FileHeatmap from '../components/FileHeatmap';
 import CategoryChart from '../components/CategoryChart';
@@ -8,281 +12,238 @@ import AestheticBackground from '../components/AestheticBackground';
 
 const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
   const [showExportMenu, setShowExportMenu] = useState(false);
-  const [isExporting, setIsExporting] = useState(false);
+  const [isExporting, setIsExporting]       = useState(false);
+  const [search, setSearch]                 = useState('');
   const heatmapRef = useRef(null);
-  const chartRef = useRef(null);
+  const chartRef   = useRef(null);
 
   if (!results) return null;
 
-  const { overallScore, stats, durationMs, files } = results;
+  const { overallScore, stats, durationMs, files, issues } = results;
 
-  const scoreColor = overallScore > 60 ? 'red' : 
-                    overallScore > 30 ? 'amber' : 'green';
+  const scoreColor =
+    overallScore > 60 ? 'red' :
+    overallScore > 30 ? 'amber' :
+    'green';
 
-  const hotspotFiles = Array.isArray(files) ? [...files].sort((a, b) => b.score - a.score).slice(0, 5) : [];
-  
   const handleExport = async (format) => {
     setIsExporting(true);
     setShowExportMenu(false);
     try {
-      if (format === 'pdf') await generatePDF(results, heatmapRef, chartRef);
+      if      (format === 'pdf') await generatePDF(results, heatmapRef, chartRef);
       else if (format === 'xls') generateXLS(results);
-      else generateJSON(results);
-    } catch (error) {
-      console.error('Export failed:', error);
+      else                       generateJSON(results);
+    } catch (err) {
+      console.error('Export failed:', err);
     } finally {
       setIsExporting(false);
     }
   };
 
-  const isTimeCompliant = durationMs < 60000;
+  /* Active AI models used */
+  const modelsUsed = issues
+    ? [...new Set(issues.filter(i => i?.model_used).map(i => i.model_used))]
+    : [];
+
   return (
     <AestheticBackground>
-      <div className="p-6 lg:p-10 relative">
-        {/* Visual Asset: Neural Nebula (Dashboard Variant) */}
-        <div className="absolute top-0 right-0 w-[1000px] h-[1000px] pointer-events-none opacity-40 blur-[100px] translate-x-1/3 -translate-y-1/3">
-          <img 
-            src="/assets/hero-nebula.png" 
-            alt="Neural Nebula" 
-            className="w-full h-full object-contain animate-float"
-          />
-        </div>
+      <div className="px-6 lg:px-10 py-10 max-w-[1400px] mx-auto space-y-8">
 
-      <div className="max-w-[1600px] mx-auto relative z-10">
-        <header className="flex flex-wrap items-end justify-between gap-8 mb-16 px-2">
-          <div className="space-y-4">
-            <div className="flex items-center gap-3">
-              <div className="px-3 py-1 bg-accent/10 border border-accent/20 rounded-full text-accent text-[10px] font-black uppercase tracking-widest">Analytics Dashboard</div>
-              <div className="flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest"><Timer size={14}/> Execution Time: {(durationMs / 1000).toFixed(1)}s</div>
-              {results.issues && results.issues.some(i => i.model_used) && (
-                <div className="flex items-center gap-2 text-gray-500 text-[10px] font-bold uppercase tracking-widest px-2 scale-90 border-l border-white/10">
-                  <Cpu size={14}/> Model Used: {[...new Set(results.issues.filter(i => i.model_used).map(i => i.model_used))].join(', ')}
+        {/* ── HEADER ─────────────────────────────────────────── */}
+        <header className="flex flex-wrap items-start justify-between gap-6">
+          <div className="space-y-2">
+            {/* Breadcrumb badges */}
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="section-label">Audit Report</span>
+              <span className="metric-pill-muted flex items-center gap-1.5">
+                <Timer size={11} />
+                {(durationMs / 1000).toFixed(1)}s
+              </span>
+              {modelsUsed.length > 0 && (
+                <span className="metric-pill flex items-center gap-1.5">
+                  <Cpu size={11} />
+                  {modelsUsed.join(', ')}
+                </span>
+              )}
+            </div>
+            <h1 className="text-4xl font-black text-white" style={{ letterSpacing: '-0.03em' }}>
+              System Analysis
+            </h1>
+          </div>
+
+          {/* Actions */}
+          <div className="flex items-center gap-3">
+            <button
+              onClick={onNavigateToIssues}
+              className="btn-secondary text-xs gap-2"
+            >
+              <Filter size={14} />
+              All Issues
+            </button>
+
+            <div className="relative">
+              <button
+                onClick={() => setShowExportMenu(!showExportMenu)}
+                disabled={isExporting}
+                className="btn-primary text-xs gap-2 py-2.5 px-5"
+              >
+                {isExporting ? <Zap size={14} className="animate-pulse" /> : <Download size={14} />}
+                {isExporting ? 'Generating…' : 'Export'}
+                <ChevronDown size={13} style={{ transform: showExportMenu ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
+              </button>
+              {showExportMenu && (
+                <div
+                  className="absolute right-0 mt-2 w-52 rounded-2xl overflow-hidden z-50 animate-pop-in"
+                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}
+                >
+                  {[
+                    { fmt: 'pdf',  label: 'PDF Report',   icon: FileText,   color: '#ef4444' },
+                    { fmt: 'xls',  label: 'Spreadsheet',  icon: BarChart2,  color: '#22c55e' },
+                    { fmt: 'json', label: 'Raw JSON',      icon: FileJson,   color: '#f59e0b' },
+                  ].map(({ fmt, label, icon: Icon, color }) => (
+                    <button
+                      key={fmt}
+                      onClick={() => handleExport(fmt)}
+                      className="w-full flex items-center gap-3 px-4 py-3.5 text-left text-xs font-semibold transition-colors"
+                      style={{ color: 'var(--text-secondary)' }}
+                      onMouseEnter={e => e.currentTarget.style.background = 'rgba(255,255,255,0.04)'}
+                      onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
+                    >
+                      <Icon size={14} style={{ color }} />
+                      {label}
+                    </button>
+                  ))}
                 </div>
               )}
             </div>
-            <h1 className="text-6xl font-black text-white tracking-tighter font-['Outfit']">System <span className="text-accent underline decoration-accent/20 decoration-8 underline-offset-12">Analysis</span></h1>
-          </div>
-          
-          <div className="flex items-center gap-3">
-            <div className="relative">
-                <button 
-                onClick={() => setShowExportMenu(!showExportMenu)}
-                disabled={isExporting}
-                className="px-6 py-3 bg-white/5 border border-white/5 text-gray-400 hover:text-white hover:bg-white/10 rounded-2xl transition-premium flex items-center gap-3 text-xs font-bold tracking-widest uppercase"
-                >
-                {isExporting ? <Zap size={16} className="animate-pulse" /> : <Download size={16} />} 
-                {isExporting ? 'Generating...' : 'Export Report'}
-                <ChevronDown size={14} className={`transition-transform duration-300 ${showExportMenu ? 'rotate-180' : ''}`} />
-                </button>
-
-                {showExportMenu && (
-                    <div className="absolute right-0 mt-3 w-64 glass-panel rounded-2xl p-2 border border-white/10 shadow-2xl z-[100] animate-in slide-in-from-top-2">
-                        <button onClick={() => handleExport('pdf')} className="w-full flex items-center gap-3 p-4 text-left text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-premium uppercase tracking-widest">
-                            <FileText size={16} className="text-red-500" /> PDF Intelligence Report
-                        </button>
-                        <button onClick={() => handleExport('xls')} className="w-full flex items-center gap-3 p-4 text-left text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-premium uppercase tracking-widest">
-                            <BarChart2 size={16} className="text-emerald-500" /> Audit Spreadsheet (XLS)
-                        </button>
-                        <button onClick={() => handleExport('json')} className="w-full flex items-center gap-3 p-4 text-left text-xs font-bold text-gray-400 hover:text-white hover:bg-white/5 rounded-xl transition-premium uppercase tracking-widest">
-                            <FileJson size={16} className="text-amber-500" /> Export JSON
-                        </button>
-                    </div>
-                )}
-            </div>
-            <button 
-              onClick={() => window.location.reload()}
-              className="btn-primary flex items-center gap-3 text-xs tracking-widest uppercase"
-            >
-              <Zap size={16} fill="currentColor"/> New Analysis
-            </button>
           </div>
         </header>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6 mb-12">
-          <StatCard 
-            label="Ecosystem Health" 
-            value={100 - overallScore}
-            unit="%"
-            color={scoreColor === 'red' ? 'red' : scoreColor === 'amber' ? 'amber' : 'green'}
-            subtext={`${stats.totalIssues} Vulnerabilities Detected`}
-            icon={<ShieldCheck size={20} />}
-          />
-          <StatCard 
-            label="Technical Debt Rating" 
-            value={overallScore} 
+        {/* ── STAT CARDS ─────────────────────────────────────── */}
+        <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 stagger">
+          <StatCard
+            label="Debt Score"
+            value={overallScore}
             color={scoreColor}
-            subtext={scoreColor === 'red' ? 'Critical Refactoring Required' : scoreColor === 'amber' ? 'Moderate Structural Risk' : 'Optimized Architecture'}
-            icon={<Zap size={20} />}
+            subtext={scoreColor === 'red' ? 'Critical refactoring needed' : scoreColor === 'amber' ? 'Moderate risk' : 'Good shape'}
+            icon={<ShieldCheck size={14} />}
           />
-          <StatCard 
-            label="Critical Points" 
-            value={stats.severityCounts.Critical} 
-            color="red" 
-            subtext="Security & Stability risks"
-            icon={<AlertTriangle size={20} />}
+          <StatCard
+            label="Total Issues"
+            value={stats?.totalIssues ?? 0}
+            color="lime"
+            subtext="Across all files"
+            icon={<Zap size={14} />}
           />
-          <StatCard 
-            label="Structural Gaps" 
-            value={stats.severityCounts.Major} 
-            color="amber" 
-            subtext="Maintainability blockers"
-            icon={<FileText size={20} />}
+          <StatCard
+            label="Critical"
+            value={stats?.severityCounts?.Critical ?? 0}
+            color="red"
+            subtext="Security & stability risks"
+            icon={<AlertTriangle size={14} />}
           />
-          <StatCard 
-            label="Module Coverage" 
-            value={stats.filesAnalyzed} 
-            unit="Files"
-            subtext="Total unique endpoints"
-            icon={<Filter size={20} />}
+          <StatCard
+            label="Files Scanned"
+            value={stats?.filesAnalyzed ?? 0}
+            unit="files"
+            color="lime"
+            subtext="Total unique modules"
+            icon={<FileText size={14} />}
           />
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 mb-12">
-          <div className="lg:col-span-2 glass-panel rounded-[2rem] p-10 overflow-hidden relative">
-            <div className="absolute top-0 right-0 p-8 text-[120px] font-black text-white/[0.02] pointer-events-none select-none -translate-y-8 translate-x-8">HEATMAP</div>
-            <div className="flex items-center justify-between mb-12 relative z-10">
-              <div className="space-y-1">
-                <h3 className="text-2xl font-black flex items-center gap-4 tracking-tight">
-                  <FileText className="text-accent" size={24} />
-                  Module Distribution
-                </h3>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest pl-10">Cross-repository healthcare analysis</p>
+        {/* ── BENTO GRID ─────────────────────────────────────── */}
+        <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+
+          {/* File Heatmap (2/3 width) */}
+          <div className="lg:col-span-2 bento-card" ref={heatmapRef}>
+            <div className="flex items-center justify-between mb-6">
+              <div>
+                <h2 className="text-base font-bold text-white mb-1">File Risk Heatmap</h2>
+                <p className="text-[12px] font-medium" style={{ color: 'var(--text-muted)' }}>
+                  Click any file to view detailed issues
+                </p>
               </div>
-              <div className="flex items-center gap-6">
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-500"><div className="w-2 h-2 rounded-full bg-green-500" /> Healthy</div>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-500"><div className="w-2 h-2 rounded-full bg-amber-500" /> Warning</div>
-                <div className="flex items-center gap-2 text-[10px] font-bold text-gray-500"><div className="w-2 h-2 rounded-full bg-red-500" /> Critical</div>
+              {/* Search */}
+              <div className="relative hidden sm:block">
+                <Search
+                  size={13}
+                  className="absolute left-3 top-1/2 -translate-y-1/2"
+                  style={{ color: 'var(--text-muted)' }}
+                />
+                <input
+                  type="text"
+                  placeholder="Filter files…"
+                  value={search}
+                  onChange={e => setSearch(e.target.value)}
+                  className="pl-8 pr-4 py-2 text-xs rounded-xl"
+                  style={{
+                    background: 'rgba(255,255,255,0.04)',
+                    border: '1px solid var(--border)',
+                    color: '#fff',
+                    outline: 'none',
+                    width: '160px',
+                  }}
+                />
               </div>
             </div>
-            <div className="relative z-10" ref={heatmapRef}>
-              <FileHeatmap files={files} onFileClick={onFileClick} />
-            </div>
+            <FileHeatmap
+              files={
+                Array.isArray(files)
+                  ? files
+                    .filter(f => !search || f.path?.toLowerCase().includes(search.toLowerCase()))
+                    .sort((a, b) => b.score - a.score)
+                  : []
+              }
+              onFileClick={file => onFileClick(file)}
+            />
           </div>
 
-          <div className="glass-panel rounded-[2rem] p-10 flex flex-col items-center justify-center text-center">
-            <div className="w-full space-y-1 mb-10 text-left">
-              <h3 className="text-2xl font-black flex items-center gap-4 tracking-tight">
-                <ShieldCheck className="text-accent" size={24}/>
-                Entropy Vectors
-              </h3>
-              <p className="text-gray-500 text-xs font-medium uppercase tracking-widest pl-10">Categorical structural analysis</p>
-            </div>
-            <div className="flex-1 w-full flex items-center justify-center" ref={chartRef}>
-              <CategoryChart data={stats.categoryCounts} />
-            </div>
-            <button 
-              onClick={onNavigateToIssues}
-              className="w-full mt-10 py-5 bg-white/[0.03] border border-white/5 rounded-[1.25rem] text-white font-bold hover:bg-accent hover:border-accent hover:shadow-xl hover:shadow-accent/20 transition-premium text-xs tracking-[0.2em] flex items-center justify-center gap-3 uppercase"
+          {/* Category chart (1/3 width) */}
+          <div className="bento-card" ref={chartRef}>
+            <h2 className="text-base font-bold text-white mb-6">Issue Categories</h2>
+            <CategoryChart issues={issues || []} />
+
+            {/* Quick severity breakdown */}
+            <div
+              className="mt-6 pt-6 space-y-3"
+              style={{ borderTop: '1px solid var(--border)' }}
             >
-              Access Audit Log <ArrowUpRight size={18} />
-            </button>
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-12">
-          <div className="glass-panel rounded-[2rem] p-10">
-            <div className="flex items-center justify-between mb-12">
-              <div className="space-y-1">
-                <h3 className="text-2xl font-black flex items-center gap-4 tracking-tight font-['Outfit']">
-                  <AlertTriangle className="text-red-500" size={24} />
-                  High Impact Hotspots
-                </h3>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest pl-10">Top modules requiring urgent optimization</p>
-              </div>
-            </div>
-            
-            <div className="grid grid-cols-1 gap-4">
-              {hotspotFiles.map((file, i) => (
-                <div 
-                  key={i} 
-                  onClick={() => onFileClick(file)}
-                  className="group flex flex-wrap items-center justify-between p-6 glass-card rounded-2xl cursor-pointer"
-                >
-                  <div className="flex items-center gap-6">
-                    <div className="w-14 h-14 flex items-center justify-center bg-white/[0.03] rounded-2xl font-black text-gray-600 text-xl border border-white/5 group-hover:border-accent group-hover:text-accent transition-premium">
-                      {i + 1}
-                    </div>
-                    <div className="text-lg font-black text-white group-hover:text-accent transition-premium tracking-tight font-['Outfit']">{file.path.split('/').pop()}</div>
-                  </div>
-                  <div className={`text-2xl font-black font-['Outfit'] ${file.color === 'red' ? 'text-red-500' : 'text-amber-500'}`}>
-                    {file.score}
-                  </div>
+              {[
+                { label: 'Critical', count: stats?.severityCounts?.Critical ?? 0, cls: 'badge-critical' },
+                { label: 'Major',    count: stats?.severityCounts?.Major    ?? 0, cls: 'badge-major' },
+                { label: 'Minor',    count: stats?.severityCounts?.Minor    ?? 0, cls: 'badge-minor' },
+              ].map(({ label, count, cls }) => (
+                <div key={label} className="flex items-center justify-between">
+                  <span className={cls}>{label}</span>
+                  <span className="text-sm font-bold tabular-nums" style={{ color: 'var(--text-secondary)' }}>
+                    {count}
+                  </span>
                 </div>
               ))}
             </div>
           </div>
-
-          <div className="glass-panel rounded-[2rem] p-10 flex flex-col relative overflow-hidden">
-             <div className="absolute top-0 right-0 p-8 text-[80px] font-black text-white/[0.02] pointer-events-none select-none -translate-y-4 translate-x-4">COMPLIANCE</div>
-             <div className="w-full space-y-1 mb-10">
-                <h3 className="text-2xl font-black flex items-center gap-4 tracking-tight font-['Outfit'] text-white">
-                  <ShieldCheck className="text-accent" size={24} />
-                  Audit Compliance Report
-                </h3>
-                <p className="text-gray-500 text-xs font-medium uppercase tracking-widest pl-10">Evaluation Metrics & SLAs</p>
-             </div>
-
-             <div className="space-y-6 flex-1">
-                <div className="flex items-center justify-between p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
-                   <div className="flex items-center gap-4">
-                      <div className={`w-10 h-10 rounded-xl flex items-center justify-center ${isTimeCompliant ? 'bg-green-500/10 text-green-500' : 'bg-red-500/10 text-red-500'}`}>
-                         <Timer size={20} />
-                      </div>
-                      <div>
-                         <div className="text-xs font-black text-white uppercase tracking-widest">Time Efficiency</div>
-                         <div className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mt-1">Target: &lt;60s for 10k lines</div>
-                      </div>
-                   </div>
-                   <div className="text-right">
-                      <div className={`text-xl font-black font-['Outfit'] ${isTimeCompliant ? 'text-green-500' : 'text-red-500'}`}>{(durationMs / 1000).toFixed(1)}s</div>
-                      <div className={`text-[9px] font-black uppercase tracking-widest ${isTimeCompliant ? 'text-green-500/50' : 'text-red-500/50'}`}>{isTimeCompliant ? 'PASS' : 'FAIL'}</div>
-                   </div>
-                </div>
-
-                <div className="flex items-center justify-between p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
-                   <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-accent/10 text-accent rounded-xl flex items-center justify-center">
-                         <Zap size={20} />
-                      </div>
-                      <div>
-                         <div className="text-xs font-black text-white uppercase tracking-widest">SonarQube Baseline</div>
-                         <div className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mt-1">Accuracy vs Industry Standards</div>
-                      </div>
-                   </div>
-                   <div className="text-right">
-                      <div className="text-xl font-black font-['Outfit'] text-white">96.4%</div>
-                      <div className="text-[9px] text-accent font-black uppercase tracking-widest">SUPERIOR</div>
-                   </div>
-                </div>
-
-                <div className="flex items-center justify-between p-5 bg-white/[0.02] border border-white/5 rounded-2xl">
-                   <div className="flex items-center gap-4">
-                      <div className="w-10 h-10 bg-white/5 text-gray-400 rounded-xl flex items-center justify-center">
-                         <ArrowUpRight size={20} />
-                      </div>
-                      <div>
-                         <div className="text-xs font-black text-white uppercase tracking-widest">Fix Acceptance Rate</div>
-                         <div className="text-[10px] text-gray-600 font-bold uppercase tracking-widest mt-1">Suggested Correction Quality</div>
-                      </div>
-                   </div>
-                   <div className="text-right">
-                      <div className="text-xl font-black font-['Outfit'] text-white">88.2%</div>
-                      <div className="text-[9px] text-gray-600 font-black uppercase tracking-widest">OPTIMIZED</div>
-                   </div>
-                </div>
-             </div>
-          </div>
         </div>
 
-        <footer className="mt-20 border-t border-white/5 pt-12 text-center text-[11px] font-black text-gray-700 uppercase tracking-[0.5em] flex flex-wrap gap-12 items-center justify-center opacity-40">
-           <span>Professional Intelligence Engine</span>
-           <span className="w-2 h-2 rounded-full bg-accent/20" />
-           <span>Secure Infrastructure</span>
-           <span className="w-2 h-2 rounded-full bg-accent/20" />
-           <span>© 2026 CodeAnalyzer</span>
+        {/* ── VIEW ALL ISSUES CTA ─────────────────────────────── */}
+        <button
+          onClick={onNavigateToIssues}
+          className="w-full flex items-center justify-center gap-3 py-5 rounded-2xl text-sm font-semibold transition-premium"
+          style={{ border: '1px solid var(--border)', color: 'var(--text-secondary)' }}
+          onMouseEnter={e => { e.currentTarget.style.borderColor = 'var(--border-hover)'; e.currentTarget.style.color = '#fff'; }}
+          onMouseLeave={e => { e.currentTarget.style.borderColor = 'var(--border)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
+        >
+          View all {stats?.totalIssues ?? ''} issues
+          <ArrowUpRight size={16} />
+        </button>
+
+        {/* ── FOOTER ─────────────────────────────────────────── */}
+        <footer className="flex items-center justify-between pt-4 text-[11px] font-medium" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
+          <span>CodeAnalyzer © 2026</span>
+          <span>Secure static analysis · AI assisted · 100% automated</span>
         </footer>
+
       </div>
-    </div>
     </AestheticBackground>
   );
 };

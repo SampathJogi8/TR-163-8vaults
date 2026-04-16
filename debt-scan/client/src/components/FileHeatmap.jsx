@@ -1,51 +1,70 @@
 import React from 'react';
 
-const FileHeatmap = ({ files, onFileClick }) => {
-  return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6 px-1">
-      {files.map((file, idx) => (
-        <div
-          key={idx}
-          onClick={() => onFileClick(file)}
-          className="group relative glass-card p-6 rounded-2xl cursor-pointer hover:neon-glow transition-premium"
-        >
-          <div className="flex justify-between items-start mb-4">
-            <span className="text-[10px] font-black text-gray-500 truncate w-3/4 uppercase tracking-widest leading-none" title={file.path}>
-              {file.path.split('/').pop()}
-            </span>
-            <div className={`w-2 h-2 rounded-full ${
-              file.color === 'red' ? 'bg-red-500 shadow-[0_0_8px_rgba(239,68,68,0.5)]' : 
-              file.color === 'amber' ? 'bg-amber-500 shadow-[0_0_8px_rgba(245,158,11,0.5)]' : 'bg-green-500 shadow-[0_0_8px_rgba(16,185,129,0.5)]'
-            }`} />
-          </div>
-          
-          <div className="flex items-end justify-between mb-4">
-            <div>
-              <div className={`text-3xl font-black font-['Outfit'] tracking-tighter ${
-                file.color === 'red' ? 'text-red-500' : 
-                file.color === 'amber' ? 'text-amber-500' : 'text-gray-200'
-              }`}>
-                {file.score}
-              </div>
-              <div className="text-[8px] text-gray-700 font-black uppercase tracking-[0.2em] leading-none">Diagnostic Debt</div>
-            </div>
-            <div className="text-right">
-              <div className="text-lg font-black text-gray-500 font-['Outfit'] leading-none mb-0.5">{file.issueCount}</div>
-              <div className="text-[8px] text-gray-700 font-black uppercase tracking-[0.2em] leading-none">Issues</div>
-            </div>
-          </div>
+const FileHeatmap = ({ files = [], onFileClick }) => {
+  if (!files.length) return null;
 
-          <div className="w-full bg-white/[0.03] h-1 rounded-full overflow-hidden border border-white/5">
-            <div 
-              className={`h-full opacity-60 ${
-                file.color === 'red' ? 'bg-red-500' : 
-                file.color === 'amber' ? 'bg-amber-500' : 'bg-green-500'
-              }`} 
-              style={{ width: `${file.score}%` }}
-            />
-          </div>
-        </div>
-      ))}
+  const max = Math.max(...files.map(f => f.score || 0), 1);
+
+  const getBarColor = (score) => {
+    if (score > 66) return '#ef4444';
+    if (score > 33) return '#f59e0b';
+    return '#BFFF00';
+  };
+
+  const getBadgeClass = (score) => {
+    if (score > 66) return 'badge-critical';
+    if (score > 33) return 'badge-major';
+    return 'badge-minor';
+  };
+
+  return (
+    <div className="space-y-2">
+      {files.slice(0, 18).map((file, i) => {
+        const pct   = Math.max(2, (file.score / max) * 100);
+        const color = getBarColor(file.score);
+        return (
+          <button
+            key={i}
+            onClick={() => onFileClick && onFileClick(file)}
+            className="w-full flex items-center gap-3 p-3 rounded-xl text-left transition-premium group"
+            style={{ border: '1px solid transparent' }}
+            onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-hover)'}
+            onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
+          >
+            {/* File name */}
+            <span
+              className="text-xs font-mono flex-shrink-0 truncate"
+              style={{ color: 'var(--text-secondary)', width: '180px', minWidth: '120px' }}
+              title={file.path}
+            >
+              {file.path?.split('/').pop() || file.path}
+            </span>
+
+            {/* Bar */}
+            <div className="flex-1 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+              <div
+                className="h-full rounded-full transition-all duration-700"
+                style={{ width: `${pct}%`, background: color, opacity: 0.85 }}
+              />
+            </div>
+
+            {/* Score badge */}
+            <span className={`${getBadgeClass(file.score)} flex-shrink-0`}>
+              {Math.round(file.score)}
+            </span>
+
+            {/* Issue count */}
+            {file.issueCount > 0 && (
+              <span
+                className="flex-shrink-0 text-[10px] font-semibold"
+                style={{ color: 'var(--text-muted)' }}
+              >
+                {file.issueCount} {file.issueCount === 1 ? 'issue' : 'issues'}
+              </span>
+            )}
+          </button>
+        );
+      })}
     </div>
   );
 };

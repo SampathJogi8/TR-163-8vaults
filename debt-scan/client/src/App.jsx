@@ -60,7 +60,7 @@ const App = () => {
   };
 
   return (
-    <div className="text-white selection:bg-purple-500/30">
+    <div className="text-white selection:bg-lime-400/20">
       {view === 'landing' && (
         <LandingPage 
           onStartScan={handleStartScan} 

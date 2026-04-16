@@ -1,45 +1,47 @@
 import React from 'react';
 
-const StatCard = ({ label, value, unit, subtext, color = 'accent', icon }) => {
+const StatCard = ({ label, value, subtext, icon, unit, color }) => {
   const colorMap = {
-    accent: 'text-accent neon-text',
-    red: 'text-red-500 neon-text',
-    amber: 'text-amber-500 neon-text',
-    green: 'text-green-500 neon-text',
-    white: 'text-white'
+    green: { bg: 'rgba(34,197,94,0.08)', border: 'rgba(34,197,94,0.2)', text: '#22c55e' },
+    red:   { bg: 'rgba(239,68,68,0.08)',  border: 'rgba(239,68,68,0.2)',  text: '#ef4444' },
+    amber: { bg: 'rgba(245,158,11,0.08)', border: 'rgba(245,158,11,0.2)', text: '#f59e0b' },
+    lime:  { bg: 'rgba(191,255,0,0.08)',  border: 'rgba(191,255,0,0.2)',  text: '#BFFF00' },
   };
-
-  const glowMap = {
-    accent: 'bg-accent/10',
-    red: 'bg-red-500/10',
-    amber: 'bg-amber-500/10',
-    green: 'bg-green-500/10',
-    white: 'bg-white/5'
-  };
+  const c = colorMap[color] || colorMap.lime;
 
   return (
-    <div className="glass-panel p-8 rounded-[2rem] relative group overflow-hidden transition-premium hover:border-white/20">
-      {/* Background Glow Bleed */}
-      <div className={`absolute -right-10 -top-10 w-32 h-32 rounded-full blur-[60px] opacity-0 group-hover:opacity-100 transition-premium pointer-events-none ${glowMap[color] || glowMap.accent}`} />
-      
-      <div className="absolute top-0 right-0 p-8 text-white/[0.03] group-hover:text-white/[0.08] transition-premium group-hover:scale-110">
-        {React.cloneElement(icon, { size: 24, strokeWidth: 1.5 }) || null}
-      </div>
-
-      <div className="relative z-10">
-        <h3 className="text-gray-600 text-[10px] font-black uppercase tracking-[0.3em] mb-5">{label}</h3>
-        <div className="flex items-baseline gap-2">
-          <div className={`text-5xl font-black font-['Outfit'] tracking-tighter ${colorMap[color] || colorMap.white}`}>
-            {value}
-          </div>
-          {unit && <span className="text-sm font-bold text-gray-700 uppercase tracking-widest">{unit}</span>}
-        </div>
-        {subtext && (
-          <p className="text-gray-700 text-[10px] font-black mt-4 uppercase tracking-[0.1em] border-t border-white/5 pt-4">
-            {subtext}
-          </p>
+    <div className="crypton-card p-6 flex flex-col gap-4">
+      <div className="flex items-center justify-between">
+        <span
+          className="text-[10px] font-bold uppercase tracking-widest"
+          style={{ color: 'var(--text-muted)' }}
+        >
+          {label}
+        </span>
+        {icon && (
+          <span
+            className="w-8 h-8 flex items-center justify-center rounded-full"
+            style={{ background: c.bg, color: c.text, border: `1px solid ${c.border}` }}
+          >
+            {React.cloneElement(icon, { size: 14 })}
+          </span>
         )}
       </div>
+      <div className="flex items-end gap-1.5">
+        <span className="stat-value" style={{ color: c.text }}>
+          {value}
+        </span>
+        {unit && (
+          <span className="text-sm font-semibold pb-1" style={{ color: 'var(--text-muted)' }}>
+            {unit}
+          </span>
+        )}
+      </div>
+      {subtext && (
+        <span className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
+          {subtext}
+        </span>
+      )}
     </div>
   );
 };
