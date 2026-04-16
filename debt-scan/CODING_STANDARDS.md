@@ -68,4 +68,4 @@ Security is not a feature; it is a prerequisite.
 - [ ] Is the cyclomatic complexity low?
 - [ ] Does it meet the team's styling (Prettier/ESLint passed)?
 
-*Compiled by DebtScan Analysis Engine — 2026*
+*Compiled by Team 8Vaults — 2026*
