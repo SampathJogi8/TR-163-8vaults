@@ -21,6 +21,12 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
 
   const { overallScore, stats, durationMs, files, issues } = results;
 
+  const acceptedCount = (issues || []).filter(i => i.feedback === 'accepted').length;
+  const rejectedCount = (issues || []).filter(i => i.feedback === 'rejected').length;
+  const feedbackTotal = acceptedCount + rejectedCount;
+  const acceptanceRate = feedbackTotal > 0 ? Math.round((acceptedCount / feedbackTotal) * 100) : null;
+  const isFastScan = durationMs < 60000;
+
   const scoreColor =
     overallScore > 60 ? 'red' :
     overallScore > 30 ? 'amber' :

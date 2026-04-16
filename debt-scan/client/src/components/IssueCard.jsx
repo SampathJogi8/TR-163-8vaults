@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ChevronDown, ShieldCheck } from 'lucide-react';
+import { ChevronDown } from 'lucide-react';
 
 const categoryColors = {
   Security:      { bg: 'rgba(239,68,68,0.08)',   border: 'rgba(239,68,68,0.2)',   text: '#ef4444', icon: '🔒' },
@@ -9,7 +9,7 @@ const categoryColors = {
   Naming:        { bg: 'rgba(167,139,250,0.08)', border: 'rgba(167,139,250,0.2)', text: '#C4B5FD', icon: '🏷️' },
 };
 
-const IssueCard = ({ issue }) => {
+const IssueCard = ({ issue, onFeedback }) => {
   const [open, setOpen] = useState(false);
   const cat = categoryColors[issue.category] || categoryColors.TechnicalDebt;
   const sev = issue.severity || 'Minor';
@@ -87,12 +87,14 @@ const IssueCard = ({ issue }) => {
               {issue.fix}
             </p>
           </div>
+          
+          <div className="flex items-center justify-between pt-1">
             <span className="text-[11px] px-3 py-1 rounded-full border font-semibold"
                   style={{ background: cat.bg, borderColor: cat.border, color: cat.text }}>
               {issue.category}
             </span>
 
-            <div className="ml-auto flex items-center gap-2">
+            <div className="flex items-center gap-2">
               <span className="text-[10px] font-bold uppercase tracking-widest mr-2" style={{ color: 'var(--text-muted)' }}>
                 Was this fix helpful?
               </span>

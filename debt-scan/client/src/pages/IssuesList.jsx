@@ -6,7 +6,7 @@ import AestheticBackground from '../components/AestheticBackground';
 const SEVERITIES = ['All', 'Critical', 'Major', 'Minor'];
 const CATEGORIES = ['All', 'Security', 'TechnicalDebt', 'Performance', 'CodeSmell', 'Naming'];
 
-const IssuesList = ({ issues = [], onBack, onFileClick }) => {
+const IssuesList = ({ issues = [], onBack, onFileClick, onIssueFeedback }) => {
   const [search, setSearch]   = useState('');
   const [severity, setSeverity] = useState('All');
   const [category, setCategory] = useState('All');
