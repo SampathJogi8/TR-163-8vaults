@@ -67,21 +67,49 @@ const HeroSection = ({
             technical debt, and logic errors across any codebase — in seconds.
           </p>
 
-          {/* Value props */}
-          <div className="grid grid-cols-3 gap-3 pt-2">
+          {/* Bento stat cards */}
+          <div className="grid grid-cols-3 gap-3 pt-3">
             {[
-              { stat: '250+',   label: 'Issues detected',    sub: 'per scan on avg' },
-              { stat: '< 60s',  label: 'Analysis time',      sub: 'for most repos'  },
-              { stat: '3 formats', label: 'Export ready',    sub: 'PDF · JSON · XLS' },
-            ].map(({ stat, label, sub }) => (
+              { stat: '250+',      label: 'Issues\ndetected',   sub: 'per scan',   icon: '⚡', color: '#8B5CF6' },
+              { stat: '< 60s',     label: 'Analysis\ntime',     sub: 'per repo',   icon: '⏱', color: '#A78BFA' },
+              { stat: '3×',        label: 'Export\nformats',    sub: 'PDF·JSON·XLS', icon: '📤', color: '#7C3AED' },
+            ].map(({ stat, label, sub, icon, color }) => (
               <div
                 key={label}
-                className="flex flex-col gap-1 px-3 py-3 rounded-xl border"
-                style={{ background: 'rgba(139,92,246,0.04)', border: '1px solid var(--border)' }}
+                className="relative flex flex-col gap-2 p-4 rounded-2xl overflow-hidden transition-premium group"
+                style={{
+                  background: 'var(--card)',
+                  border: '1px solid var(--border)',
+                }}
+                onMouseEnter={e => e.currentTarget.style.borderColor = 'rgba(139,92,246,0.35)'}
+                onMouseLeave={e => e.currentTarget.style.borderColor = 'var(--border)'}
               >
-                <span className="text-lg font-black text-white" style={{ letterSpacing: '-0.03em' }}>{stat}</span>
-                <span className="text-[11px] font-bold text-white leading-tight">{label}</span>
-                <span className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{sub}</span>
+                {/* Purple gradient top-bar */}
+                <div
+                  className="absolute top-0 left-0 right-0 h-[2px] rounded-t-2xl"
+                  style={{ background: `linear-gradient(90deg, ${color}cc, transparent)` }}
+                />
+                {/* Icon */}
+                <span className="text-base">{icon}</span>
+                {/* Big number */}
+                <span
+                  className="text-2xl font-black leading-none"
+                  style={{
+                    background: `linear-gradient(135deg, ${color}, #C4B5FD)`,
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    letterSpacing: '-0.04em',
+                  }}
+                >
+                  {stat}
+                </span>
+                {/* Label */}
+                <div className="space-y-0.5">
+                  {label.split('\n').map(line => (
+                    <p key={line} className="text-[11px] font-bold text-white leading-tight">{line}</p>
+                  ))}
+                  <p className="text-[10px]" style={{ color: 'var(--text-muted)' }}>{sub}</p>
+                </div>
               </div>
             ))}
           </div>
