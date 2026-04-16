@@ -217,7 +217,16 @@ const HeroSection = ({
                   </select>
                 </div>
                 <div className="col-span-2 space-y-1.5">
-                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards</label>
+                  <div className="flex items-center justify-between">
+                    <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards</label>
+                    <button 
+                      onClick={() => setStandards('Security-first (Secrets, Injection), complexity < 10, DRY principles, error handling, strict naming.')}
+                      className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border transition-all hover:border-[var(--accent-light)] hover:text-white"
+                      style={{ background: 'rgba(139,92,246,0.05)', border: '1px solid var(--border)', color: 'var(--accent-light)' }}
+                    >
+                      Apply Team Standards
+                    </button>
+                  </div>
                   <input
                     type="text"
                     placeholder="e.g. OWASP Top 10, PCI-DSS"
