@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Github, FileArchive, ChevronDown, ChevronUp, Play, Info, Sparkles, Cpu, Shield, Zap } from 'lucide-react';
-import axios from 'axios';
+import api from '../api';
 import ProgressBar from '../components/ProgressBar';
 
 const LandingPage = ({ onStartScan, progress, statusMessage }) => {
@@ -30,7 +30,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
 
     setIsScanning(true);
     try {
-      const res = await axios.post('/api/analyze', {
+      const res = await api.post('/api/analyze', {
         type: inputType,
         url: inputType === 'github' ? url : undefined,
         zipBase64: inputType === 'zip' ? zipFile : undefined,

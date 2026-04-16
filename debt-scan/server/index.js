@@ -175,4 +175,11 @@ async function updateScan(id, progress, message) {
   await supabase.from('scans').update({ progress, message }).eq('id', id);
 }
 
+const PORT = process.env.PORT || 3001;
+if (process.env.NODE_ENV !== 'test') {
+  app.listen(PORT, () => {
+    console.log(`DebtScan Server running on port ${PORT}`);
+  });
+}
+
 module.exports = app;

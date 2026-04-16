@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import api from './api';
 import LandingPage from './pages/LandingPage';
 import Dashboard from './pages/Dashboard';
 import IssuesList from './pages/IssuesList';
@@ -18,13 +18,13 @@ const App = () => {
     if (scanId && view === 'landing') {
       interval = setInterval(async () => {
         try {
-          const res = await axios.get(`/api/scan/${scanId}/status`);
+          const res = await api.get(`/api/scan/${scanId}/status`);
           setProgress(res.data.progress);
           setStatusMessage(res.data.message);
 
           if (res.data.status === 'complete') {
             clearInterval(interval);
-            const resultsRes = await axios.get(`/api/scan/${scanId}/results`);
+            const resultsRes = await api.get(`/api/scan/${scanId}/results`);
             setResults({ ...resultsRes.data, scanId });
             setView('dashboard');
           } else if (res.data.status === 'error') {
