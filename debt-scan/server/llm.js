@@ -22,6 +22,13 @@ if (!process.env.XAI_API_KEY) {
   console.warn('WARNING: XAI_API_KEY is missing from environment.');
 }
 
+console.log('Neural Audit Framework initializing with:', {
+  gemini: !!process.env.GEMINI_API_KEY,
+  deepseek: !!process.env.DEEPSEEK_API_KEY,
+  grok: !!process.env.XAI_API_KEY,
+  openai: !!process.env.OPENAI_API_KEY
+});
+
 const anthropic = new Anthropic({
   apiKey: process.env.ANTHROPIC_API_KEY || 'dummy-key',
 });
@@ -162,7 +169,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
   } else if (provider === 'grok') {
     try {
       const response = await grok.chat.completions.create({
-        model: "grok-beta",
+        model: "grok-latest",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage }
@@ -260,9 +267,10 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
       const status = err.status || (err.response ? err.response.status : null);
       
       const is429 = status === 429 || msg.includes('429') || msg.includes('rate limit');
-      const isRecoverable = is429 || status === 401 || status === 402 || status === 403 ||
+      const isRecoverable = is429 || status === 401 || status === 402 || status === 403 || status === 400 ||
         msg.includes('quota') || msg.includes('credit') || msg.includes('unauthorized') || 
-        msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance');
+        msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance') ||
+        msg.includes('model not found') || msg.includes('invalid model');
 
       rotationLogs.push(`${p}: ${msg.substring(0, 100)}${is429 ? ' [RETRIABLE 429]' : ''}`);
 

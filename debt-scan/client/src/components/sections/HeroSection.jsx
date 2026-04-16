@@ -44,25 +44,40 @@ const HeroSection = ({
         
         <div className="relative bg-black/60 backdrop-blur-3xl rounded-[2rem] p-4 border border-white/10 shadow-2xl">
           <div className="flex flex-col gap-4">
-            <div className="relative flex items-center">
-              <input 
-                type="text" 
-                placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : "ZIP archive detected..."}
-                readOnly={inputType === 'zip'}
-                className="w-full bg-white/[0.03] border border-white/5 focus:border-white/20 rounded-2xl px-10 py-6 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg pr-40"
-                value={url}
-                onChange={(e) => setUrl(e.target.value)}
-              />
-              
-              <div className="absolute right-3 flex items-center gap-2">
-                <button 
-                  onClick={handleAnalyze}
-                  className="px-8 py-4 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-gray-200 active:scale-95 transition-all shadow-xl"
+                <div 
+                  className={`w-full bg-white/[0.03] border border-white/5 focus:border-white/20 rounded-2xl px-10 py-6 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg pr-40 relative flex items-center ${inputType === 'zip' ? 'cursor-pointer group/zip' : ''}`}
+                  onDragOver={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                  }}
+                  onDrop={(e) => {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    const file = e.dataTransfer.files[0];
+                    if (file && file.name.endsWith('.zip')) {
+                      setInputType('zip');
+                      handleFileChange({ target: { files: [file] } });
+                    }
+                  }}
                 >
-                  Execute Scan
-                </button>
-              </div>
-            </div>
+                  <input 
+                    type="text" 
+                    placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : zipFile ? "Archive Anchored (Drag new to replace)" : "Drop ZIP archive here..."}
+                    readOnly={inputType === 'zip'}
+                    className="w-full bg-transparent border-none outline-none"
+                    value={inputType === 'github' ? url : ''}
+                    onChange={(e) => setUrl(e.target.value)}
+                  />
+                  
+                  <div className="absolute right-3 flex items-center gap-2">
+                    <button 
+                      onClick={handleAnalyze}
+                      className="px-8 py-4 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-gray-200 active:scale-95 transition-all shadow-xl"
+                    >
+                      Execute Scan
+                    </button>
+                  </div>
+                </div>
 
             {/* Action Bar */}
             <div className="flex items-center justify-between px-4 pb-2">
@@ -102,8 +117,12 @@ const HeroSection = ({
                       onChange={(e) => setProvider(e.target.value)}
                     >
                       <option value="auto">AUTODETECT (OPTIMIZED)</option>
-                      <option value="anthropic">CLAUDE-3 SONNET</option>
                       <option value="gemini">GOOGLE GEMINI 2.0</option>
+                      <option value="deepseek">DEEPSEEK V3</option>
+                      <option value="grok">xAI GROK-2</option>
+                      <option value="anthropic">CLAUDE-3.5 SONNET</option>
+                      <option value="openrouter">OPENROUTER ARCH</option>
+                      <option value="openai">GPT-4O OMNI</option>
                     </select>
                   </div>
                   <div className="space-y-4">
