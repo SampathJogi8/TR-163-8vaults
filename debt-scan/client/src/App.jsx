@@ -74,6 +74,7 @@ const App = () => {
           results={results} 
           onFileClick={(file) => navigateToFileDetail(file, 'dashboard')}
           onNavigateToIssues={() => { setView('issues'); window.scrollTo(0, 0); }}
+          onNewScan={() => { setResults(null); setScanId(null); setView('landing'); window.scrollTo(0, 0); }}
         />
       )}
 

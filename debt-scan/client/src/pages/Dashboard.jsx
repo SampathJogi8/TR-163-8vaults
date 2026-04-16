@@ -10,7 +10,7 @@ import CategoryChart from '../components/CategoryChart';
 import { generatePDF, generateXLS, generateJSON } from '../utils/exportUtils';
 import AestheticBackground from '../components/AestheticBackground';
 
-const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
+const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
   const [showExportMenu, setShowExportMenu] = useState(false);
   const [isExporting, setIsExporting]       = useState(false);
   const [search, setSearch]                 = useState('');
@@ -52,6 +52,17 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
         {/* ── HEADER ─────────────────────────────────────────── */}
         <header className="flex flex-wrap items-start justify-between gap-6">
           <div className="space-y-2">
+            {onNewScan && (
+              <button
+                onClick={onNewScan}
+                className="flex items-center gap-1.5 text-xs font-semibold mb-1 transition-colors"
+                style={{ color: 'var(--text-muted)' }}
+                onMouseEnter={e => e.currentTarget.style.color = '#fff'}
+                onMouseLeave={e => e.currentTarget.style.color = 'var(--text-muted)'}
+              >
+                <ArrowUpRight size={13} style={{ transform: 'rotate(225deg)' }} /> New Scan
+              </button>
+            )}
             {/* Breadcrumb badges */}
             <div className="flex flex-wrap items-center gap-2">
               <span className="section-label">Audit Report</span>
