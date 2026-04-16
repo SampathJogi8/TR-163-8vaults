@@ -132,6 +132,16 @@ app.post('/api/analyze', async (req, res) => {
 
     console.log(`Deduplicated to ${uniqueIssues.length} unique issues. Scoring files...`);
 
+    // Prioritize and cap results to prevent DB payload errors
+    const prioritizedIssues = uniqueIssues.sort((a, b) => {
+      const order = { 'Critical': 0, 'Major': 1, 'Minor': 2 };
+      return (order[a.severity] || 0) - (order[b.severity] || 0);
+    }).slice(0, 250); // Cap at 250 most important issues
+
+    if (uniqueIssues.length > 250) {
+      console.log(`Truncated ${uniqueIssues.length} issues to top 250 for database stability.`);
+    }
+
     fileDataList.forEach(file => {
       const fileIssues = uniqueIssues.filter(i => i.file === file.path);
       file.rawScore = computeFileScore(fileIssues);
@@ -148,7 +158,7 @@ app.post('/api/analyze', async (req, res) => {
       message: 'Audit complete',
       overall_score: stats.overallScore,
       files: normalizedFiles,
-      issues: uniqueIssues,
+      issues: prioritizedIssues, // Use optimized list
       stats: stats,
       duration_ms: Date.now() - startTime
     }).eq('id', scanId);
