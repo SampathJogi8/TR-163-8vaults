@@ -4331,3 +4331,11 @@ AggregateError [ECONNREFUSED]:
 12:08:47 AM [vite] hmr update /src/App.jsx, /src/index.css
 12:09:04 AM [vite] hmr update /src/pages/FileDetail.jsx, /src/index.css
 12:10:45 AM [vite] hmr update /src/components/sections/HeroSection.jsx, /src/index.css
+12:11:34 AM [vite] http proxy error: /api/analyze
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+12:13:35 AM [vite] http proxy error: /api/analyze
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
