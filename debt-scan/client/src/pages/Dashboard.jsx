@@ -19,13 +19,17 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
 
   if (!results) return null;
 
-  const { overallScore, stats, durationMs, files, issues } = results;
+  const { overallScore = 0, stats = {}, durationMs = 0, files = [], issues = [] } = results;
 
   const acceptedCount = (issues || []).filter(i => i.feedback === 'accepted').length;
   const rejectedCount = (issues || []).filter(i => i.feedback === 'rejected').length;
   const feedbackTotal = acceptedCount + rejectedCount;
   const acceptanceRate = feedbackTotal > 0 ? Math.round((acceptedCount / feedbackTotal) * 100) : null;
   const isFastScan = durationMs < 60000;
+
+  // SONARQUBE ALIGNMENT: % of issues categorized as Security, CodeSmell, or TechnicalDebt
+  const sonarIssues = (issues || []).filter(i => ['Security', 'CodeSmell', 'TechnicalDebt'].includes(i.category)).length;
+  const sonarAlignment = issues?.length > 0 ? Math.round((sonarIssues / issues.length) * 100) : 0;
 
   const scoreColor =
     overallScore > 60 ? 'red' :
