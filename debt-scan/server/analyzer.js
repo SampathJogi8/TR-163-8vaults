@@ -57,14 +57,19 @@ function chunkFile(content, filename, language) {
 
 function getJSMetrics(content) {
   try {
+    // TOKEN ENTROPY SCAN: Detection of syntactically impossible character clusters
+    const entropyCheck = /%%%|\^\^\^|&&&|\*\*\*|###/.test(content);
+    if (entropyCheck) throw new Error("Extreme token entropy detected");
+
     const ast = parser.parse(content, {
       sourceType: 'module',
+      errorRecovery: false,
       plugins: ['typescript', 'jsx', 'classProperties', 'decorators-legacy']
     });
     
     let functionCount = 0;
     const traverse = (node) => {
-      if (['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression', 'ClassMethod'].includes(node.type)) {
+      if (node && ['FunctionDeclaration', 'FunctionExpression', 'ArrowFunctionExpression', 'ClassMethod'].includes(node.type)) {
         functionCount++;
       }
       for (const key in node) {
@@ -78,9 +83,13 @@ function getJSMetrics(content) {
       }
     };
     traverse(ast);
-    return { functionCount };
+    return { functionCount, isUnparseable: false };
   } catch (e) {
-    return { functionCount: (content.match(/function|=>/g) || []).length };
+    console.warn(`[Audit] Babel parser failed: ${e.message}. Using heuristic fallback.`);
+    return { 
+      functionCount: (content.match(/function|=>/g) || []).length,
+      isUnparseable: true 
+    };
   }
 }
 
@@ -89,16 +98,17 @@ function getPythonJavaMetrics(filePath, language) {
   const fullScriptPath = path.join(__dirname, scriptPath);
   
   try {
-    // SHIELD: Using execFileSync with args array to prevent shell injection
     const output = execFileSync('python3', [fullScriptPath, filePath]).toString();
-    return JSON.parse(output);
+    const result = JSON.parse(output);
+    return { ...result, isUnparseable: false };
   } catch (e) {
     console.warn(`[Audit] System python3 failed for ${language}: ${e.message}. Using heuristic fallback.`);
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
     return {
       functionCount: (content.match(/def\s+\w+|public\s+\w+|private\s+\w+/g) || []).length,
-      maxNesting: Math.max(...lines.map(l => (l.match(/^\s*/)[0].length / 4)), 0)
+      maxNesting: Math.max(...lines.map(l => (l.match(/^\s*/)[0].length / 4)), 0),
+      isUnparseable: true
     };
   }
 }
@@ -114,14 +124,30 @@ function computeMetrics(filePath, content) {
   });
   const maxNesting = Math.max(...nestingLevels, 0);
 
-  let metrics = { lineCount, maxNesting };
+  // CORRUPTION SENSOR: Check for binary junk or extreme symbol density
+  const binaryCheck = /[\x00-\x08\x0E-\x1F\x7F]/.test(content);
+  const symbolDensity = (content.match(/[^\w\s]/g) || []).length / (content.length || 1);
+  const isSuspicious = binaryCheck || symbolDensity > 0.2; // Reduced from 0.4 for higher sensitivity
+  
+  let metrics = { 
+    lineCount, 
+    maxNesting, 
+    isUnparseable: isSuspicious,
+    corruptionDetected: isSuspicious 
+  };
 
   if (ext === '.js' || ext === '.ts') {
-    Object.assign(metrics, getJSMetrics(content));
+    const jsMetrics = getJSMetrics(content);
+    Object.assign(metrics, jsMetrics);
+    if (jsMetrics.isUnparseable) metrics.isUnparseable = true;
   } else if (ext === '.py') {
-    Object.assign(metrics, getPythonJavaMetrics(filePath, 'python'));
+    const pyMetrics = getPythonJavaMetrics(filePath, 'python');
+    Object.assign(metrics, pyMetrics);
+    if (pyMetrics.isUnparseable) metrics.isUnparseable = true;
   } else if (ext === '.java') {
-    Object.assign(metrics, getPythonJavaMetrics(filePath, 'java'));
+    const jvMetrics = getPythonJavaMetrics(filePath, 'java');
+    Object.assign(metrics, jvMetrics);
+    if (jvMetrics.isUnparseable) metrics.isUnparseable = true;
   }
 
   // SCALE: Replacing MD5 hashing with high-speed string sampling for overlap detection

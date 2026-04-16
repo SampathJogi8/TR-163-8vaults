@@ -92,8 +92,11 @@ async function _performOpenRouterFreeFallback(standards, systemPrompt, userMessa
 
 async function _performAnalysis(chunk, standards, provider) {
   const systemPrompt = `
-You are an expert code reviewer specializing in code quality, security, and technical debt analysis.
-Your job is to analyze the provided code chunk and return a JSON array of issues found.
+You are an elite Security Auditor and Static Analysis Expert.
+Your job is to analyze the provided code chunk and return a JSON array of issues.
+
+CRITICAL DIRECTIVE:
+If the code appears corrupted, obfuscated, contains binary junk, or has severe syntax errors (Structural Integrity: COMPROMISED), you MUST flag this as at least one 'Critical' issue with category 'Security' or 'TechnicalDebt'. Explain that the file is structurally compromised.
 
 Each issue must follow this exact schema:
 {
@@ -107,12 +110,14 @@ Each issue must follow this exact schema:
   "fix": "<concrete code fix or refactoring suggestion>"
 }
 
-Return ONLY a valid JSON array. If no issues found, return [].
+Return ONLY a valid JSON array. If no legitimate issues are found AND structural integrity is Valid, return [].
 `;
 
+  const integrityStatus = chunk.metrics?.isUnparseable ? 'COMPROMISED (Severe Syntax/Parser Errors Detected)' : 'Valid';
   const userMessage = `
 Filename: ${chunk.filename}
 Language: ${chunk.language}
+Structural Integrity: ${integrityStatus}
 Lines ${chunk.startLine}-${chunk.endLine}
 Code:
 ${chunk.code}
@@ -129,8 +134,14 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         messages: [{ role: 'user', content: userMessage }],
       });
       const content = response.content[0].text;
-      const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
-      return JSON.parse(jsonStr || '[]');
+      try {
+        const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
+        if (!jsonStr) throw new Error("No JSON array found in response");
+        return JSON.parse(jsonStr);
+      } catch (parseErr) {
+        console.error(`[Neural Core] JSON Parse Failure on Anthropic. Content snippet: ${content.substring(0, 100)}...`);
+        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+      }
     } catch (err) {
       throw err;
     }
@@ -140,8 +151,14 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
       const prompt = `${systemPrompt}\n\n${userMessage}`;
       const result = await model.generateContent(prompt);
       const content = result.response.text();
-      const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
-      return JSON.parse(jsonStr || '[]');
+      try {
+        const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
+        if (!jsonStr) throw new Error("No JSON array found in response");
+        return JSON.parse(jsonStr);
+      } catch (parseErr) {
+        console.error(`[Neural Core] JSON Parse Failure on Gemini. Content snippet: ${content.substring(0, 100)}...`);
+        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+      }
     } catch (err) {
       throw err;
     }
@@ -169,7 +186,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
   } else if (provider === 'grok') {
     try {
       const response = await grok.chat.completions.create({
-        model: "grok-latest",
+        model: "grok-2",
         messages: [
           { role: "system", content: systemPrompt },
           { role: "user", content: userMessage }
@@ -198,8 +215,14 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         ],
       });
       const content = response.choices[0].message.content;
-      const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
-      return JSON.parse(jsonStr || '[]');
+      try {
+        const jsonStr = content.substring(content.indexOf('['), content.lastIndexOf(']') + 1);
+        if (!jsonStr) throw new Error("No JSON found in OpenRouter response");
+        return JSON.parse(jsonStr);
+      } catch (parseErr) {
+        console.error(`[Neural Core] JSON Parse Failure on OpenRouter. Content: ${content.substring(0, 100)}`);
+        throw new Error(`Invalid Intelligence Payload: ${parseErr.message}`);
+      }
     } catch (err) {
       throw err;
     }
@@ -285,6 +308,20 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
       }
       
       if (!isRecoverable) {
+        // LOCAL FALLBACK: If structural integrity is compromised, we can return a local finding
+        if (chunk.metrics?.isUnparseable) {
+          console.warn(`[Neural Core] Fatal on [${p}] but structural integrity is COMPROMISED. Using local diagnostic.`);
+          return [{
+            id: `local-fail-${Date.now()}`,
+            file: chunk.filename,
+            line: 1,
+            severity: "Critical",
+            category: "TechnicalDebt",
+            title: "Severe Structural Corruption",
+            description: "The source module is structurally unparseable (Possible binary junk, obfuscation, or extreme syntax failure). Manual review REQUIRED.",
+            fix: "Verify file encoding and restore from known-good source state. Ensure the file is not corrupted binary data incorrectly labeled with a source extension."
+          }];
+        }
         console.error(`[Neural Core] Fatal Error on [${p}]:`, msg);
         throw err;
       }
@@ -292,6 +329,19 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
   }
 
   // --- Final "Neural Safety Net" Fallback ---
+  if (chunk.metrics?.isUnparseable) {
+     console.warn(`[Neural Core] Primary cores exhausted but file is compromised. Forcing local finding.`);
+     return [{
+        id: `local-fallback-${Date.now()}`,
+        file: chunk.filename,
+        line: 1,
+        severity: "Critical",
+        category: "TechnicalDebt",
+        title: "Structural Integrity Failure",
+        description: "Engine detected unparseable syntax or corrupted data. This module cannot be audited by intelligence systems in its current state.",
+        fix: "Perform a structural audit of the file content. Check for non-printable characters or mismatched bracket hierarchies."
+     }];
+  }
   console.warn("--- [SYSTEM PANIC] PRIMARY CORES EXHAUSTED ---");
   
   if (process.env.OPENROUTER_API_KEY && !failedProviders.has('openrouter')) {
