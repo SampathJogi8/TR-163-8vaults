@@ -63,11 +63,11 @@ const MAX_CONCURRENT = parseInt(process.env.MAX_CONCURRENT_LLM_CALLS || '5');
 async function _performOpenRouterFreeFallback(standards, systemPrompt, userMessage) {
   const freeModels = [
     'google/gemma-3-27b-it:free',
-    'google/gemma-4-31b-it:free',
-    'qwen/qwen3-coder:free',
-    'meta-llama/llama-4-maverick:free',
     'google/gemma-3-12b-it:free',
-    'mistralai/ministral-8b:free',
+    'meta-llama/llama-3.1-8b-instruct:free',
+    'deepseek/deepseek-r1:free',
+    'mistralai/mistral-7b-instruct:free',
+    'google/gemma-4-31b-it:free',
   ];
   
   let lastFallbackErr = null;
@@ -213,9 +213,9 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
     // Use free models first, then fall back to paid if credits exist
     const freeModels = [
       'google/gemma-3-27b-it:free',
-      'google/gemma-4-31b-it:free',
-      'meta-llama/llama-4-maverick:free',
-      'mistralai/ministral-8b:free',
+      'google/gemma-3-12b-it:free',
+      'meta-llama/llama-3.1-8b-instruct:free',
+      'deepseek/deepseek-r1:free',
     ];
     let lastOpenRouterErr = null;
     for (const model of freeModels) {
@@ -425,10 +425,11 @@ async function analyzeChunk(chunk, standards = '', provider = 'auto') {
     const msg = String(err.message || err).toLowerCase();
     const status = err.status || (err.response ? err.response.status : null);
     
-    const isRecoverable = status === 401 || status === 402 || status === 403 || status === 400 ||
+    const isRecoverable = status === 401 || status === 402 || status === 403 || status === 400 || status === 404 ||
       msg.includes('quota') || msg.includes('credit') || msg.includes('unauthorized') || 
       msg.includes('user not found') || msg.includes('invalid api key') || msg.includes('balance') ||
-      msg.includes('model not found') || msg.includes('invalid model') || msg.includes('429');
+      msg.includes('model not found') || msg.includes('invalid model') || msg.includes('429') ||
+      msg.includes('no endpoints') || msg.includes('404');
 
     rotationLogs.push(`${p}: ${msg.substring(0, 100)}`);
 
