@@ -163,47 +163,80 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
   }
 }
 
+// Pre-flight Config Mapping
+const getAvailableProviders = (requested) => {
+  const config = {
+    anthropic: !!process.env.ANTHROPIC_API_KEY,
+    gemini: !!process.env.GEMINI_API_KEY,
+    openai: !!process.env.OPENAI_API_KEY,
+    openrouter: !!process.env.OPENROUTER_API_KEY
+  };
+
+  if (requested === 'auto') {
+    // Priority order for auto-rotation
+    return ['openrouter', 'gemini', 'anthropic', 'openai'].filter(p => config[p]);
+  }
+  return config[requested] ? [requested] : [];
+};
+
 async function analyzeChunk(chunk, standards = '', provider = 'auto') {
-  const providersToTry = provider === 'auto' 
-    ? ['openrouter', 'gemini', 'anthropic', 'openai']
-    : [provider];
+  const providersToTry = getAvailableProviders(provider);
+  
+  if (providersToTry.length === 0) {
+    console.warn(`No valid API keys found for requested provider: ${provider}. Attempting Emergency Fallback.`);
+    // If auto is requested but nothing is configured, or specific fails, try fallback
+  }
 
   let lastError = null;
 
   for (const p of providersToTry) {
     try {
-      console.log(`Analyzing ${chunk.filename} (Try: ${p})`);
+      console.log(`Analyzing ${chunk.filename} (Active Core: ${p})`);
       return await _performAnalysis(chunk, standards, p);
     } catch (err) {
       lastError = err;
-      const msg = err.message.toLowerCase();
-      const isQuotaError = msg.includes('quota') || 
-                           msg.includes('rate limit') || 
-                           msg.includes('credit') || 
-                           msg.includes('429') || 
-                           msg.includes('402') ||
-                           msg.includes('401') ||
-                           msg.includes('unauthorized') ||
-                           msg.includes('user not found') ||
-                           msg.includes('credits');
+      const msg = String(err.message || err).toLowerCase();
+      
+      // Broadened safety net matching (401, 402, 403, 429, etc.)
+      const isRecoverableError = 
+        msg.includes('quota') || 
+        msg.includes('rate limit') || 
+        msg.includes('credit') || 
+        msg.includes('429') || 
+        msg.includes('402') ||
+        msg.includes('401') ||
+        msg.includes('unauthorized') ||
+        msg.includes('user not found') ||
+        msg.includes('invalid api key') ||
+        msg.includes('balance') ||
+        msg.includes('credits');
 
-      if (isQuotaError && (providersToTry.length > 1 || provider !== 'auto')) {
-        console.warn(`Provider [${p}] failed due to limits. Rotating...`);
+      if (isRecoverableError && providersToTry.length > 1) {
+        console.warn(`Provider [${p}] flagged as non-responsive or unauthorized. Rotating to next core...`);
         continue;
       }
-      throw err;
+      
+      // If it's a structural or non-quota error, or we have no more cores, throw
+      if (!isRecoverableError) throw err;
     }
   }
 
-  // Final "Panic" Fallback (Neural Safety Net)
-  console.warn("--- ALL PRIMARY PROVIDERS EXHAUSTED. INITIATING NEURAL SAFETY NET ---");
-  try {
-    const systemPrompt = `Analyze code for debt and quality. Return JSON array.`; 
-    const userMessage = `File: ${chunk.filename}\nContent:\n${chunk.code}`;
-    return await _performOpenRouterFreeFallback(standards, systemPrompt, userMessage);
-  } catch (finalErr) {
-    throw new Error(`${lastError.message} (Safety Net also failed: ${finalErr.message})`);
+  // --- Final "Neural Safety Net" Fallback ---
+  // We only reach here if all primary cores in the loop failed or were skipped
+  console.warn("--- ALL PRIMARY CORES EXHAUSTED OR UNAVAILABLE. INITIATING EMERGENCY PROTOCOL ---");
+  
+  if (process.env.OPENROUTER_API_KEY) {
+    try {
+      const systemPrompt = `Analyze code for debt and quality. Return JSON array.`; 
+      const userMessage = `File: ${chunk.filename}\nContent:\n${chunk.code}`;
+      return await _performOpenRouterFreeFallback(standards, systemPrompt, userMessage);
+    } catch (finalErr) {
+      const baseError = lastError ? lastError.message : "No available providers";
+      throw new Error(`${baseError} (Emergency Protocol also failed: ${finalErr.message})`);
+    }
   }
+
+  throw new Error(lastError ? lastError.message : "Infrastructure Error: No AI providers configured in environment settings.");
 }
 
 async function analyzeAllChunks(chunks, standards = '', provider = 'auto', onProgress) {
