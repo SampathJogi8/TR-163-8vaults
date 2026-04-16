@@ -1481,3 +1481,6 @@ AggregateError [ECONNREFUSED]:
 7:16:24 PM [vite] hmr update /src/App.jsx, /src/index.css
 7:16:38 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
 7:29:04 PM [vite] page reload index.html
+9:39:50 PM [vite] hmr update /src/index.css
+9:40:11 PM [vite] hmr update /src/index.css
+9:41:10 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css

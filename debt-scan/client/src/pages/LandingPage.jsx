@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Github, FileArchive, ChevronDown, ChevronUp, Play, Info, Sparkles, Cpu, Shield, Zap } from 'lucide-react';
+import { Github, FileArchive, Play, Info, Sparkles, Cpu, Shield, Zap, Settings2 } from 'lucide-react';
 import api from '../api';
 import ProgressBar from '../components/ProgressBar';
 
@@ -9,9 +9,9 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const [zipFile, setZipFile] = useState(null);
   const [language, setLanguage] = useState('auto');
   const [standards, setStandards] = useState('');
-  const [expandStandards, setExpandStandards] = useState(false);
+  const [showAdvanced, setShowAdvanced] = useState(false);
   const [isScanning, setIsScanning] = useState(false);
-  const [provider, setProvider] = useState('auto'); // auto | anthropic | openai | gemini | openrouter
+  const [provider, setProvider] = useState('auto');
 
   const handleFileChange = (e) => {
     const file = e.target.files[0];
@@ -48,20 +48,21 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
 
   if (isScanning) {
     return (
-      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#050505] relative overflow-hidden">
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-accent/20 rounded-full blur-[120px] animate-pulse-glow" />
+      <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#010101] relative overflow-hidden">
+        <div className="star-field" />
+        <div className="horizon-arc scale-150 blur-[150px] opacity-100 transition-all duration-1000" />
         
-        <div className="relative z-10 text-center mb-16">
-          <div className="w-20 h-20 bg-accent/20 rounded-3xl flex items-center justify-center mx-auto mb-8 neon-glow border border-accent/30">
-            <Cpu className="text-accent animate-spin-slow" size={40} />
+        <div className="relative z-10 text-center mb-16 animate-float">
+          <div className="w-24 h-24 bg-white/[0.03] rounded-full flex items-center justify-center mx-auto mb-10 border border-white/10 shadow-2xl">
+            <Cpu className="text-white animate-pulse" size={40} />
           </div>
-          <h1 className="text-5xl font-black text-white mb-4 tracking-tight font-['Outfit']">
-            Neural <span className="text-accent">Audit</span> In Progress
+          <h1 className="text-5xl font-black text-white mb-6 tracking-tight font-['Outfit']">
+             Audit <span className="font-serif-italic">Emergence</span>
           </h1>
-          <p className="text-gray-500 font-medium tracking-wide">Deconstructing codebase architecture and identifying entropy...</p>
+          <p className="text-gray-500 font-medium tracking-widest uppercase text-[10px]">Deconstructing neural pathways and architecture...</p>
         </div>
         
-        <div className="w-full max-w-xl">
+        <div className="w-full max-w-xl relative z-10">
           <ProgressBar progress={progress} message={statusMessage} />
         </div>
       </div>
@@ -69,137 +70,148 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   }
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#050505] selection:bg-accent/30 relative overflow-hidden">
-      {/* Dynamic Background Elements */}
-      <div className="absolute top-[-10%] right-[-10%] w-[500px] h-[500px] bg-accent/10 rounded-full blur-[100px]" />
-      <div className="absolute bottom-[-10%] left-[-10%] w-[500px] h-[500px] bg-accent/5 rounded-full blur-[100px]" />
-      <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 pointer-events-none" />
+    <div className="min-h-screen flex flex-col items-center justify-center p-6 bg-[#010101] selection:bg-white/10 relative overflow-hidden">
+      {/* Celestial Background */}
+      <div className="star-field" />
+      <div className="horizon-arc" />
+      
+      {/* Top Navigation Watermark */}
+      <div className="absolute top-10 left-10 z-20 flex items-center gap-4 opacity-40 hover:opacity-100 transition-premium cursor-crosshair">
+        <div className="w-8 h-8 flex items-center justify-center border border-white/20 rounded-lg font-black text-[10px]">DS</div>
+        <span className="text-[10px] font-black uppercase tracking-[0.4em]">Audit Intelligence</span>
+      </div>
 
-      <div className="max-w-5xl w-full relative z-10">
+      <div className="max-w-4xl w-full relative z-10 flex flex-col items-center">
+        
         <header className="text-center mb-20 animate-in fade-in slide-in-from-bottom-8 duration-1000">
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-white/5 border border-white/10 rounded-full text-white/70 text-[10px] font-bold tracking-[0.25em] uppercase mb-8 backdrop-blur-md">
-            <Sparkles size={12} className="text-accent" />
-            Next-Gen Technical Debt Analysis
+          <div className="inline-flex items-center gap-3 px-4 py-2 bg-white/[0.03] border border-white/10 rounded-full text-white/40 text-[9px] font-black tracking-[0.3em] uppercase mb-12 backdrop-blur-md">
+            <Sparkles size={12} className="text-white/60" />
+            Neural Audit Framework v1.0
           </div>
-          <h1 className="text-8xl font-black text-white mb-8 tracking-tighter font-['Outfit'] leading-[0.9]">
-            Debt<span className="text-accent neon-text">Scan</span>
+          <h1 className="text-7xl lg:text-[100px] font-black text-white mb-10 tracking-tighter font-['Outfit'] leading-[0.85]">
+            Neural audits come to those <span className="font-serif-italic text-white underline decoration-white/10 underline-offset-8 decoration-1">who scan.</span>
           </h1>
-          <p className="text-xl text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
-            The elite reasoning engine for modern codebases. Identify logic gaps, 
-            security leaks, and structural debt with <span className="text-white">enterprise-grade precision</span>.
+          <p className="text-lg text-gray-500 max-w-2xl mx-auto leading-relaxed font-medium">
+            The future of codebase intelligence. Identify structural entropy 
+            and logic gaps with <span className="text-white">autonomous precision</span>.
           </p>
         </header>
 
-        <div className="glass-panel rounded-[2.5rem] p-4 sm:p-2 shadow-2xl relative overflow-hidden group">
-          <div className="absolute inset-0 bg-gradient-to-br from-accent/10 to-transparent opacity-50 pointer-events-none" />
+        {/* Celestial Command Console */}
+        <div className="w-full max-w-2xl relative group">
+          <div className="absolute -inset-1 bg-gradient-to-r from-blue-500/20 to-purple-500/20 rounded-[2rem] blur opacity-25 group-hover:opacity-100 transition duration-1000 group-hover:duration-200"></div>
           
-          <div className="bg-[#0a0a0a] rounded-[2rem] p-8 sm:p-12 relative z-10">
-            <div className="flex bg-white/5 p-1.5 rounded-2xl mb-10 border border-white/5">
-              <button 
-                onClick={() => setInputType('github')}
-                className={`flex-1 flex items-center justify-center gap-3 py-4 rounded-xl transition-premium ${inputType === 'github' ? 'bg-accent text-white shadow-xl neon-glow' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
-              >
-                <Github size={20} />
-                <span className="font-bold text-sm tracking-tight uppercase">Source Repository</span>
-              </button>
-              <button 
-                onClick={() => setInputType('zip')}
-                className={`flex-1 flex items-center justify-center gap-3 py-4 rounded-xl transition-premium ${inputType === 'zip' ? 'bg-accent text-white shadow-xl neon-glow' : 'text-gray-500 hover:text-white hover:bg-white/5'}`}
-              >
-                <FileArchive size={20} />
-                <span className="font-bold text-sm tracking-tight uppercase">Local Archive</span>
-              </button>
-            </div>
-
-            <div className="space-y-8">
-              {inputType === 'github' ? (
-                <div className="relative">
-                  <input 
-                    type="text" 
-                    placeholder="https://github.com/organization/infrastructure"
-                    className="w-full bg-white/[0.03] border-2 border-white/5 focus:border-accent/50 rounded-2xl px-8 py-5 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg"
-                    value={url}
-                    onChange={(e) => setUrl(e.target.value)}
-                  />
-                  <div className="mt-4 flex items-center gap-2 text-[10px] text-gray-500 font-bold uppercase tracking-widest px-2">
-                    <Shield size={14} className="text-accent" /> Public access required for analysis
-                  </div>
-                </div>
-              ) : (
-                <label className="flex flex-col items-center justify-center w-full h-40 border-2 border-dashed border-white/10 hover:border-accent/40 bg-white/[0.02] rounded-2xl cursor-pointer transition-premium group/upload">
-                  <div className="flex flex-col items-center justify-center">
-                    <FileArchive className="mb-4 text-gray-600 group-hover/upload:text-accent transition-premium" size={40} />
-                    <p className="text-sm font-bold text-gray-500 group-hover/upload:text-gray-300 transition-premium uppercase tracking-widest">
-                      {zipFile ? 'Ready to analyze' : 'Drag & Drop Codebase Archive'}
-                    </p>
-                  </div>
-                  <input type="file" className="hidden" accept=".zip" onChange={handleFileChange} />
-                </label>
-              )}
-
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-                <div className="space-y-3">
-                  <label className="block text-[10px] font-black text-white/30 uppercase tracking-[0.3em] px-1">Language Protocol</label>
-                  <select 
-                    className="w-full bg-white/[0.03] border-2 border-white/5 rounded-2xl px-6 py-5 text-white outline-none appearance-none focus:border-accent/50 transition-premium cursor-pointer font-bold text-sm"
-                    value={language}
-                    onChange={(e) => setLanguage(e.target.value)}
+          <div className="relative bg-black/60 backdrop-blur-3xl rounded-[2rem] p-4 border border-white/10 shadow-2xl">
+            <div className="flex flex-col gap-4">
+              <div className="relative flex items-center">
+                <input 
+                  type="text" 
+                  placeholder={inputType === 'github' ? "Enter GitHub Repository URL" : "ZIP archive detected..."}
+                  readOnly={inputType === 'zip'}
+                  className="w-full bg-white/[0.03] border border-white/5 focus:border-white/20 rounded-2xl px-10 py-6 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg pr-40"
+                  value={url}
+                  onChange={(e) => setUrl(e.target.value)}
+                />
+                
+                <div className="absolute right-3 flex items-center gap-2">
+                  <button 
+                    onClick={handleAnalyze}
+                    className="px-8 py-4 bg-white text-black font-black text-[10px] uppercase tracking-widest rounded-xl hover:bg-gray-200 active:scale-95 transition-all shadow-xl"
                   >
-                    <option value="auto">AUTODETECT ARCHITECTURE</option>
-                    <option value="javascript">JAVASCRIPT / TYPESCRIPT</option>
-                    <option value="python">PYTHON (AI/ML)</option>
-                    <option value="java">JAVA (REST/ENTERPRISE)</option>
-                  </select>
+                    Execute Scan
+                  </button>
                 </div>
+              </div>
 
-                <div className="space-y-3">
-                  <label className="block text-[10px] font-black text-white/30 uppercase tracking-[0.3em] px-1">Reasoning Core</label>
-                  <div className="grid grid-cols-3 gap-2 bg-white/[0.03] p-1.5 rounded-2xl border-2 border-white/5">
-                    <button onClick={() => setProvider('auto')} className={`py-3 rounded-xl text-[9px] font-black tracking-widest transition-premium ${provider === 'auto' ? 'bg-accent text-white shadow-lg' : 'text-gray-500 hover:text-white'}`}>AUTO</button>
-                    <button onClick={() => setProvider('anthropic')} className={`py-3 rounded-xl text-[9px] font-black tracking-widest transition-premium ${provider === 'anthropic' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}>CLAUDE</button>
-                    <button onClick={() => setProvider('openrouter')} className={`py-3 rounded-xl text-[9px] font-black tracking-widest transition-premium ${provider === 'openrouter' ? 'bg-white text-black' : 'text-gray-500 hover:text-white'}`}>SONNET.R</button>
+              {/* Action Bar */}
+              <div className="flex items-center justify-between px-4 pb-2">
+                <div className="flex gap-6">
+                  <button 
+                    onClick={() => setInputType(inputType === 'github' ? 'zip' : 'github')}
+                    className="flex items-center gap-2 text-[9px] font-black text-white/40 hover:text-white transition-premium uppercase tracking-widest"
+                  >
+                    {inputType === 'github' ? <FileArchive size={14} /> : <Github size={14} />}
+                    Switch to {inputType === 'github' ? 'Local Archive' : 'Source Repo'}
+                  </button>
+                  <button 
+                    onClick={() => setShowAdvanced(!showAdvanced)}
+                    className={`flex items-center gap-2 text-[9px] font-black transition-premium uppercase tracking-widest ${showAdvanced ? 'text-white' : 'text-white/40 hover:text-white'}`}
+                  >
+                    <Settings2 size={14} />
+                    Configuration
+                  </button>
+                </div>
+                
+                {inputType === 'zip' && zipFile && (
+                  <div className="flex items-center gap-2 text-[9px] font-black text-green-500 uppercase tracking-widest">
+                    <Shield size={12} /> Archive Ready
                   </div>
-                </div>
+                )}
               </div>
 
-              <div className="pt-4">
-                <button 
-                  onClick={handleAnalyze}
-                  className="btn-primary w-full py-6 text-base tracking-[0.2em] flex items-center justify-center gap-4 group/btn"
-                >
-                  <Play size={20} fill="currentColor" className="group-hover:translate-x-1 transition-premium" />
-                  EXECUTE FULL SCAN
-                  <Zap size={18} className="text-white/50" />
-                </button>
-              </div>
+              {/* Advanced Panel */}
+              {showAdvanced && (
+                <div className="p-4 bg-white/[0.02] border-t border-white/5 rounded-b-2xl animate-in fade-in slide-in-from-top-4 duration-500 mt-2">
+                  <div className="grid grid-cols-2 gap-6 mb-6">
+                    <div className="space-y-4">
+                      <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Analysis Core</label>
+                      <select 
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-[10px] outline-none font-bold tracking-widest uppercase cursor-pointer"
+                        value={provider}
+                        onChange={(e) => setProvider(e.target.value)}
+                      >
+                        <option value="auto">AUTODETECT (OPTIMIZED)</option>
+                        <option value="anthropic">CLAUDE-3 SONNET</option>
+                        <option value="gemini">GOOGLE GEMINI 2.0</option>
+                      </select>
+                    </div>
+                    <div className="space-y-4">
+                      <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Language Mapping</label>
+                      <select 
+                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white text-[10px] outline-none font-bold tracking-widest uppercase cursor-pointer"
+                        value={language}
+                        onChange={(e) => setLanguage(e.target.value)}
+                      >
+                        <option value="auto">AUTO-PROTOCOL</option>
+                        <option value="javascript">JS / TS MODULES</option>
+                        <option value="python">PY (NEURAL ARCH)</option>
+                      </select>
+                    </div>
+                  </div>
+                  
+                  {inputType === 'zip' && (
+                    <div className="mb-6">
+                       <label className="flex flex-col items-center justify-center w-full h-24 border border-dashed border-white/10 hover:border-white/30 bg-white/[0.01] rounded-2xl cursor-pointer transition-premium group/upload">
+                        <div className="flex items-center gap-3">
+                          <FileArchive className="text-white/20 group-hover/upload:text-white transition-premium" size={20} />
+                          <p className="text-[9px] font-black text-white/20 group-hover/upload:text-white transition-premium uppercase tracking-widest">
+                            {zipFile ? 'File Anchored' : 'Select Local Repository ZIP'}
+                          </p>
+                        </div>
+                        <input type="file" className="hidden" accept=".zip" onChange={handleFileChange} />
+                      </label>
+                    </div>
+                  )}
 
-              <div className="pt-2">
-                <button 
-                  onClick={() => setExpandStandards(!expandStandards)}
-                  className="flex items-center gap-3 text-[10px] font-black text-white/20 hover:text-accent transition-premium py-2 tracking-[0.25em]"
-                >
-                  {expandStandards ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-                  CUSTOM COMPLIANCE STANDARDS (OPTIONAL)
-                </button>
-                {expandStandards && (
-                  <div className="animate-in fade-in slide-in-from-top-4 duration-300">
+                  <div className="space-y-4">
+                    <label className="text-[9px] font-black text-white/20 uppercase tracking-[0.3em]">Compliance Standards</label>
                     <textarea 
-                      className="w-full mt-4 bg-white/[0.02] border border-white/10 rounded-2xl p-6 text-white outline-none focus:border-accent/40 transition-premium h-32 font-mono text-xs placeholder:text-gray-800 leading-relaxed"
-                      placeholder="Specify your team's unique coding patterns, restricted libraries, or architectural constraints..."
+                      className="w-full bg-white/[0.03] border border-white/10 rounded-xl p-4 text-white text-xs outline-none focus:border-white/20 transition-premium h-24 font-mono placeholder:text-gray-800"
+                      placeholder="Specify custom architectural constraints or patterns..."
                       value={standards}
                       onChange={(e) => setStandards(e.target.value)}
                     />
                   </div>
-                )}
-              </div>
+                </div>
+              )}
             </div>
           </div>
         </div>
-        
-        <footer className="mt-12 text-center text-[10px] font-bold text-gray-700 uppercase tracking-[0.4em] flex items-center justify-center gap-12">
-          <div className="flex items-center gap-3"><Shield size={14} className="text-accent/40" /> SECURE AUDIT</div>
-          <div className="flex items-center gap-3"><Zap size={14} className="text-accent/40" /> NEURAL ENGINE</div>
-          <div className="flex items-center gap-3"><Cpu size={14} className="text-accent/40" /> 100% AUTOMATED</div>
+
+        <footer className="mt-24 text-center text-[9px] font-black text-white/10 hover:text-white/20 transition-premium uppercase tracking-[0.5em] flex items-center justify-center gap-16 cursor-default">
+          <div className="flex items-center gap-3"><Shield size={14}/> Immutable Audit</div>
+          <div className="flex items-center gap-3"><Zap size={14}/> Neural Compute</div>
+          <div className="flex items-center gap-3"><Cpu size={14}/> 100% Automated</div>
         </footer>
       </div>
     </div>

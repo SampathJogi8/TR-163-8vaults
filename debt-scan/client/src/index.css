@@ -1,14 +1,16 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Outfit:wght@400;500;600;700;800;900&family=Instrument+Serif:ital@0;1&display=swap');
 
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: #050505;
-  --card: #0a0a0a;
+  --background: #010101;
+  --card: rgba(255, 255, 255, 0.03);
   --accent: #7c3aed;
   --accent-glow: rgba(124, 58, 237, 0.4);
+  --horizon-glow: rgba(255, 255, 255, 0.05);
+  --celestial-blue: #0099ff;
   --success: #10b981;
   --warning: #f59e0b;
   --error: #ef4444;
@@ -49,30 +51,61 @@
   .btn-secondary {
     @apply px-6 py-3 bg-white/5 border border-white/10 text-gray-300 font-bold rounded-2xl hover:bg-white/10 hover:text-white transition-all;
   }
+
+  /* Celestial UI Elements */
+  .horizon-arc {
+    position: absolute;
+    bottom: -150px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200%;
+    height: 300px;
+    background: radial-gradient(ellipse at center, var(--horizon-glow) 0%, transparent 70%);
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 100%;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  .star-field {
+    @apply absolute inset-0 pointer-events-none;
+    background-image: 
+      radial-gradient(1px 1px at 20px 30px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 100px 200px, rgba(255,255,255,0.7), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 400px 150px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 600px 300px, rgba(255,255,255,0.5), rgba(0,0,0,0)),
+      radial-gradient(1px 1px at 800px 500px, #ffffff, rgba(0,0,0,0)),
+      radial-gradient(1.5px 1.5px at 900px 100px, rgba(255,255,255,0.8), rgba(0,0,0,0));
+    background-repeat: repeat;
+    background-size: 1000px 1000px;
+    opacity: 0.15;
+  }
+
+  .font-serif-italic {
+    font-family: 'Instrument Serif', serif;
+    font-style: italic;
+  }
 }
 
 .transition-premium {
-  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-::-webkit-scrollbar {
-  width: 10px;
-}
-::-webkit-scrollbar-track {
-  @apply bg-background;
-}
-::-webkit-scrollbar-thumb {
-  @apply bg-white/10 rounded-full border-2 border-background;
-}
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-accent;
+.celestial-input {
+  @apply w-full bg-white/[0.02] border border-white/10 rounded-2xl px-8 py-5 text-white outline-none transition-premium placeholder:text-gray-700 font-medium text-lg;
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(10px);
 }
 
-@keyframes pulse-glow {
-  0%, 100% { opacity: 0.5; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
+.celestial-input:focus {
+  @apply border-white/20 bg-white/[0.04] shadow-2xl shadow-white/5;
 }
 
-.animate-pulse-glow {
-  animation: pulse-glow 3s infinite ease-in-out;
+@keyframes celestial-float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: celestial-float 6s infinite ease-in-out;
 }
