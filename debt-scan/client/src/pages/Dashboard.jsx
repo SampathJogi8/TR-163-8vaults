@@ -94,7 +94,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues }) => {
               {showExportMenu && (
                 <div
                   className="absolute right-0 mt-2 w-52 rounded-2xl overflow-hidden z-50 animate-pop-in"
-                  style={{ background: 'var(--surface)', border: '1px solid var(--border)', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}
+                  style={{ background: 'rgba(139,92,246,0.12)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.25)', boxShadow: '0 20px 60px rgba(0,0,0,0.6)' }}
                 >
                   {[
                     { fmt: 'pdf',  label: 'PDF Report',   icon: FileText,   color: '#ef4444' },

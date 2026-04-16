@@ -52,8 +52,8 @@ const PricingTable = () => (
           key={name}
           className="relative flex flex-col p-8 rounded-2xl transition-premium"
           style={{
-            background: popular ? 'rgba(191,255,0,0.04)' : 'var(--card)',
-            border: `1px solid ${popular ? 'rgba(191,255,0,0.3)' : 'var(--border)'}`,
+            background: popular ? 'rgba(139,92,246,0.08)' : 'var(--card)',
+            border: `1px solid ${popular ? 'rgba(139,92,246,0.35)' : 'var(--border)'}`,
           }}
         >
           {/* Popular badge */}

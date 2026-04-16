@@ -93,11 +93,11 @@ const HeroSection = ({
           {inputType === 'zip' && (
             <div
               className="flex flex-col items-center justify-center gap-3 py-8 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
-              style={{ borderColor: zipFile ? 'var(--accent)' : 'var(--border)', background: zipFile ? 'rgba(191,255,0,0.04)' : 'transparent' }}
+              style={{ borderColor: zipFile ? 'var(--accent)' : 'var(--border)', background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent' }}
               onClick={() => document.getElementById('zip-upload').click()}
             >
               <FileArchive size={24} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
-              <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }}>
+              <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
                 {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
               </span>
               <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />

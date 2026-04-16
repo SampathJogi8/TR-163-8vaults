@@ -61,10 +61,10 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
           <div className="w-full max-w-md text-center space-y-8">
             {/* Animated icon */}
             <div
-              className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center animate-pulse-glow"
-              style={{ background: 'rgba(191,255,0,0.1)', border: '1px solid rgba(191,255,0,0.2)' }}
-            >
-              <Cpu size={28} style={{ color: 'var(--accent)' }} />
+            className="w-16 h-16 mx-auto rounded-2xl flex items-center justify-center animate-pulse-glow"
+            style={{ background: 'rgba(139,92,246,0.12)', border: '1px solid rgba(139,92,246,0.25)' }}
+          >
+            <Cpu size={28} style={{ color: 'var(--accent)' }} />
             </div>
             <div className="space-y-2">
               <h1 className="text-3xl font-bold text-white" style={{ letterSpacing: '-0.03em' }}>
@@ -132,7 +132,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
               <span className="text-base font-bold text-white">CodeAnalyzer</span>
               <span
                 className="text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest"
-                style={{ background: 'rgba(191,255,0,0.1)', color: 'var(--accent)', border: '1px solid rgba(191,255,0,0.2)' }}
+                style={{ background: 'rgba(139,92,246,0.1)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.25)' }}
               >
                 Beta
               </span>

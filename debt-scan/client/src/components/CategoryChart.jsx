@@ -2,10 +2,10 @@ import React from 'react';
 
 const CATEGORY_COLORS = {
   Security:      '#ef4444',
-  TechnicalDebt: '#8b5cf6',
-  CodeSmell:     '#BFFF00',
+  TechnicalDebt: '#A78BFA',
+  CodeSmell:     '#8B5CF6',
   Performance:   '#f59e0b',
-  Naming:        '#6366f1',
+  Naming:        '#C4B5FD',
 };
 
 const CategoryChart = ({ issues = [] }) => {
@@ -27,25 +27,18 @@ const CategoryChart = ({ issues = [] }) => {
   return (
     <div className="space-y-3">
       {entries.map(([cat, count]) => {
-        const color = CATEGORY_COLORS[cat] || '#BFFF00';
+        const color = CATEGORY_COLORS[cat] || '#8B5CF6';
         const pct   = Math.max(4, (count / max) * 100);
         return (
           <div key={cat} className="space-y-1.5">
             <div className="flex items-center justify-between">
-              <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>
-                {cat}
-              </span>
-              <span
-                className="text-xs font-bold tabular-nums"
-                style={{ color }}
-              >
-                {count}
-              </span>
+              <span className="text-xs font-semibold" style={{ color: 'var(--text-secondary)' }}>{cat}</span>
+              <span className="text-xs font-bold tabular-nums" style={{ color }}>{count}</span>
             </div>
-            <div className="h-1 rounded-full w-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <div className="h-1 rounded-full w-full" style={{ background: 'rgba(139,92,246,0.1)' }}>
               <div
                 className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${pct}%`, background: color, opacity: 0.8 }}
+                style={{ width: `${pct}%`, background: color, opacity: 0.85 }}
               />
             </div>
           </div>

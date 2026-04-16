@@ -14,7 +14,7 @@ const FileDetail = ({ file, issues = [], onBack }) => {
   const scoreColor =
     file.score > 66 ? '#ef4444' :
     file.score > 33 ? '#f59e0b' :
-    '#BFFF00';
+    '#8B5CF6'; // purple for good scores
 
   return (
     <AestheticBackground>
@@ -67,7 +67,7 @@ const FileDetail = ({ file, issues = [], onBack }) => {
             { label: 'Lines',        value: file.lineCount ?? '—', icon: <FileText size={14} />, color: 'lime' },
           ].map(({ label, value, icon, color }) => {
             const colorMap = {
-              lime:  { bg: 'rgba(191,255,0,0.08)', border: 'rgba(191,255,0,0.2)',  text: '#BFFF00' },
+              lime:  { bg: 'rgba(139,92,246,0.1)', border: 'rgba(139,92,246,0.25)', text: '#A78BFA' },
               red:   { bg: 'rgba(239,68,68,0.08)', border: 'rgba(239,68,68,0.2)',  text: '#ef4444' },
               amber: { bg: 'rgba(245,158,11,0.08)',border: 'rgba(245,158,11,0.2)',  text: '#f59e0b' },
             };

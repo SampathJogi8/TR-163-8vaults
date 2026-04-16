@@ -8,13 +8,13 @@ const FileHeatmap = ({ files = [], onFileClick }) => {
   const getBarColor = (score) => {
     if (score > 66) return '#ef4444';
     if (score > 33) return '#f59e0b';
-    return '#BFFF00';
+    return '#8B5CF6'; // purple for good files
   };
 
   const getBadgeClass = (score) => {
     if (score > 66) return 'badge-critical';
     if (score > 33) return 'badge-major';
-    return 'badge-minor';
+    return 'badge-minor'; // badge-minor now uses purple
   };
 
   return (
@@ -31,7 +31,6 @@ const FileHeatmap = ({ files = [], onFileClick }) => {
             onMouseEnter={e => e.currentTarget.style.borderColor = 'var(--border-hover)'}
             onMouseLeave={e => e.currentTarget.style.borderColor = 'transparent'}
           >
-            {/* File name */}
             <span
               className="text-xs font-mono flex-shrink-0 truncate"
               style={{ color: 'var(--text-secondary)', width: '180px', minWidth: '120px' }}
@@ -40,25 +39,19 @@ const FileHeatmap = ({ files = [], onFileClick }) => {
               {file.path?.split('/').pop() || file.path}
             </span>
 
-            {/* Bar */}
-            <div className="flex-1 h-1 rounded-full" style={{ background: 'rgba(255,255,255,0.06)' }}>
+            <div className="flex-1 h-1 rounded-full" style={{ background: 'rgba(139,92,246,0.1)' }}>
               <div
                 className="h-full rounded-full transition-all duration-700"
-                style={{ width: `${pct}%`, background: color, opacity: 0.85 }}
+                style={{ width: `${pct}%`, background: color, opacity: 0.9 }}
               />
             </div>
 
-            {/* Score badge */}
             <span className={`${getBadgeClass(file.score)} flex-shrink-0`}>
               {Math.round(file.score)}
             </span>
 
-            {/* Issue count */}
             {file.issueCount > 0 && (
-              <span
-                className="flex-shrink-0 text-[10px] font-semibold"
-                style={{ color: 'var(--text-muted)' }}
-              >
+              <span className="flex-shrink-0 text-[10px] font-semibold" style={{ color: 'var(--text-muted)' }}>
                 {file.issueCount} {file.issueCount === 1 ? 'issue' : 'issues'}
               </span>
             )}

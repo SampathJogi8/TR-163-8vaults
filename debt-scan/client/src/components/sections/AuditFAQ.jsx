@@ -54,8 +54,8 @@ const AuditFAQ = () => {
               <span
                 className="flex-shrink-0 w-7 h-7 rounded-full flex items-center justify-center"
                 style={{
-                  background: open === i ? 'rgba(191,255,0,0.1)' : 'rgba(255,255,255,0.04)',
-                  border: `1px solid ${open === i ? 'rgba(191,255,0,0.2)' : 'var(--border)'}`,
+                  background: open === i ? 'rgba(139,92,246,0.12)' : 'rgba(255,255,255,0.04)',
+                  border: `1px solid ${open === i ? 'rgba(139,92,246,0.28)' : 'var(--border)'}`,
                   color: open === i ? 'var(--accent)' : 'var(--text-muted)',
                   transition: '0.2s',
                 }}

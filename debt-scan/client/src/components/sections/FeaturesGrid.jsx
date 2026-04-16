@@ -64,8 +64,7 @@ const FeaturesGrid = () => (
           {/* Icon chip */}
           <div
             className="w-10 h-10 flex items-center justify-center rounded-xl"
-            style={{ background: 'rgba(191,255,0,0.1)', border: '1px solid rgba(191,255,0,0.2)' }}
-          >
+            style={{ background: 'rgba(139,92,246,0.1)', border: '1px solid rgba(139,92,246,0.2)' }}>
             <Icon size={18} style={{ color: 'var(--accent)' }} />
           </div>
           {/* Content */}
