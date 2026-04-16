@@ -54,16 +54,25 @@ app.post('/api/analyze', async (req, res) => {
   const startTime = Date.now();
   console.log(`Starting scan ${scanId} for ${url || 'ZIP'}`);
 
-  // Initialize in Supabase instead of memory
-  await supabase.from('scans').insert([{
-    id: scanId,
-    status: 'processing',
-    progress: 5,
-    message: 'Initializing environment...',
-    repo_url: type === 'github' ? url : 'Uploaded ZIP'
-  }]);
+  try {
+    const { error: insertError } = await supabase.from('scans').insert([{
+      id: scanId,
+      status: 'processing',
+      progress: 5,
+      message: 'Initializing environment...',
+      repo_url: type === 'github' ? url : type === 'zip' ? 'Uploaded ZIP' : 'Pasted Code'
+    }]);
 
-  res.json({ scanId, status: 'processing' });
+    if (insertError) {
+      console.error(`[DB Error] Insert failed:`, insertError);
+      return res.status(500).json({ error: `Database initialization failed: ${insertError.message}` });
+    }
+
+    res.json({ scanId, status: 'processing' });
+  } catch (setupErr) {
+    console.error(`[Setup Error] Critical failure:`, setupErr);
+    return res.status(500).json({ error: `Server setup failure: ${setupErr.message}` });
+  }
 
   // Background analysis logic for serverless
   // NOTE: On Vercel Hobby, this process might be killed after the response.
