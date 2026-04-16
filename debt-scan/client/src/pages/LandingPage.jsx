@@ -248,7 +248,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
         >
           <div className="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-6">
             <div className="flex items-center gap-3">
-              <span className="text-base font-bold text-white">CodeAnalyzer</span>
+              <span className="text-base font-bold text-white">8Vaults</span>
               <span
                 className="text-[10px] px-2 py-0.5 rounded-full font-black uppercase tracking-widest"
                 style={{ background: 'rgba(139,92,246,0.1)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.25)' }}
@@ -264,7 +264,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
             </div>
 
             <p className="text-xs font-medium" style={{ color: 'var(--text-muted)' }}>
-              © 2026 CodeAnalyzer. All rights reserved.
+              © 2026 8Vaults. All rights reserved.
             </p>
           </div>
         </footer>

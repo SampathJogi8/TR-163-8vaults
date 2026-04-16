@@ -49,7 +49,7 @@ const HeroSection = ({
 
       {/* ── NAVBAR ─────────────────────────────────────────────── */}
       <nav className="nav-pill">
-        <span className="text-sm font-bold text-white tracking-tight flex-shrink-0">CodeAnalyzer</span>
+        <span className="text-sm font-bold text-white tracking-tight flex-shrink-0">8Vaults</span>
         <div className="hidden md:flex items-center gap-6 text-[13px] font-medium" style={{ color: 'var(--text-muted)' }}>
           <a href="#features" className="hover:text-white transition-colors">Features</a>
           <a href="#steps"    className="hover:text-white transition-colors">How it works</a>

@@ -250,7 +250,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
 
         {/* ── FOOTER ─────────────────────────────────────────── */}
         <footer className="flex items-center justify-between pt-4 text-[11px] font-medium" style={{ color: 'var(--text-muted)', borderTop: '1px solid var(--border)' }}>
-          <span>CodeAnalyzer © 2026</span>
+          <span>8Vaults © 2026</span>
           <span>Secure static analysis · AI assisted · 100% automated</span>
         </footer>
 
