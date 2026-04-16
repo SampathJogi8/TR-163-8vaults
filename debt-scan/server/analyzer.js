@@ -86,12 +86,14 @@ function getJSMetrics(content) {
 
 function getPythonJavaMetrics(filePath, language) {
   const scriptPath = language === 'python' ? 'parsers/python_parser.py' : 'parsers/java_parser.py';
+  const fullScriptPath = path.join(__dirname, scriptPath);
+  
   try {
-    const output = execSync(`python3 "${path.join(__dirname, scriptPath)}" "${filePath}"`).toString();
+    // SHIELD: Using execFileSync with args array to prevent shell injection
+    const output = execFileSync('python3', [fullScriptPath, filePath]).toString();
     return JSON.parse(output);
   } catch (e) {
-    console.warn(`System python3 not available for ${language}. Using heuristic fallback.`);
-    // Heuristic fallback for when python3 is missing (common on serverless)
+    console.warn(`[Audit] System python3 failed for ${language}: ${e.message}. Using heuristic fallback.`);
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
     return {
@@ -122,18 +124,18 @@ function computeMetrics(filePath, content) {
     Object.assign(metrics, getPythonJavaMetrics(filePath, 'java'));
   }
 
-  // Duplication score: hash 6-line windows
+  // SCALE: Replacing MD5 hashing with high-speed string sampling for overlap detection
   const lines = content.split('\n');
-  const windowHashes = {};
+  const seenWindows = new Set();
   let duplicateWindows = 0;
-  for (let i = 0; i < lines.length - 5; i++) {
+  for (let i = 0; i < lines.length - 5; i += 2) { // Sampling every 2nd window to reduce CPU
     const window = lines.slice(i, i + 6).join('\n').trim();
-    if (window.length < 20) continue; // Ignore very short windows
-    const hash = crypto.createHash('md5').update(window).digest('hex');
-    if (windowHashes[hash]) {
+    if (window.length < 30) continue; 
+    
+    if (seenWindows.has(window)) {
       duplicateWindows++;
     } else {
-      windowHashes[hash] = true;
+      seenWindows.add(window);
     }
   }
   metrics.duplicationScore = duplicateWindows;

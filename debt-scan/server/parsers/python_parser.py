@@ -12,11 +12,22 @@ def analyze_python(file_path):
         metrics = {
             "functionCount": 0,
             "maxNesting": 0,
-            "avgFunctionLength": 0,
             "lineCount": len(content.splitlines())
         }
 
-        # Count functions and classes
+        def get_max_depth(node, current_depth):
+            depths = [current_depth]
+            for child in ast.iter_child_nodes(node):
+                # Only increase depth for block-level structures
+                if isinstance(child, (ast.If, ast.For, ast.While, ast.With, ast.Try, ast.FunctionDef, ast.ClassDef)):
+                    depths.append(get_max_depth(child, current_depth + 1))
+                else:
+                    depths.append(get_max_depth(child, current_depth))
+            return max(depths)
+
+        metrics["maxNesting"] = get_max_depth(tree, 0)
+
+        # Count functions
         for node in ast.walk(tree):
             if isinstance(node, (ast.FunctionDef, ast.AsyncFunctionDef)):
                 metrics["functionCount"] += 1

@@ -24,6 +24,25 @@ app.use(express.json({ limit: '50mb' }));
 const TEMP_BASE_DIR = '/tmp/debtscan';
 fs.ensureDirSync(TEMP_BASE_DIR);
 
+/**
+ * SHIELD: Selects the most critical files for audit based on heuristics
+ * rather than simple line-count capping.
+ */
+function selectPriorityFiles(allFiles, maxLines = 15000, maxFiles = 40) {
+  const priorityKeywords = ['auth', 'security', 'config', 'api', 'route', 'controller', 'model', 'util'];
+  
+  const mapped = allFiles.map(f => {
+    const name = path.basename(f).toLowerCase();
+    let weight = 0;
+    if (priorityKeywords.some(kw => name.includes(kw))) weight += 10;
+    if (name.endsWith('.js') || name.endsWith('.ts')) weight += 5;
+    return { path: f, weight };
+  });
+
+  // Sort by weight desc, then lines desc (implied in later processing)
+  return mapped.sort((a, b) => b.weight - a.weight).slice(0, maxFiles).map(m => m.path);
+}
+
 app.get('/api/health', (req, res) => {
   res.json({ message: "DebtScan API is running!", status: "healthy", environment: "vercel" });
 });
@@ -73,19 +92,19 @@ app.post('/api/analyze', async (req, res) => {
     await updateScan(scanId, 25, 'Calculating structural metrics...');
     const allFiles = await walk(repoDir);
     
+    // SCALE: Use priority selection instead of hard 15-file slice
+    const prioritizedPaths = selectPriorityFiles(allFiles);
+    
     let processedFiles = [];
     let totalLines = 0;
-    for (const f of allFiles) {
+    for (const f of prioritizedPaths) {
       const content = await fs.readFile(f, 'utf-8');
       const lines = content.split('\n').length;
       processedFiles.push({ path: f, content, lines });
       totalLines += lines;
-    }
-
-    // Limit analysis on Vercel to stay within standard limits
-    if (totalLines > 10000) {
-      processedFiles.sort((a, b) => b.lines - a.lines);
-      processedFiles = processedFiles.slice(0, 15);
+      
+      // Safety ceiling to prevent Vercel timeout/OOM
+      if (totalLines > 20000) break;
     }
 
     const chunks = [];
