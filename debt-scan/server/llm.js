@@ -138,6 +138,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
     return [
       {
         id: `mock-${Date.now()}-1`,
+        is_sonar_aligned: true,
         file: chunk.filename,
         line: 1,
         severity: 'Minor',
@@ -148,6 +149,7 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
       },
       {
         id: `mock-${Date.now()}-2`,
+        is_sonar_aligned: false,
         file: chunk.filename,
         line: 10,
         severity: 'Major',

@@ -41,6 +41,11 @@ const IssueCard = ({ issue, onFeedback }) => {
           <div className="flex flex-wrap items-center gap-2 mb-1">
             <span className="text-sm font-semibold text-white truncate">{issue.title}</span>
             <span className={severityBadgeClass}>{sev}</span>
+            {issue.is_sonar_aligned && (
+              <span className="px-2 py-0.5 rounded text-[9px] font-bold uppercase tracking-wider bg-blue-500/20 border border-blue-500/40 text-blue-300">
+                Sonar Baseline
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-2 flex-wrap">
             <span className="text-[11px] font-mono" style={{ color: 'var(--text-muted)' }}>

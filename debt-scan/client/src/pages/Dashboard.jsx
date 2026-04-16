@@ -27,8 +27,8 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
   const acceptanceRate = feedbackTotal > 0 ? Math.round((acceptedCount / feedbackTotal) * 100) : null;
   const isFastScan = durationMs < 60000;
 
-  // SONARQUBE ALIGNMENT: % of issues categorized as Security, CodeSmell, or TechnicalDebt
-  const sonarIssues = (issues || []).filter(i => ['Security', 'CodeSmell', 'TechnicalDebt'].includes(i.category)).length;
+  // SONARQUBE ALIGNMENT: % of issues explicitly flagged by AI as industry-standard baseline matches
+  const sonarIssues = (issues || []).filter(i => i.is_sonar_aligned === true).length;
   const sonarAlignment = issues?.length > 0 ? Math.round((sonarIssues / issues.length) * 100) : 0;
 
   const scoreColor =
