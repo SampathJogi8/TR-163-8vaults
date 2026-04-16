@@ -135,7 +135,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
            </div>
         </footer>
       </div>
-    </div>
+    </AestheticBackground>
   );
 };
 
