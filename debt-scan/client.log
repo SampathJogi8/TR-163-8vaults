@@ -1,0 +1,1476 @@
+
+> debt-scan-client@1.0.0 start
+> vite
+
+[33mThe CJS build of Vite's Node API is deprecated. See https://vite.dev/guide/troubleshooting.html#vite-cjs-node-api-deprecated for more details.[39m
+
+  VITE v5.4.21  ready in 148 ms
+
+  ➜  Local:   http://localhost:3000/
+  ➜  Network: use --host to expose
+(node:6786) [MODULE_TYPELESS_PACKAGE_JSON] Warning: Module type of file:///Users/sampathjogipusala/8Vault/debt-scan/client/postcss.config.js is not specified and it doesn't parse as CommonJS.
+Reparsing as ES module because module syntax was detected. This incurs a performance overhead.
+To eliminate this warning, add "type": "module" to /Users/sampathjogipusala/8Vault/debt-scan/client/package.json.
+(Use `node --trace-warnings ...` to show where the warning was created)
+1:30:44 PM [vite] http proxy error: /api/analyze
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+1:51:49 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:04:32 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:25:30 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:32:27 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:34:25 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:46:52 PM [vite] hmr update /src/index.css
+3:47:03 PM [vite] hmr update /src/App.jsx, /src/index.css
+3:47:39 PM [vite] hmr update /src/pages/LandingPage.jsx, /src/index.css
+3:47:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:47:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:47:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:05 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+3:48:05 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:05 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:05 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:05 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:26 PM [vite] hmr update /src/components/StatCard.jsx, /src/index.css
+3:48:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:48 PM [vite] hmr update /src/components/IssueCard.jsx, /src/index.css
+3:48:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:48:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:48:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:08 PM [vite] hmr update /src/pages/FileDetail.jsx, /src/index.css
+3:49:08 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:49:08 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:49:08 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:08 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:37 PM [vite] hmr update /src/pages/IssuesList.jsx, /src/index.css
+3:49:37 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:49:37 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:49:37 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:37 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:48 PM [vite] Pre-transform error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+3:49:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:49:51 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:50:00 PM [vite] hmr update /src/components/ProgressBar.jsx, /src/index.css
+3:50:00 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:50:00 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:50:22 PM [vite] hmr update /src/components/FileHeatmap.jsx, /src/index.css
+3:50:22 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:50:22 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:50:44 PM [vite] hmr update /src/components/CategoryChart.jsx, /src/index.css
+3:50:44 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:50:44 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:51:39 PM [vite] Pre-transform error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+3:51:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:51:40 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:51:40 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:51:40 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:51:43 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:51:49 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:05 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:16 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:17 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:17 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:17 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:52:54 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:53:46 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:54:11 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:54:28 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:55:48 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:55:49 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:55:51 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:56:03 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:57:26 PM [vite] hmr update /src/App.jsx, /src/index.css
+3:57:26 PM [vite] Pre-transform error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+3:57:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+3:57:26 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:00 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:27 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:29 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:30 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:30 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:31 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:32 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:58:52 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+3:59:44 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+4:00:39 PM [vite] page reload tailwind.config.js
+4:00:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+4:00:39 PM [vite] Pre-transform error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+4:00:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+4:00:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+4:00:39 PM [vite] Internal server error: [postcss] /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:5: The `border-border` class does not exist. If `border-border` is a custom class, make sure it is defined within a `@layer` directive.
+  Plugin: vite:css
+  File: /Users/sampathjogipusala/8Vault/debt-scan/client/src/index.css:30:4
+  28 |  @layer components {
+  29 |    .glass-panel {
+  30 |      @apply bg-card border border-border backdrop-blur-xl shadow-2xl;
+     |      ^
+  31 |    }
+  32 |    
+      at Input.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/input.js:135:16)
+      at AtRule.error (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/node.js:146:32)
+      at processApply (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:380:29)
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/lib/expandApplyAtRules.js:551:9
+      at /Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/processTailwindFeatures.js:55:50
+      at async plugins (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/tailwindcss/lib/plugin.js:38:17)
+      at async LazyResult.runAsync (/Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/postcss/lib/lazy-result.js:293:11)
+      at async compileCSS (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36898:21)
+      at async TransformPluginContext.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:36171:11)
+      at async PluginContainer.transform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:49099:18)
+      at async loadAndTransform (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:51978:27)
+      at async viteTransformMiddleware (file:///Users/sampathjogipusala/8Vault/debt-scan/client/node_modules/vite/dist/node/chunks/dep-BK3b2jBa.js:62106:24)
+4:00:47 PM [vite] hmr update /src/index.css
+4:05:41 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:12:41 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:24:00 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:24:01 PM [vite] ✨ new dependencies optimized: jspdf, jspdf-autotable, xlsx, html2canvas
+4:24:01 PM [vite] ✨ optimized dependencies changed. reloading
+4:24:14 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:33:47 PM [vite] hmr update /src/App.jsx, /src/index.css
+4:33:59 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:34:34 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:35:09 PM [vite] hmr update /src/pages/Dashboard.jsx, /src/index.css
+4:55:39 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:41 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:43 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:45 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:47 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:49 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:51 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:53 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:55 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:57 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:55:59 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:01 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:03 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:05 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:07 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:09 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:11 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:13 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:15 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)
+4:56:17 PM [vite] http proxy error: /api/scan/08deeec8-9abf-4b7b-87d0-e877f4856705/status
+AggregateError [ECONNREFUSED]: 
+    at internalConnectMultiple (node:net:1134:18)
+    at afterConnectMultiple (node:net:1715:7)

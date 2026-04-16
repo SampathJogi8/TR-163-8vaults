@@ -1,0 +1,23 @@
+/Users/sampathjogipusala/8Vault/debt-scan/server/node_modules/openai/client.js:133
+            throw new Errors.OpenAIError('Missing credentials. Please pass an `apiKey`, `workloadIdentity`, or set the `OPENAI_API_KEY` environment variable.');
+            ^
+
+OpenAIError: Missing credentials. Please pass an `apiKey`, `workloadIdentity`, or set the `OPENAI_API_KEY` environment variable.
+    at new OpenAI (/Users/sampathjogipusala/8Vault/debt-scan/server/node_modules/openai/client.js:133:19)
+    at new module.exports (/Users/sampathjogipusala/8Vault/debt-scan/server/node_modules/openai/index.js:4:10)
+    at Object.<anonymous> (/Users/sampathjogipusala/8Vault/debt-scan/server/llm.js:11:16)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+    at TracingChannel.traceSync (node:diagnostics_channel:322:14)
+    at wrapModuleLoad (node:internal/modules/cjs/loader:237:24)
+    at Module.require (node:internal/modules/cjs/loader:1463:12)
+    at require (node:internal/modules/helpers:147:16)
+    at Object.<anonymous> (/Users/sampathjogipusala/8Vault/debt-scan/server/index.js:11:30)
+    at Module._compile (node:internal/modules/cjs/loader:1706:14)
+    at Object..js (node:internal/modules/cjs/loader:1839:10)
+    at Module.load (node:internal/modules/cjs/loader:1441:32)
+    at Function._load (node:internal/modules/cjs/loader:1263:12)
+
+Node.js v22.20.0

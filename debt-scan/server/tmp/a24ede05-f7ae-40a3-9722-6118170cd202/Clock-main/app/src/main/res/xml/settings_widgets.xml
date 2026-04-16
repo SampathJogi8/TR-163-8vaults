@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+    SPDX-License-Identifier: GPL-3.0-only
+-->
+
+<PreferenceScreen
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Preference
+        android:key="key_analog_widget_customization"
+        android:layout="@layout/settings_preference_layout"
+        android:title="@string/analog_widget"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <Preference
+        android:key="key_digital_widget_customization"
+        android:layout="@layout/settings_preference_layout"
+        android:title="@string/digital_widget"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <Preference
+        android:key="key_vertical_widget_customization"
+        android:layout="@layout/settings_preference_layout"
+        android:title="@string/vertical_widget"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+    <Preference
+        android:key="key_next_alarm_widget_customization"
+        android:layout="@layout/settings_preference_layout"
+        android:title="@string/next_alarm_widget"
+        app:iconSpaceReserved="false"
+        app:singleLineTitle="false" />
+
+</PreferenceScreen>

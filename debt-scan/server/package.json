@@ -1,0 +1,26 @@
+{
+  "name": "debt-scan-server",
+  "version": "1.0.0",
+  "description": "Backend for Automated Code Review & Technical Debt Analyzer",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "dev": "nodemon index.js"
+  },
+  "dependencies": {
+    "@anthropic-ai/sdk": "^0.32.1",
+    "@babel/parser": "^7.23.6",
+    "@google/generative-ai": "^0.24.1",
+    "cors": "^2.8.5",
+    "dotenv": "^16.3.1",
+    "express": "^4.18.2",
+    "fs-extra": "^11.2.0",
+    "openai": "^6.34.0",
+    "simple-git": "^3.22.0",
+    "unzipper": "^0.10.14",
+    "uuid": "^9.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  }
+}
