@@ -40,7 +40,8 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
       });
       onStartScan(res.data.scanId);
     } catch (err) {
-      alert('Analysis failed: ' + (err.response?.data?.error || err.message));
+      const errorMsg = err.response?.data?.error || err.response?.data?.message || err.message;
+      alert('Analysis failed: ' + (typeof errorMsg === 'object' ? JSON.stringify(errorMsg) : errorMsg));
       setIsScanning(false);
     }
   };
