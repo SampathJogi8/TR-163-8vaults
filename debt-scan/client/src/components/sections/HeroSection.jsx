@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Github, FileArchive, Clipboard, ChevronDown, Settings2, Zap, ArrowRight } from 'lucide-react';
+import { AnimatePresence, motion } from 'framer-motion';
 
 const INPUT_TABS = [
   { key: 'github', label: 'GitHub', icon: Github },
