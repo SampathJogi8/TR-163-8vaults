@@ -149,8 +149,8 @@ const HeroSection = ({
               ))}
             </div>
 
-            {/* Input area */}
-            <div className="pt-2">
+            {/* Input area (height constrained to stop layout jumping) */}
+            <div className="pt-2 h-[160px] relative">
               {inputType === 'github' && (
                 <div className="relative group">
                   <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
@@ -168,7 +168,7 @@ const HeroSection = ({
               )}
               {inputType === 'zip' && (
                 <div
-                  className="flex flex-col items-center justify-center gap-4 py-10 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-all duration-300 relative group"
+                  className="flex flex-col items-center justify-center gap-4 h-full rounded-2xl border-2 border-dashed text-center cursor-pointer transition-all duration-300 relative group"
                   style={{
                     borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
                     background: zipFile ? 'rgba(139,92,246,0.08)' : 'rgba(255,255,255,0.02)',
@@ -189,8 +189,7 @@ const HeroSection = ({
                   placeholder={'// Paste your code here\nfunction analyze() {\n  return "Ready";\n}'}
                   value={pastedCode}
                   onChange={e => setPastedCode(e.target.value)}
-                  rows={6}
-                  className="crypton-input w-full resize-none font-mono text-[13px] p-4 rounded-xl focus:ring-2 focus:ring-[var(--accent)] transition-all"
+                  className="crypton-input w-full h-full resize-none font-mono text-[13px] p-4 rounded-xl focus:ring-2 focus:ring-[var(--accent)] transition-all"
                   style={{ background: 'rgba(10,10,15,0.8)', borderColor: 'var(--border)' }}
                 />
               )}
