@@ -2,13 +2,27 @@ import React, { useState, useRef } from 'react';
 import {
   ArrowUpRight, AlertTriangle, ShieldCheck, FileText,
   Timer, Zap, Download, Filter, ChevronDown,
-  FileJson, BarChart2, Cpu, Search
+  FileJson, BarChart2, Cpu, Search, Activity, Shield, CheckCircle, Clock, FileCode
 } from 'lucide-react';
+import { motion } from 'framer-motion';
 import StatCard from '../components/StatCard';
 import FileHeatmap from '../components/FileHeatmap';
 import CategoryChart from '../components/CategoryChart';
 import { generatePDF, generateXLS, generateJSON } from '../utils/exportUtils';
 import AestheticBackground from '../components/AestheticBackground';
+
+const containerVariants = {
+  initial: { opacity: 0 },
+  animate: { 
+    opacity: 1,
+    transition: { staggerChildren: 0.1 }
+  }
+};
+
+const itemVariants = {
+  initial: { opacity: 0, y: 20 },
+  animate: { opacity: 1, y: 0, transition: { duration: 0.5, ease: [0.23, 1, 0.32, 1] } }
+};
 
 const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
   const [showExportMenu, setShowExportMenu] = useState(false);
@@ -27,7 +41,6 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
   const acceptanceRate = feedbackTotal > 0 ? Math.round((acceptedCount / feedbackTotal) * 100) : null;
   const isFastScan = durationMs < 60000;
 
-  // SONARQUBE ALIGNMENT: % of issues explicitly flagged by AI as industry-standard baseline matches
   const sonarIssues = (issues || []).filter(i => i.is_sonar_aligned === true).length;
   const sonarAlignment = issues?.length > 0 ? Math.round((sonarIssues / issues.length) * 100) : 0;
 
@@ -50,17 +63,19 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
     }
   };
 
-  /* Active AI models used */
   const modelsUsed = issues
     ? [...new Set(issues.filter(i => i?.model_used).map(i => i.model_used))]
     : [];
 
   return (
     <AestheticBackground>
-      <div className="px-6 lg:px-10 py-10 max-w-[1400px] mx-auto space-y-8">
-
-        {/* ── HEADER ─────────────────────────────────────────── */}
-        <header className="flex flex-wrap items-start justify-between gap-6">
+      <motion.div 
+        variants={containerVariants}
+        initial="initial"
+        animate="animate"
+        className="px-6 lg:px-10 py-10 max-w-[1400px] mx-auto space-y-8"
+      >
+        <motion.header variants={itemVariants} className="flex flex-wrap items-start justify-between gap-6">
           <div className="space-y-2">
             {onNewScan && (
               <button

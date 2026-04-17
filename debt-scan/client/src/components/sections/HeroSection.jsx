@@ -160,46 +160,6 @@ const HeroSection = ({
                 className="flex flex-col items-center justify-center gap-3 py-7 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
                 style={{
                   borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
-                  background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent',
-                }}
-                onClick={() => document.getElementById('zip-upload').click()}
-              >
-                <FileArchive size={22} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
-                <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
-                  {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
-                </span>
-                <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
-              </div>
-            )}
-            {inputType === 'paste' && (
-              <textarea
-                placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
-                value={pastedCode}
-                onChange={e => setPastedCode(e.target.value)}
-                rows={6}
-                className="crypton-input resize-none font-mono text-sm"
-              />
-            )}
-
-            {/* Advanced toggle */}
-            <button
-              onClick={() => setShowAdvanced(!showAdvanced)}
-              className="flex items-center gap-2 text-xs font-semibold transition-colors"
-              style={{ color: showAdvanced ? 'var(--accent-light)' : 'var(--text-muted)' }}
-            >
-              <Settings2 size={12} />
-              Advanced options
-              <ChevronDown size={12} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
-            </button>
-
-            {showAdvanced && (
-              <div className="grid grid-cols-2 gap-3 animate-fade-up">
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
-                  <select value={language} onChange={e => setLanguage(e.target.value)} className="crypton-input py-2.5 text-sm">
-                    {['auto','javascript','typescript','python','java'].map(l => (
-                      <option key={l} value={l} style={{ background: 'var(--surface)' }}>
-                        {l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}
                       </option>
                     ))}
                   </select>

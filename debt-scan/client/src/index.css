@@ -220,21 +220,66 @@
 }
 
 /* ─── ANIMATIONS ──────────────────────────────────────────────────── */
-@keyframes ticker-scroll {
-  0%   { transform: translateX(0); }
-  100% { transform: translateX(-50%); }
+
+@keyframes html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 100px;
 }
-@keyframes fade-up {
-  from { opacity: 0; transform: translateY(20px); }
-  to   { opacity: 1; transform: translateY(0); }
+
+body {
+  margin: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: #050510;
+  color: #fff;
 }
-@keyframes pop-in {
-  from { opacity: 0; transform: scale(0.96); }
-  to   { opacity: 1; transform: scale(1); }
+
+/* ── ANIMATIONS ─────────────────────────────────────── */
+
+@keyframes shimmer {
+  0% { transform: translateY(-50%); opacity: 0; }
+  20% { opacity: 0.1; }
+  50% { opacity: 0.2; }
+  80% { opacity: 0.1; }
+  100% { transform: translateY(50%); opacity: 0; }
 }
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 0 0 rgba(139,92,246,0); }
-  50%       { box-shadow: 0 0 28px 6px rgba(139,92,246,0.25); }
+
+.animate-shimmer {
+  animation: shimmer 4s infinite linear;
+}
+
+@keyframes gradient-x {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient-x {
+  background-size: 200% auto;
+  animation: gradient-x 10s ease infinite;
+}
+
+.animate-fade-up {
+  animation: fadeUp 0.6s cubic-bezier(0.23, 1, 0.32, 1) forwards;
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(15px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.animate-pulse-glow {
+  animation: pulseGlow 2s ease-in-out infinite;
+}
+
+@keyframes pulseGlow {
+  0%, 100% { opacity: 0.5; box-shadow: 0 0 10px rgba(139,92,246,0.1); }
+  50% { opacity: 1; box-shadow: 0 0 25px rgba(139,92,246,0.3); }
+}
+
+/* Standard transition for all interactive components */
+.transition-all {
+  transition-duration: 300ms;
+  transition-timing-function: cubic-bezier(0.23, 1, 0.32, 1);
 }
 @keyframes float-up {
   0%, 100% { transform: translateY(0); }

@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Cpu } from 'lucide-react';
+import { motion } from 'framer-motion';
 import api from '../api';
 import ProgressBar from '../components/ProgressBar';
 import HeroSection from '../components/sections/HeroSection';
@@ -7,6 +8,13 @@ import FeaturesGrid from '../components/sections/FeaturesGrid';
 import AuditSteps from '../components/sections/AuditSteps';
 import AuditFAQ from '../components/sections/AuditFAQ';
 import AestheticBackground from '../components/AestheticBackground';
+
+const sectionAnimation = {
+  initial: { opacity: 0, y: 30 },
+  whileInView: { opacity: 1, y: 0 },
+  viewport: { once: true, margin: "-100px" },
+  transition: { duration: 0.8, ease: [0.23, 1, 0.32, 1] }
+};
 
 const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const [inputType, setInputType]     = useState('github');
@@ -202,26 +210,44 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   return (
     <AestheticBackground>
       <div className="flex flex-col items-center w-full">
-        {/* Hero with nav + form */}
-        <HeroSection
-          inputType={inputType} setInputType={setInputType}
-          url={url} setUrl={setUrl}
-          handleAnalyze={handleAnalyze}
-          showAdvanced={showAdvanced} setShowAdvanced={setShowAdvanced}
-          zipFile={zipFile}
-          provider={provider} setProvider={setProvider}
-          language={language} setLanguage={setLanguage}
-          standards={standards} setStandards={setStandards}
-          handleFileChange={handleFileChange}
-          pastedCode={pastedCode} setPastedCode={setPastedCode}
-        />
+        {/* Hero - Subtle Fade In */}
+        <motion.div 
+          initial={{ opacity: 0 }} 
+          animate={{ opacity: 1 }} 
+          transition={{ duration: 1 }}
+          className="w-full"
+        >
+          <HeroSection
+            inputType={inputType} setInputType={setInputType}
+            url={url} setUrl={setUrl}
+            handleAnalyze={handleAnalyze}
+            showAdvanced={showAdvanced} setShowAdvanced={setShowAdvanced}
+            zipFile={zipFile}
+            provider={provider} setProvider={setProvider}
+            language={language} setLanguage={setLanguage}
+            standards={standards} setStandards={setStandards}
+            handleFileChange={handleFileChange}
+            pastedCode={pastedCode} setPastedCode={setPastedCode}
+          />
+        </motion.div>
 
-        <FeaturesGrid />
-        <AuditSteps />
-        <AuditFAQ />
+        {/* Features - Scroll Reveal */}
+        <motion.div {...sectionAnimation} className="w-full">
+          <FeaturesGrid />
+        </motion.div>
+
+        {/* Steps - Scroll Reveal */}
+        <motion.div {...sectionAnimation} className="w-full">
+          <AuditSteps />
+        </motion.div>
+
+        {/* FAQ - Scroll Reveal */}
+        <motion.div {...sectionAnimation} className="w-full">
+          <AuditFAQ />
+        </motion.div>
 
         {/* ── CTA Banner ──────────────────────────────────────────── */}
-        <section className="w-full max-w-6xl mx-auto px-6 py-24">
+        <motion.section {...sectionAnimation} className="w-full max-w-6xl mx-auto px-6 py-24">
           <div
             className="rounded-3xl p-12 md:p-16 text-center space-y-6"
             style={{ background: 'var(--card)', border: '1px solid var(--border)' }}
@@ -239,7 +265,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
               Run your first scan — free
             </a>
           </div>
-        </section>
+        </motion.section>
 
         {/* ── Footer ──────────────────────────────────────────────── */}
         <footer

@@ -28,7 +28,6 @@ const IssueCard = ({ issue, onFeedback }) => {
         onMouseEnter={e => e.currentTarget.style.background = 'rgba(139,92,246,0.04)'}
         onMouseLeave={e => e.currentTarget.style.background = 'transparent'}
       >
-        {/* Category icon chip */}
         <span
           className="flex-shrink-0 w-8 h-8 flex items-center justify-center rounded-lg text-sm"
           style={{ background: cat.bg, border: `1px solid ${cat.border}` }}
@@ -36,7 +35,6 @@ const IssueCard = ({ issue, onFeedback }) => {
           {cat.icon}
         </span>
 
-        {/* Title + file */}
         <div className="flex-1 min-w-0">
           <div className="flex flex-wrap items-center gap-2 mb-1">
             <span className="text-sm font-semibold text-white truncate">{issue.title}</span>
