@@ -68,10 +68,15 @@ const HeroSection = ({
       <div className="w-full max-w-6xl mx-auto flex flex-col lg:flex-row items-center gap-12 lg:gap-16 mt-16 animate-fade-up">
 
         {/* LEFT — Copy */}
-        <div className="flex-1 text-center lg:text-left space-y-6">
-          <div className="section-label lg:self-start mx-auto lg:mx-0 w-fit">
-            <span className="accent-dot" />
-            AI-Powered Code Analysis
+        <div className="flex-1 text-center lg:text-left space-y-8">
+          <div 
+            className="flex items-center gap-2 lg:self-start mx-auto lg:mx-0 w-fit px-3 py-1.5 rounded-full border mb-2"
+            style={{ background: 'rgba(139,92,246,0.08)', borderColor: 'rgba(139,92,246,0.2)' }}
+          >
+            <span className="accent-dot animate-pulse" />
+            <span className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--accent-light)' }}>
+              AI-Powered Code Analysis
+            </span>
           </div>
           <h1
             className="text-5xl sm:text-6xl font-black text-white"
@@ -88,31 +93,30 @@ const HeroSection = ({
           </p>
 
           {/* Typographic stat row */}
-          <div className="flex items-center gap-0 pt-8 w-fit mx-auto lg:mx-0">
+          <div className="flex items-center justify-center lg:justify-start gap-4 pt-4 w-full">
             {[
-              { stat: '250+',  label: 'issues\ndetected' },
-              { stat: '< 60s', label: 'analysis\ntime'   },
-              { stat: '3',     label: 'export\nformats'  },
+              { stat: '250+',  label: 'Issues\nDetected' },
+              { stat: '< 60s', label: 'Analysis\nTime'   },
+              { stat: '3',     label: 'Export\nFormats'  },
             ].map(({ stat, label }, i) => (
-              <div key={stat} className="flex items-center gap-6">
-                <div className="px-5 first:pl-0 flex flex-col items-start gap-0.5">
+              <div key={stat} className="flex items-center gap-4">
+                <div className="flex flex-col items-center lg:items-start space-y-1">
                   <span
-                    className="text-3xl font-black leading-none"
+                    className="text-4xl font-black tracking-tight"
                     style={{
-                      background: 'linear-gradient(135deg, #8B5CF6, #C4B5FD)',
+                      background: 'linear-gradient(135deg, #A78BFA, #C4B5FD)',
                       WebkitBackgroundClip: 'text',
                       WebkitTextFillColor: 'transparent',
-                      letterSpacing: '-0.04em',
                     }}
                   >
                     {stat}
                   </span>
-                  <span className="text-[11px] font-medium leading-tight" style={{ color: 'var(--text-muted)', whiteSpace: 'pre-line' }}>
+                  <span className="text-[11px] font-semibold tracking-wide uppercase leading-tight text-center lg:text-left" style={{ color: 'var(--text-muted)', whiteSpace: 'pre-line' }}>
                     {label}
                   </span>
                 </div>
                 {i < 2 && (
-                  <div className="w-px h-7 mx-3 self-center flex-shrink-0" style={{ background: 'var(--border)' }} />
+                  <div className="w-px h-8 mx-2 lg:mx-6 flex-shrink-0" style={{ background: 'var(--border)' }} />
                 )}
               </div>
             ))}
@@ -122,77 +126,86 @@ const HeroSection = ({
         </div>
 
         {/* RIGHT — Form card */}
-        <div id="scan-section" className="flex-1 w-full max-w-lg mx-auto lg:mx-0 scroll-mt-32">
-          <div className="bento-card p-6 space-y-5">
+        <div id="scan-section" className="flex-1 w-full max-w-[540px] mx-auto lg:mr-0 scroll-mt-32">
+          <div className="bento-card p-8 lg:p-10 space-y-6" style={{ boxShadow: '0 25px 50px -12px rgba(0,0,0,0.5)' }}>
 
             {/* Tab switcher */}
-            <div className="flex gap-1 p-1 rounded-xl" style={{ background: 'rgba(255,255,255,0.04)' }}>
+            <div className="flex gap-1.5 p-1.5 rounded-xl border" style={{ background: 'rgba(255,255,255,0.02)', borderColor: 'var(--border)' }}>
               {INPUT_TABS.map(({ key, label, icon: Icon }) => (
                 <button
                   key={key}
                   onClick={() => setInputType(key)}
-                  className="flex-1 flex items-center justify-center gap-1.5 py-2 px-2 rounded-lg text-xs font-semibold transition-all duration-200"
+                  className="flex-1 flex items-center justify-center gap-2 py-2.5 px-3 rounded-lg text-[13px] font-bold transition-all duration-300"
                   style={{
-                    background: inputType === key ? 'var(--surface-hover)' : 'transparent',
+                    background: inputType === key ? 'rgba(139,92,246,0.1)' : 'transparent',
                     color: inputType === key ? '#fff' : 'var(--text-muted)',
-                    border: inputType === key ? '1px solid var(--border-hover)' : '1px solid transparent',
+                    border: inputType === key ? '1px solid rgba(139,92,246,0.3)' : '1px solid transparent',
+                    boxShadow: inputType === key ? '0 4px 12px rgba(139,92,246,0.08)' : 'none'
                   }}
                 >
-                  <Icon size={12} />
+                  <Icon size={14} className={inputType === key ? "text-[var(--accent-light)]" : ""} />
                   {label}
                 </button>
               ))}
             </div>
 
             {/* Input area */}
-            {inputType === 'github' && (
-              <input
-                ref={inputRef}
-                type="text"
-                placeholder="https://github.com/owner/repository"
-                value={url}
-                onChange={e => setUrl(e.target.value)}
-                onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
-                className="crypton-input"
-              />
-            )}
-            {inputType === 'zip' && (
-              <div
-                className="flex flex-col items-center justify-center gap-3 py-7 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
-                style={{
-                  borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
-                  background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent',
-                }}
-                onClick={() => document.getElementById('zip-upload').click()}
-              >
-                <FileArchive size={22} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
-                <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
-                  {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
-                </span>
-                <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
-              </div>
-            )}
+            <div className="pt-2">
+              {inputType === 'github' && (
+                <div className="relative group">
+                  <div className="absolute inset-0 bg-gradient-to-r from-purple-600/20 to-blue-600/20 rounded-xl blur-md opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                  <input
+                    ref={inputRef}
+                    type="text"
+                    placeholder="https://github.com/owner/repository"
+                    value={url}
+                    onChange={e => setUrl(e.target.value)}
+                    onKeyDown={e => e.key === 'Enter' && handleAnalyze()}
+                    className="crypton-input relative w-full py-4 px-5 text-sm rounded-xl focus:ring-2 focus:ring-[var(--accent)] transition-all"
+                    style={{ background: 'rgba(10,10,15,0.8)', borderColor: 'var(--border)' }}
+                  />
+                </div>
+              )}
+              {inputType === 'zip' && (
+                <div
+                  className="flex flex-col items-center justify-center gap-4 py-10 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-all duration-300 relative group"
+                  style={{
+                    borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
+                    background: zipFile ? 'rgba(139,92,246,0.08)' : 'rgba(255,255,255,0.02)',
+                  }}
+                  onClick={() => document.getElementById('zip-upload').click()}
+                >
+                  <div className="absolute inset-0 bg-[var(--accent)] opacity-0 group-hover:opacity-5 rounded-2xl transition-opacity"></div>
+                  <FileArchive size={28} className="transition-transform group-hover:scale-110" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }} />
+                  <span className="text-[13px] font-semibold" style={{ color: zipFile ? '#fff' : 'var(--text-secondary)' }}>
+                    {zipFile ? '✓ Archive ready for analysis' : 'Click to select .zip archive'}
+                  </span>
+                  <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
+                </div>
+              )}
 
-            {inputType === 'paste' && (
-              <textarea
-                placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
-                value={pastedCode}
-                onChange={e => setPastedCode(e.target.value)}
-                rows={6}
-                className="crypton-input resize-none font-mono text-sm"
-              />
-            )}
+              {inputType === 'paste' && (
+                <textarea
+                  placeholder={'// Paste your code here\nfunction analyze() {\n  return "Ready";\n}'}
+                  value={pastedCode}
+                  onChange={e => setPastedCode(e.target.value)}
+                  rows={6}
+                  className="crypton-input w-full resize-none font-mono text-[13px] p-4 rounded-xl focus:ring-2 focus:ring-[var(--accent)] transition-all"
+                  style={{ background: 'rgba(10,10,15,0.8)', borderColor: 'var(--border)' }}
+                />
+              )}
+            </div>
 
             {/* Advanced toggle */}
-            <div className="space-y-4">
+            <div className="space-y-4 pt-2">
               <button
                 onClick={() => setShowAdvanced(!showAdvanced)}
-                className="flex items-center gap-2 text-xs font-semibold transition-colors"
+                className="flex items-center gap-2 text-[12px] font-bold uppercase tracking-wider transition-colors hover:text-white"
                 style={{ color: showAdvanced ? 'var(--accent-light)' : 'var(--text-muted)' }}
               >
-                <Settings2 size={12} />
+                <Settings2 size={14} className={showAdvanced ? "animate-spin-slow" : ""} />
                 Advanced configuration
-                <ChevronDown size={12} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
+                <ChevronDown size={14} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.3s cubic-bezier(0.4, 0, 0.2, 1)' }} />
               </button>
 
               <AnimatePresence>
@@ -201,13 +214,13 @@ const HeroSection = ({
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: 'auto', opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
-                    transition={{ duration: 0.3 }}
+                    transition={{ duration: 0.4, ease: [0.23, 1, 0.32, 1] }}
                     className="overflow-hidden"
                   >
-                    <div className="grid grid-cols-2 gap-4 pb-4">
-                      <div className="space-y-1.5">
-                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
-                        <select value={language} onChange={e => setLanguage(e.target.value)} className="crypton-input py-2.5 text-sm">
+                    <div className="grid grid-cols-2 gap-5 pb-2 pt-2">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
+                        <select value={language} onChange={e => setLanguage(e.target.value)} className="crypton-input w-full py-3 px-3 text-[13px] font-medium rounded-lg">
                           {['auto','javascript','typescript','python','java'].map(l => (
                             <option key={l} value={l} style={{ background: 'var(--surface)' }}>
                               {l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}
@@ -215,25 +228,27 @@ const HeroSection = ({
                           ))}
                         </select>
                       </div>
-                      <div className="space-y-1.5">
-                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
-                        <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input py-2.5 text-sm">
+                      <div className="space-y-2">
+                        <label className="text-[10px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Engine</label>
+                        <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input w-full py-3 px-3 text-[13px] font-medium rounded-lg">
                           {['auto','gemini','openai','anthropic','deepseek','grok','openrouter','local'].map(p => (
                             <option key={p} value={p} style={{ background: 'var(--surface)' }}>
-                              {p === 'auto'    ? 'Auto-detect'
+                              {p === 'auto'    ? 'Auto-route (Fastest)'
                              : p === 'local'   ? '💻 Local Scan'
                              : p.charAt(0).toUpperCase() + p.slice(1)}
                             </option>
                           ))}
                         </select>
                       </div>
-                      <div className="col-span-2 space-y-1.5">
-                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Custom Standards</label>
+                      <div className="col-span-2 space-y-2 pt-1">
+                        <label className="text-[10px] font-bold uppercase tracking-widest flex items-center justify-between" style={{ color: 'var(--text-muted)' }}>
+                          Custom Audit Rules
+                        </label>
                         <textarea
-                          placeholder="e.g. Follow Clean Code principles..."
+                          placeholder="e.g. Ensure OWASP Top 10 compliance, verify DRY principles, strictly forbid console logs..."
                           value={standards}
                           onChange={e => setStandards(e.target.value)}
-                          className="crypton-input text-sm resize-none"
+                          className="crypton-input w-full text-[13px] resize-none p-3 rounded-lg"
                           rows={2}
                         />
                       </div>
@@ -244,14 +259,17 @@ const HeroSection = ({
             </div>
 
             {/* CTA */}
-            <button
-              onClick={handleAnalyze}
-              className="btn-primary w-full py-3.5 text-sm font-bold gap-2"
-            >
-              <Zap size={15} />
-              Run Analysis
-              <ArrowRight size={14} className="ml-auto" />
-            </button>
+            <div className="pt-2">
+              <button
+                onClick={handleAnalyze}
+                className="btn-primary relative overflow-hidden group w-full py-4 text-[15px] font-bold gap-2 shadow-[0_0_20px_rgba(139,92,246,0.3)] hover:shadow-[0_0_30px_rgba(139,92,246,0.5)] transition-all"
+              >
+                <div className="absolute inset-0 w-full h-full bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-[150%] group-hover:translate-x-[150%] transition-transform duration-1000 ease-in-out"></div>
+                <Zap size={18} className="group-hover:scale-110 transition-transform" />
+                <span>Begin Analysis</span>
+                <ArrowRight size={16} className="ml-auto group-hover:translate-x-1 transition-transform" />
+              </button>
+            </div>
 
             {/* Footer note */}
             <p className="text-center text-[11px] font-medium" style={{ color: 'var(--text-muted)' }}>
@@ -274,11 +292,11 @@ const HeroSection = ({
                style={{ background: 'linear-gradient(to left, var(--bg), transparent)' }} />
           <div className="flex gap-3 animate-ticker whitespace-nowrap">
             {[...TICKER_ITEMS, ...TICKER_ITEMS].map((item, i) => (
-              <span key={i} className="ticker-strip flex-shrink-0 flex items-center gap-2">
-                <span className="text-white font-semibold">{item.label}</span>
+              <span key={i} className="ticker-strip flex-shrink-0 flex items-center justify-center gap-2.5 mx-2">
+                <span className="text-white font-bold tracking-tight text-[15px]">{item.label}</span>
                 <span
-                  className="text-[10px] px-2 py-0.5 rounded-full font-bold uppercase tracking-wider"
-                  style={{ background: 'rgba(139,92,246,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.2)' }}
+                  className="text-[9px] px-2.5 py-1 rounded-full font-black uppercase tracking-widest leading-none flex items-center"
+                  style={{ background: 'rgba(139,92,246,0.15)', color: 'var(--accent-light)', border: '1px solid rgba(139,92,246,0.25)' }}
                 >
                   {item.tag}
                 </span>
