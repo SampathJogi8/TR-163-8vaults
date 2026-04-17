@@ -133,7 +133,7 @@ ${chunk.code}
 ${standards ? `Compliance Standards:\n${standards}` : ''}
 `;
 
-  if (provider === 'dummy') {
+  if (provider === 'local') {
     // Return mock results for testing without consuming API credits
     return [
       {
@@ -143,8 +143,8 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         line: 1,
         severity: 'Minor',
         category: 'CodeSmell',
-        title: 'Mock Issue: Variable shadowing',
-        description: 'This is a simulated issue for testing the DebtScan UI and provider visualization.',
+        title: 'Diagnostic Scan: Variable shadowing',
+        description: 'This is a simulated issue for testing the DebtScan UI and local provider visualization.',
         fix: 'Rename the local variable to avoid confusion with the outer scope module.'
       },
       {
@@ -154,8 +154,8 @@ ${standards ? `Compliance Standards:\n${standards}` : ''}
         line: 10,
         severity: 'Major',
         category: 'Security',
-        title: 'Mock Issue: Potential hardcoded secret',
-        description: 'Detected a string literal that looks like a dummy API key or token.',
+        title: 'Diagnostic Scan: Hardcoded sentinel',
+        description: 'Detected a string literal that looks like a placeholder API key or token.',
         fix: 'Use environment variables via process.env for all sensitive credentials.'
       }
     ];
@@ -308,7 +308,7 @@ const getAvailableProviders = (requested) => {
   if (requested === 'auto') {
     return ['gemini', 'deepseek', 'grok', 'openrouter', 'anthropic', 'openai'].filter(p => config[p]);
   }
-  if (requested === 'dummy') return ['dummy'];
+  if (requested === 'local') return ['local'];
   return config[requested] ? [requested] : [];
 };
 

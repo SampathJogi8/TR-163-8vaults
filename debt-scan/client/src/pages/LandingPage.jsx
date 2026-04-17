@@ -73,7 +73,7 @@ const LandingPage = ({ onStartScan, progress, statusMessage }) => {
   const { active: activeProvider, label: providerLabel } = parseProviderMsg(statusMessage);
 
   const PROVIDER_META = {
-    dummy:       { name: '🧪 Dummy',    color: '#F97316', emoji: '⚗' },
+    local:       { name: '💻 Local Scan', color: '#64748b', emoji: '⚙️' },
     gemini:      { name: 'Gemini',     color: '#4285F4', emoji: '✦' },
     deepseek:    { name: 'DeepSeek',   color: '#8B5CF6', emoji: '◈' },
     grok:        { name: 'Grok',       color: '#A78BFA', emoji: '◎' },
