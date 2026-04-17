@@ -4,6 +4,7 @@
   "description": "Frontend for Automated Code Review & Technical Debt Analyzer",
   "main": "index.jsx",
   "scripts": {
+    "dev": "vite",
     "start": "vite",
     "build": "vite build",
     "preview": "vite preview"
