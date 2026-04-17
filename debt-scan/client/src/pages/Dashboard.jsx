@@ -33,7 +33,8 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
 
   if (!results) return null;
 
-  const { overallScore = 0, stats = {}, durationMs = 0, files = [], issues = [] } = results;
+  const { stats = {}, durationMs = 0, files = [], issues = [] } = results;
+  const overallScore = stats.overallScore || 0;
 
   const acceptedCount = (issues || []).filter(i => i.feedback === 'accepted').length;
   const rejectedCount = (issues || []).filter(i => i.feedback === 'rejected').length;
@@ -153,7 +154,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
               )}
             </div>
           </div>
-        </header>
+        </motion.header>
 
         {/* ── STAT CARDS ─────────────────────────────────────── */}
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4 stagger">
@@ -180,7 +181,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
           />
           <StatCard
             label="Critical Issues"
-            value={stats?.severityCounts?.Critical ?? 0}
+            value={stats.severityCounts?.Critical ?? 0}
             color="red"
             subtext="Security & Stability"
             icon={<AlertTriangle size={14} />}
@@ -285,8 +286,7 @@ const Dashboard = ({ results, onFileClick, onNavigateToIssues, onNewScan }) => {
           <span>8Vaults © 2026</span>
           <span>Secure static analysis · AI assisted · 100% automated</span>
         </footer>
-
-      </div>
+      </motion.div>
     </AestheticBackground>
   );
 };

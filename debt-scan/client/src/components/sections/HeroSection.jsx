@@ -160,52 +160,87 @@ const HeroSection = ({
                 className="flex flex-col items-center justify-center gap-3 py-7 rounded-2xl border-2 border-dashed text-center cursor-pointer transition-colors"
                 style={{
                   borderColor: zipFile ? 'var(--accent)' : 'var(--border)',
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="space-y-1.5">
-                  <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
-                  <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input py-2.5 text-sm">
-                    {['auto','gemini','openai','anthropic','deepseek','grok','openrouter','local'].map(p => (
-                      <option key={p} value={p} style={{ background: 'var(--surface)' }}>
-                        {p === 'auto'    ? 'Auto'
-                       : p === 'local'  ? '💻 Local Diagnostic Scan'
-                       : p.charAt(0).toUpperCase() + p.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-                <div className="col-span-2 space-y-1.5">
-                  <div className="flex items-center justify-between">
-                    <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Compliance Standards</label>
-                    <div className="flex items-center gap-2">
-                      <button 
-                        onClick={() => setStandards('Security-first (Secrets, Injection), complexity < 10, DRY principles, error handling, strict naming.')}
-                        className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border transition-all hover:border-[var(--accent-light)] hover:text-white"
-                        style={{ background: 'rgba(139,92,246,0.05)', border: '1px solid var(--border)', color: 'var(--accent-light)' }}
-                      >
-                        Team Rules
-                      </button>
-                      <button 
-                        onClick={() => setStandards('SonarQube Quality Profile: Clean Code, Reliability, OWASP Top 10, CWE-aligned, Cognitive Complexity < 15.')}
-                        className="text-[10px] font-bold uppercase tracking-widest px-2 py-0.5 rounded-full border transition-all hover:border-[var(--success)] hover:text-white"
-                        style={{ background: 'rgba(34,197,94,0.05)', border: '1px solid rgba(34,197,94,0.2)', color: 'var(--success)' }}
-                      >
-                        SonarQube Mode
-                      </button>
-                    </div>
-                  </div>
-                  <input
-                    type="text"
-                    placeholder="e.g. OWASP Top 10, PCI-DSS"
-                    value={standards}
-                    onChange={e => setStandards(e.target.value)}
-                    className="crypton-input text-sm"
-                  />
-                </div>
+                  background: zipFile ? 'rgba(139,92,246,0.06)' : 'transparent',
+                }}
+                onClick={() => document.getElementById('zip-upload').click()}
+              >
+                <FileArchive size={22} style={{ color: zipFile ? 'var(--accent)' : 'var(--text-muted)' }} />
+                <span className="text-sm font-medium" style={{ color: zipFile ? 'var(--accent-light)' : 'var(--text-muted)' }}>
+                  {zipFile ? '✓ File loaded — ready to analyze' : 'Click to upload .zip archive'}
+                </span>
+                <input id="zip-upload" type="file" accept=".zip" className="hidden" onChange={handleFileChange} />
               </div>
             )}
+
+            {inputType === 'paste' && (
+              <textarea
+                placeholder={'// Paste your code here\nfunction example() {\n  return true;\n}'}
+                value={pastedCode}
+                onChange={e => setPastedCode(e.target.value)}
+                rows={6}
+                className="crypton-input resize-none font-mono text-sm"
+              />
+            )}
+
+            {/* Advanced toggle */}
+            <div className="space-y-4">
+              <button
+                onClick={() => setShowAdvanced(!showAdvanced)}
+                className="flex items-center gap-2 text-xs font-semibold transition-colors"
+                style={{ color: showAdvanced ? 'var(--accent-light)' : 'var(--text-muted)' }}
+              >
+                <Settings2 size={12} />
+                Advanced configuration
+                <ChevronDown size={12} style={{ transform: showAdvanced ? 'rotate(180deg)' : 'rotate(0)', transition: '0.2s' }} />
+              </button>
+
+              <AnimatePresence>
+                {showAdvanced && (
+                  <motion.div 
+                    initial={{ height: 0, opacity: 0 }}
+                    animate={{ height: 'auto', opacity: 1 }}
+                    exit={{ height: 0, opacity: 0 }}
+                    transition={{ duration: 0.3 }}
+                    className="overflow-hidden"
+                  >
+                    <div className="grid grid-cols-2 gap-4 pb-4">
+                      <div className="space-y-1.5">
+                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Language</label>
+                        <select value={language} onChange={e => setLanguage(e.target.value)} className="crypton-input py-2.5 text-sm">
+                          {['auto','javascript','typescript','python','java'].map(l => (
+                            <option key={l} value={l} style={{ background: 'var(--surface)' }}>
+                              {l === 'auto' ? 'Auto-detect' : l.charAt(0).toUpperCase() + l.slice(1)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="space-y-1.5">
+                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>AI Provider</label>
+                        <select value={provider} onChange={e => setProvider(e.target.value)} className="crypton-input py-2.5 text-sm">
+                          {['auto','gemini','openai','anthropic','deepseek','grok','openrouter','local'].map(p => (
+                            <option key={p} value={p} style={{ background: 'var(--surface)' }}>
+                              {p === 'auto'    ? 'Auto-detect'
+                             : p === 'local'   ? '💻 Local Scan'
+                             : p.charAt(0).toUpperCase() + p.slice(1)}
+                            </option>
+                          ))}
+                        </select>
+                      </div>
+                      <div className="col-span-2 space-y-1.5">
+                        <label className="text-[11px] font-bold uppercase tracking-widest" style={{ color: 'var(--text-muted)' }}>Custom Standards</label>
+                        <textarea
+                          placeholder="e.g. Follow Clean Code principles..."
+                          value={standards}
+                          onChange={e => setStandards(e.target.value)}
+                          className="crypton-input text-sm resize-none"
+                          rows={2}
+                        />
+                      </div>
+                    </div>
+                  </motion.div>
+                )}
+              </AnimatePresence>
+            </div>
 
             {/* CTA */}
             <button
